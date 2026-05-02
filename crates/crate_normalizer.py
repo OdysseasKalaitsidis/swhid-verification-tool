@@ -9,7 +9,7 @@ import tarfile
 import requests
 from swh.model.from_disk import Directory, Content
 
-CRATES_HEADERS = {"User-Agent": "swhid-poc/0.1 (gsoc research)"}
+CRATES_HEADERS = {"User-Agent": "swhid-poc/0.1 (research poc)"}
 SWH_API        = "https://archive.softwareheritage.org/api/1"
 
 REGISTRY_ADDED = [".cargo_vcs_info.json", "Cargo.toml.orig"]

@@ -1,10 +1,9 @@
-# SWHID Verification – Pre-GSoC Research
+# SWHID Verification Research
 
 Prototype exploring how to map Package URLs (PURLs) to Software Heritage Identifiers
 (SWHIDs) across PyPI, crates.io, and Maven Central.
 
-Built as background research for the GSoC project "Using SWHID to Identify Software
-Components" (GFOSS/EELLAK, mentor: Alexios Zavras).
+Research PoC for mapping package artifacts to Software Heritage Identifiers (SWHIDs).
 
 ---
 

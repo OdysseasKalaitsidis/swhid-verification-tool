@@ -8,7 +8,7 @@ import shutil
 import tarfile
 import requests
 
-CRATES_HEADERS = {"User-Agent": "swhid-poc/0.1 (gsoc research)"}
+CRATES_HEADERS = {"User-Agent": "swhid-poc/0.1 (research poc)"}
 # Cargo.toml is rewritten by the registry; .orig holds the original
 INJECTED_FILES = [".cargo_vcs_info.json", "Cargo.toml", "Cargo.toml.orig"]
 
