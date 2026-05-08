@@ -2,11 +2,11 @@ import time
 import json
 import os
 from typing import List, Dict, Any
-from shwid_tool.manager import SHWIDManager
+from shwid_tool.manager import SWHIDManager
 from rich.progress import Progress
 
 class BatchProcessor:
-    def __init__(self, manager: SHWIDManager, cache_dir: str = "cache"):
+    def __init__(self, manager: SWHIDManager, cache_dir: str = "cache"):
         self.manager = manager
         self.cache_dir = cache_dir
         if not os.path.exists(cache_dir):

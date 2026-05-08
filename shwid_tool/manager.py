@@ -5,7 +5,7 @@ from shwid_tool.strategies.pypi_strategy import PyPIStrategy
 from shwid_tool.strategies.cargo_strategy import CargoStrategy
 from shwid_tool.strategies.maven_strategy import MavenStrategy
 
-class SHWIDManager:
+class SWHIDManager:
     def __init__(self, auth_token: str = None):
         self.swh = SWHClient(auth_token)
         self.strategies = {

@@ -1,13 +1,13 @@
 import typer
 from typing import Optional
-from shwid_tool.manager import SHWIDManager
+from shwid_tool.manager import SWHIDManager
 from rich.console import Console
 import json
 import os
 
 app = typer.Typer(help="SWHID Verification Tool")
 console = Console()
-manager = SHWIDManager()
+manager = SWHIDManager()
 
 def read_purls(file_path: str):
     """Robustly read PURLs with multiple encoding fallbacks."""

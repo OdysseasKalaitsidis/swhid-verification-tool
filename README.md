@@ -21,8 +21,8 @@ A production-grade utility designed to map Package URLs (PURLs) to verified Soft
 
 ### Setup
 ```bash
-git clone https://github.com/OdysseasKalaitsidis/SHWID_POC
-cd SHWID_POC
+git clone https://github.com/OdysseasKalaitsidis/SWHID_POC
+cd SWHID_POC
 python -m venv venv
 source venv/bin/activate  # Use .\venv\Scripts\activate on Windows
 pip install -r requirements.txt
@@ -57,7 +57,7 @@ python -m uvicorn shwid_tool.api:app --host 0.0.0.0 --port 8000
 
 The system utilizes a strategy-based pattern to decouple ecosystem-specific logic from the core resolution engine.
 *   `VerificationStrategy`: Abstract base class for all ecosystem implementations.
-*   `SHWIDManager`: Orchestrator responsible for PURL routing and strategy execution.
+*   `SWHIDManager`: Orchestrator responsible for PURL routing and strategy execution.
 *   `BatchProcessor`: Manages large-scale validation datasets with built-in exponential backoff and persistent caching.
 
 ## Validation and Standards

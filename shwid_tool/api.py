@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Query, HTTPException
-from shwid_tool.manager import SHWIDManager
+from shwid_tool.manager import SWHIDManager
 from typing import Dict, Any
 
 app = FastAPI(title="SWHID Verification API")
-manager = SHWIDManager()
+manager = SWHIDManager()
 
 @app.get("/resolve")
 async def resolve_purl(purl: str = Query(..., description="The Package URL to resolve")):
