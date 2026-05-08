@@ -1,3 +1,11 @@
 requests
 swh.model
 rich
+sigstore
+spdx-tools
+typer
+fastapi
+uvicorn
+packageurl-python
+python-multipart
+httpx
