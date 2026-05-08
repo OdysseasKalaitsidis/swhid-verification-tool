@@ -1,13 +1,35 @@
+# Virtual Environment
 venv/
+.venv/
+env/
+
+# Python Cache
 __pycache__/
-*.pyc
-*.pyo
-tmp/
-.dist/
-dist/
-build/
-*.egg-info/
+*.py[cod]
+*$py.class
 .pytest_cache/
-.claude/
-CLAUDE.md
-# findings/ is intentionally tracked -- contains pre-computed research output
+.coverage
+htmlcov/
+
+# Tool Specific Cache and Temp Files
+cache/
+tmp_*/
+findings/
+*.jsonld
+*.jsonld.jsonld
+
+# Environment and Secrets
+.env
+.secrets
+*.key
+*.pem
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Specific
+.DS_Store
+Thumbs.db
