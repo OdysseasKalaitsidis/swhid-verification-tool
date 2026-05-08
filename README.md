@@ -1,128 +1,76 @@
-# SWHID Verification Research
+# SWHID Verification Tool
 
-Prototype exploring how to map Package URLs (PURLs) to Software Heritage Identifiers
-(SWHIDs) across PyPI, crates.io, and Maven Central.
+A production-grade utility designed to map Package URLs (PURLs) to verified Software Heritage Identifiers (SWHIDs). This tool ensures cryptographic and structural provenance by establishing a verifiable link between software distributions and their canonical source code archived in the Software Heritage (SWH) ecosystem.
 
-Research PoC for mapping package artifacts to Software Heritage Identifiers (SWHIDs).
+## Key Features
 
----
+*   **Multi-Ecosystem Support**: Specialized verification strategies for PyPI, Crates.io (Cargo), and Maven Central.
+*   **High-Confidence Provenance**:
+    *   **PyPI**: Extraction of commit SHAs from Sigstore/PEP 740 attestations via Fulcio certificates.
+    *   **Cargo**: Deterministic normalization and restoration of original project state for byte-for-byte matching.
+    *   **Maven**: SCM metadata resolution and verification of cleaned source artifacts.
+*   **SPDX 3.0 Compliance**: Generation of RDF-compatible JSON-LD manifests using official SPDX models, ensuring compatibility with the broader SBOM ecosystem.
+*   **Automated Archival Integration**: Proactive use of the Software Heritage "Save Code Now" API for unarchived or newly identified repositories.
+*   **Installation Verification**: Local filesystem scanner to audit installed packages against verified SWHID ground truth.
 
-## What it does
+## Installation
 
-For each ecosystem, it fetches the published artifact, compares it against the git
-tree archived by Software Heritage, and reports where the mapping holds and where it
-breaks down.
+### Prerequisites
+- Python 3.9+
+- A Software Heritage API Token (optional, but recommended for batch processing)
 
-**PyPI**
-
-- `pkg:pypi/six@1.17.0` — pure Python sdist, SWHID found in SWH archive
-- `pkg:pypi/certifi@2024.12.14` — sdist includes a generated CA bundle not present
-  in the git repository; SWHID does not match
-- `pkg:pypi/torch@2.6.0` — wheel-only package (20 platform-specific wheels, no
-  sdist); SWHID cannot be computed at all
-- `pkg:pypi/pip@25.1.1` — has a PEP 740 Sigstore attestation linking the artifact
-  to an exact git commit; that commit is present in SWH
-
-**crates.io**
-
-- `pkg:cargo/serde@1.0.203` — the registry injects three files during publish
-  (`.cargo_vcs_info.json`, a rewritten `Cargo.toml`, and `Cargo.toml.orig`); after
-  stripping those and restoring the original `Cargo.toml`, all 21 source file hashes
-  match the SWH archive exactly
-
-**Maven**
-
-- Surveyed 13 popular JVM packages: most publish SCM metadata in the POM, but tag
-  naming is inconsistent across projects
-- `com.fasterxml.jackson.core:jackson-databind:2.17.0` — downloaded `-sources.jar`,
-  compared every `.java` file against the git tree at the SCM tag; all files present
-  in both are byte-identical to the SWH archived blobs
-
----
-
-## Setup
-
+### Setup
 ```bash
+git clone https://github.com/OdysseasKalaitsidis/SHWID_POC
+cd SHWID_POC
 python -m venv venv
-source venv/Scripts/activate   # Windows (bash)
-# source venv/bin/activate     # Linux/macOS
+source venv/bin/activate  # Use .\venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
----
+## Usage
 
-## Running
+### Command Line Interface
 
-Run all demos and write findings JSON files:
-
+**Map a single PURL to a verified SWHID:**
 ```bash
-python main.py
+python -m shwid_tool.cli swhid-map pkg:pypi/six@1.17.0
 ```
 
-Or run individual scripts:
-
+**Generate an SPDX 3.0 dataset for multiple PURLs:**
 ```bash
-python pypi/wheel_enumerator.py pkg:pypi/torch@2.6.0
-python pypi/swhid_verifier.py pkg:pypi/six@1.17.0
-python pypi/attestation_verifier.py pip 25.1.1
-python crates/crate_analyzer.py pkg:cargo/serde@1.0.203
-python crates/crate_normalizer.py pkg:cargo/serde@1.0.203
-python maven/maven_analyzer.py
-python maven/sources_inspector.py
+python -m shwid_tool.cli batch-process input_purls.txt output_report.jsonld
 ```
 
----
-
-## Repository structure
-
-```
-pypi/
-  wheel_enumerator.py       list all wheels and sdists for a package version
-  swhid_verifier.py         download sdist, compute SWHID, check SWH archive
-  attestation_verifier.py   extract git commit from PEP 740 attestation, verify in SWH
-
-crates/
-  crate_analyzer.py         download crate, report files injected by the registry
-  crate_normalizer.py       normalize crate, verify all file hashes against SWH blobs
-
-maven/
-  maven_analyzer.py         survey SCM metadata across top JVM packages
-  sources_inspector.py      compare -sources.jar .java files against git tree
-
-main.py                     runs all of the above and writes findings/
-
-findings/                   pre-computed output (tracked in git)
-  pypi_findings.json
-  crates_findings.json
-  maven_findings.json
-  SPDX.json                 SPDX 2.3 provenance records for all packages
-  serde_1.0.203_diff.txt
-  serde_swhid_match.txt
-  jackson-databind_2.17.0_sources_inspection.txt
-
-examples/
-  six_spdx3.json            same result expressed in SPDX 3.0 format
+**Verify local file integrity:**
+```bash
+python -m shwid_tool.cli verify-path /path/to/installed/library manifest.jsonld
 ```
 
----
+### REST API
+The tool exposes a FastAPI-based endpoint for automated integration:
+```bash
+python -m uvicorn shwid_tool.api:app --host 0.0.0.0 --port 8000
+```
 
-This is a research prototype. Not production code.
+## Architecture
 
----
+The system utilizes a strategy-based pattern to decouple ecosystem-specific logic from the core resolution engine.
+*   `VerificationStrategy`: Abstract base class for all ecosystem implementations.
+*   `SHWIDManager`: Orchestrator responsible for PURL routing and strategy execution.
+*   `BatchProcessor`: Manages large-scale validation datasets with built-in exponential backoff and persistent caching.
 
-## Development Notes
+## Validation and Standards
 
-The focus of this PoC is research, not engineering. Code was written purely as a
-validation tool to confirm or disprove hypotheses about how published artifacts map
-to Software Heritage's archived git trees.
+Verification findings are exported as SPDX 3.0 documents. Compliance with RDF standards is ensured through SHACL shape validation using the integrated `test_validation.py` suite.
 
-Claude Opus 4.6 was used as an AI assistant for syntax lookups and for
-navigating complex areas where AI tooling provides genuine leverage beyond what is
-reasonable to expect from a student alone specifically: cross-referencing the SWH
-data model internals, interpreting SPDX 2.3/3.0 specification edge cases, and
-reasoning about registry-injected file normalization across three different ecosystems
-simultaneously. These are tasks that involve synthesizing large volumes of
-documentation quickly, not original research insight.
+## Documentation
 
-All research questions, ecosystem selection, architectural decisions, and conclusions
-are the original work of Odysseas Kalaitsidis.
+Comprehensive documentation is available for different stakeholders:
+- [User Guide](user_guide.md): Detailed CLI and API specifications.
+- [Developer Guide](developer_guide.md): Framework for extending the tool to new ecosystems.
+- [Maintainer Guide](maintainer_guide.md): Guidance for package authors on enabling high-confidence verifiability.
+
+## Acknowledgments
+
+This project was developed as part of the Google Summer of Code (GSoC) 2026 program, under the mentorship of Software Heritage.
