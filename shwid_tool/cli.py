@@ -5,6 +5,10 @@ from rich.console import Console
 import json
 import os
 
+from shwid_tool.logging_config import setup_logging
+
+setup_logging()
+
 app = typer.Typer(help="SWHID Verification Tool")
 console = Console()
 manager = SWHIDManager()
