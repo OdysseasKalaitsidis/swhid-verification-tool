@@ -3,52 +3,53 @@ from typing import Optional
 from shwid_tool.manager import SHWIDManager
 from rich.console import Console
 import json
+import os
 
 app = typer.Typer(help="SWHID Verification Tool")
 console = Console()
 manager = SHWIDManager()
 
+def read_purls(file_path: str):
+    """Robustly read PURLs with multiple encoding fallbacks."""
+    for encoding in ["utf-8-sig", "utf-16", "utf-16le", "utf-16be", "cp1253"]:
+        try:
+            with open(file_path, "r", encoding=encoding) as f:
+                return [line.strip() for line in f if line.strip()]
+        except (UnicodeDecodeError, UnicodeError):
+            continue
+    raise ValueError(f"Could not decode {file_path}. Please ensure it is UTF-8 or UTF-16.")
+
 @app.command("swhid-map")
 def swhid_map(purl: str):
-    """
-    Resolves a PURL to a SWHID and verifies it against the SWH archive.
-    """
+    """Resolves a PURL to a SWHID and verifies it against the SWH archive."""
     try:
         console.print(f"[bold blue]Resolving {purl}[/bold blue]")
         result = manager.resolve(purl)
-        
         console.print(f"Status: [bold]{result.get('status', 'Done')}[/bold]")
         console.print(f"Confidence: [bold yellow]{result.get('confidence', 'N/A')}[/bold yellow]")
         if "swhid" in result:
             console.print(f"SWHID: [bold green]{result['swhid']}[/bold green]")
-        
         if "save_code_now" in result:
             console.print(f"Save Code Now: [bold cyan]{result['save_code_now'].get('status', 'Triggered')}[/bold cyan]")
-        
     except Exception as e:
         console.print(f"[bold red]Error:[/bold red] {str(e)}")
 
 @app.command()
 def verify_installation():
-    """
-    Verifies that all required dependencies and API keys are configured.
-    """
+    """Verifies that all required dependencies and API keys are configured."""
     console.print("[bold green]Installation Verified![/bold green]")
     console.print("- Typer: [green]OK[/green]")
     console.print("- SWH API: [green]OK[/green]")
 
 @app.command()
 def verify_path(path: str, manifest: str):
-    """
-    Verifies a local directory against an SPDX manifest containing SWHIDs.
-    """
+    """Verifies a local directory against an SPDX manifest containing SWHIDs."""
     from shwid_tool.scanner import InstallationScanner
     from shwid_tool.core import SWHClient
     
-    with open(manifest, "r") as f:
+    with open(manifest, "r", encoding="utf-8-sig") as f:
         data = json.load(f)
     
-    # Extract SWHIDs from SPDX elements (simplified)
     expected = {}
     for element in data.get("@graph", []):
         if element.get("@type") == "Package":
@@ -68,9 +69,7 @@ def batch_process(input_file: str, output_file: str):
     from shwid_tool.spdx_exporter import export_to_spdx3
     
     processor = BatchProcessor(manager)
-    
-    with open(input_file, "r") as f:
-        purls = [line.strip() for line in f if line.strip()]
+    purls = read_purls(input_file)
     
     findings = processor.process_purls(purls)
     export_to_spdx3(findings, output_file)

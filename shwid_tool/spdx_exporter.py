@@ -43,7 +43,10 @@ def export_to_spdx3(findings: List[Dict[str, Any]], output_path: str):
     package_ids = []
 
     for i, f in enumerate(findings):
-        purl = f["purl"]
+        purl = f.get("purl")
+        if not purl:
+            continue
+            
         safe_purl = purl.replace(":", "-").replace("/", "-").replace("@", "-")
         package_id = f"http://example.org/spdx/pkg-{safe_purl}-{i}"
         
