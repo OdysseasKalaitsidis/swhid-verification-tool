@@ -31,6 +31,14 @@ class SWHClient:
             return response.json()
         return None
 
+    def trigger_save_code_now(self, origin_url: str, visit_type: str = "git") -> Dict[str, Any]:
+        """Triggers a 'Save Code Now' request for an origin."""
+        url = f"{SWH_API_BASE}/origin/save/{visit_type}/url/{origin_url}/"
+        response = self.session.post(url)
+        if response.status_code in [200, 201]:
+            return response.json()
+        return {"status": "Error", "message": response.text, "code": response.status_code}
+
 def compute_content_swhid(content: bytes) -> str:
     """Computes swh:1:cnt for a file."""
     cnt = Content.from_dict({"data": content})

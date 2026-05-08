@@ -32,6 +32,13 @@ class BatchProcessor:
                 while retries < max_retries:
                     try:
                         result = self.manager.resolve(purl)
+                        
+                        # Trigger Save Code Now if not verified but repo is known
+                        if result.get("status") in ["Partial", "Inferred"] and "repo_url" in result:
+                            progress.console.print(f"[blue]Triggering Save Code Now for {result['repo_url']}...[/blue]")
+                            save_result = self.manager.swh.trigger_save_code_now(result["repo_url"])
+                            result["save_code_now"] = save_result
+                            
                         results.append(result)
                         # Save to cache
                         with open(cache_file, "w") as f:

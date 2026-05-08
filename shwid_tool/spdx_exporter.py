@@ -1,60 +1,105 @@
 import json
 from datetime import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
+from semantic_version import Version
+
+from spdx_tools.spdx3.model.spdx_document import SpdxDocument
+from spdx_tools.spdx3.model.creation_info import CreationInfo
+from spdx_tools.spdx3.model.organization import Organization
+from spdx_tools.spdx3.model.software.package import Package
+from spdx_tools.spdx3.model.external_identifier import ExternalIdentifier, ExternalIdentifierType
+from spdx_tools.spdx3.model.relationship import Relationship, RelationshipType
+from spdx_tools.spdx3.model.profile_identifier import ProfileIdentifierType
+from spdx_tools.spdx3.payload import Payload
+from spdx_tools.spdx3.writer.json_ld.json_ld_writer import write_payload
 
 def export_to_spdx3(findings: List[Dict[str, Any]], output_path: str):
     """
-    Exports verification findings to SPDX 3.0 JSON-LD format.
+    Exports verification findings to SPDX 3.0 JSON-LD format using spdx-tools models.
     """
-    spdx_document = {
-        "@context": "https://spdx.org/rdf/3.0.0/spdx-context.jsonld",
-        "@type": "spdx:SpdxDocument",
-        "spdxId": "http://example.org/spdx/doc-1",
-        "name": "SWHID Verification Report",
-        "creationInfo": {
-            "created": datetime.utcnow().isoformat() + "Z",
-            "creator": ["Organization: SWHID-POC"]
-        },
-        "elements": []
-    }
+    # 1. Setup Creator and CreationInfo
+    creator = Organization(
+        spdx_id="http://example.org/spdx/org-swhid-poc",
+        name="SWHID-POC",
+        creation_info=None # Element base class requires this but Organization handles it
+    )
+    
+    creation_info = CreationInfo(
+        created=datetime.now(),
+        created_by=[creator.spdx_id],
+        spec_version=Version("3.0.0"),
+        profile=[ProfileIdentifierType.CORE, ProfileIdentifierType.SOFTWARE]
+    )
+    
+    # Update creator with its own creation_info if needed (spdx-tools model quirk)
+    # Actually, in this model, elements need creation_info
+    creator = Organization(
+        spdx_id=creator.spdx_id,
+        name=creator.name,
+        creation_info=creation_info
+    )
 
-    for f in findings:
-        package_id = f"http://example.org/spdx/pkg-{f['purl'].replace(':', '-').replace('/', '-')}"
-        package = {
-            "@type": "spdx:Package",
-            "spdxId": package_id,
-            "name": f.get("name", f["purl"]),
-            "versionInfo": f.get("version", ""),
-            "externalIdentifier": [
-                {
-                    "externalIdentifierType": "purl",
-                    "identifier": f["purl"]
-                }
-            ],
-            "contentIdentifier": []
-        }
+    elements = {creator.spdx_id: creator}
+    package_ids = []
 
-        if "swhid" in f:
-            package["contentIdentifier"].append({
-                "comment": f"SWHID verified via strategy {f.get('strategy', 'unknown')}",
-                "identifier": f["swhid"],
-                "identifierType": "swhid"
-            })
-
-        spdx_document["elements"].append(package)
+    for i, f in enumerate(findings):
+        purl = f["purl"]
+        safe_purl = purl.replace(":", "-").replace("/", "-").replace("@", "-")
+        package_id = f"http://example.org/spdx/pkg-{safe_purl}-{i}"
         
-        # Add relationship
-        if "swhid" in f:
-            relationship = {
-                "@type": "spdx:Relationship",
-                "spdxId": f"{package_id}-rel",
-                "from": package_id,
-                "relationshipType": "hasDistributionArtifact",
-                "to": f["swhid"]
-            }
-            spdx_document["elements"].append(relationship)
+        # External Identifiers
+        external_identifiers = [
+            ExternalIdentifier(
+                external_identifier_type=ExternalIdentifierType.PURL,
+                identifier=purl
+            )
+        ]
+        
+        if f.get("swhid"):
+            external_identifiers.append(
+                ExternalIdentifier(
+                    external_identifier_type=ExternalIdentifierType.SWHID,
+                    identifier=f["swhid"]
+                )
+            )
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(spdx_document, f, indent=2)
+        # Package
+        pkg = Package(
+            spdx_id=package_id,
+            creation_info=creation_info,
+            name=f.get("name", purl),
+            package_version=f.get("version", ""),
+            content_identifier=f.get("swhid"),
+            external_identifier=external_identifiers
+        )
+        elements[package_id] = pkg
+        package_ids.append(package_id)
+
+        # Relationship: hasDistributionArtifact
+        if f.get("swhid"):
+            rel_id = f"http://example.org/spdx/rel-{safe_purl}-{i}"
+            relationship = Relationship(
+                spdx_id=rel_id,
+                creation_info=creation_info,
+                from_element=package_id,
+                relationship_type=RelationshipType.DISTRIBUTION_ARTIFACT,
+                to=[f["swhid"]] # SWHID is treated as an external reference/string identifier here
+            )
+            elements[rel_id] = relationship
+
+    # 3. Create Document
+    doc_id = "http://example.org/spdx/doc-1"
+    doc = SpdxDocument(
+        spdx_id=doc_id,
+        creation_info=creation_info,
+        name="SWHID Verification Report",
+        element=list(elements.keys()),
+        root_element=package_ids
+    )
+    elements[doc_id] = doc
+
+    # 4. Write Payload
+    payload = Payload(spdx_id_map=elements)
+    write_payload(payload, output_path)
 
     return output_path
