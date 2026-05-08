@@ -7,7 +7,7 @@
 
 A production-grade utility designed to map Package URLs (PURLs) to verified Software Heritage Identifiers (SWHIDs). This tool ensures cryptographic and structural provenance by establishing a verifiable link between software distributions and their canonical source code archived in the Software Heritage (SWH) ecosystem.
 
-## 🚀 Key Features
+## Key Features
 
 *   **Multi-Ecosystem Support**: Specialized verification strategies for PyPI, Crates.io (Cargo), and Maven Central.
 *   **High-Confidence Provenance**:
@@ -18,7 +18,7 @@ A production-grade utility designed to map Package URLs (PURLs) to verified Soft
 *   **Automated Archival Integration**: Proactive use of the Software Heritage "Save Code Now" API.
 *   **Installation Verification**: Local filesystem scanner to audit installed packages against verified SWHID ground truth.
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.9+
@@ -33,7 +33,7 @@ source venv/bin/activate  # Use .\venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 The tool can be configured via environment variables or a `.env` file:
 
@@ -43,7 +43,7 @@ The tool can be configured via environment variables or a `.env` file:
 | `CACHE_DIR` | Directory for caching resolution results | `./cache` |
 | `LOG_LEVEL` | Logging verbosity (DEBUG, INFO, ERROR) | `INFO` |
 
-## 📖 Usage
+## Usage
 
 ### Quick Start
 Map a single PURL to a verified SWHID immediately:
@@ -69,7 +69,7 @@ Deploy as a service using FastAPI:
 python -m uvicorn shwid_tool.api:app --host 0.0.0.0 --port 8000
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 The system utilizes a strategy-based pattern to decouple ecosystem-specific logic from the core resolution engine.
 
@@ -88,26 +88,26 @@ graph TD
     Exporter --> JSONLD[JSON-LD Manifest]
 ```
 
-## 🛡️ Validation and Standards
+## Validation and Standards
 
 Verification findings are exported as SPDX 3.0 documents. Compliance with RDF standards is ensured through SHACL shape validation using the integrated `test_validation.py` suite.
 
-## 📚 Documentation
+## Documentation
 
 Detailed guides for different stakeholders:
 - [**User Guide**](user_guide.md): CLI reference, API specifications, and troubleshooting.
 - [**Developer Guide**](developer_guide.md): Extending the tool to new ecosystems and core internals.
 - [**Maintainer Guide**](maintainer_guide.md): Best practices for enabling high-confidence verifiability.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please see the [Developer Guide](developer_guide.md) for setup instructions and coding standards.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 This project was developed as part of the **Google Summer of Code (GSoC) 2026** program, under the mentorship of **Software Heritage**.
 

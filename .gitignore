@@ -17,6 +17,8 @@ tmp_*/
 findings/
 *.jsonld
 *.jsonld.jsonld
+.claude/
+
 
 # Environment and Secrets
 .env
