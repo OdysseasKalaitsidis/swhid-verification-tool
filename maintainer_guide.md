@@ -19,6 +19,6 @@ Avoid including generated files (like `.pyc`, compiled binaries, or `.egg-info`)
 ## Verifying Your Own Package
 You can verify your package's archival status by running:
 ```bash
-python -m shwid_tool.cli swhid-map pkg:<ecosystem>/<name>@<version>
+python -m swhid_tool.cli swhid-map pkg:<ecosystem>/<name>@<version>
 ```
 If the tool reports a low confidence score, check if your source distribution contains extra files not present in the git repository.

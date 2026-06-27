@@ -1,4 +1,7 @@
-from shwid_tool.spdx_exporter import export_to_spdx3
+# SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
+# SPDX-License-Identifier: MIT
+
+from swhid_tool.spdx_exporter import export_to_spdx3
 import os
 
 def test_exporter():

@@ -33,7 +33,7 @@ jobs:
         
     - name: Type check with mypy
       run: |
-        mypy shwid_tool/
+        mypy swhid_tool/
         
     - name: Test with pytest
       run: |

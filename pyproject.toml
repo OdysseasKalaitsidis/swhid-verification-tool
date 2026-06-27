@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "swhid-verification-tool"
 version = "1.0.0"
-description = "A production-grade utility to map PURLs to verified SWHIDs"
+description = "A verification framework to map PURLs to verified SWHIDs"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
@@ -16,22 +16,24 @@ dependencies = [
     "requests>=2.31.0",
     "swh.model>=6.4.0",
     "rich>=13.7.0",
-    "sigstore>=2.1.0",
+    "cryptography>=42.0.0",
     "spdx-tools>=0.8.2",
+    "semantic-version>=2.10.0",
     "typer>=0.9.0",
     "fastapi>=0.109.0",
     "uvicorn>=0.27.0",
     "packageurl-python>=0.11.2",
     "python-multipart>=0.0.9",
-    "httpx>=0.26.0"
+    "pyshacl>=0.25.0",
+    "rdflib>=7.0.0",
 ]
 
 [project.scripts]
-swhid-tool = "shwid_tool.cli:app"
+swhid-tool = "swhid_tool.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["shwid_tool*"]
+include = ["swhid_tool*"]
 
 [tool.ruff]
 line-length = 100

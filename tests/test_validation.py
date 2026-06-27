@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
+# SPDX-License-Identifier: MIT
+
 from spdx_tools.spdx3.validation.json_ld.shacl_validation import validate_against_shacl_from_file
 import os
 

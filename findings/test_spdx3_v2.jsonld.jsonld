@@ -748,7 +748,7 @@
       "creationInfo": {
         "@type": "CreationInfo",
         "specVersion": "3.0.0",
-        "created": "2026-05-08T15:44:40Z",
+        "created": "2026-06-27T04:17:49Z",
         "createdBy": [
           "http://example.org/spdx/org-swhid-poc"
         ],
@@ -766,7 +766,7 @@
       "creationInfo": {
         "@type": "CreationInfo",
         "specVersion": "3.0.0",
-        "created": "2026-05-08T15:44:40Z",
+        "created": "2026-06-27T04:17:49Z",
         "createdBy": [
           "http://example.org/spdx/org-swhid-poc"
         ],
@@ -782,32 +782,15 @@
           "@type": "ExternalIdentifier",
           "externalIdentifierType": "purl",
           "identifier": "pkg:pypi/six@1.17.0"
+        },
+        {
+          "@type": "ExternalIdentifier",
+          "externalIdentifierType": "swhid",
+          "identifier": "swh:1:dir:8ff44f081d43176474b267de5451f2c2e88089d0"
         }
       ],
       "contentIdentifier": "swh:1:dir:8ff44f081d43176474b267de5451f2c2e88089d0",
       "packageVersion": "1.17.0"
-    },
-    {
-      "@type": "Relationship",
-      "@id": "http://example.org/spdx/rel-pkg-pypi-six-1.17.0-0",
-      "creationInfo": {
-        "@type": "CreationInfo",
-        "specVersion": "3.0.0",
-        "created": "2026-05-08T15:44:40Z",
-        "createdBy": [
-          "http://example.org/spdx/org-swhid-poc"
-        ],
-        "profile": [
-          "core",
-          "software"
-        ],
-        "dataLicense": "CC0-1.0"
-      },
-      "from": "http://example.org/spdx/pkg-pkg-pypi-six-1.17.0-0",
-      "to": [
-        "swh:1:dir:8ff44f081d43176474b267de5451f2c2e88089d0"
-      ],
-      "relationshipType": "distributionArtifact"
     },
     {
       "@type": "SpdxDocument",
@@ -815,7 +798,7 @@
       "creationInfo": {
         "@type": "CreationInfo",
         "specVersion": "3.0.0",
-        "created": "2026-05-08T15:44:40Z",
+        "created": "2026-06-27T04:17:49Z",
         "createdBy": [
           "http://example.org/spdx/org-swhid-poc"
         ],
@@ -828,8 +811,7 @@
       "name": "SWHID Verification Report",
       "element": [
         "http://example.org/spdx/org-swhid-poc",
-        "http://example.org/spdx/pkg-pkg-pypi-six-1.17.0-0",
-        "http://example.org/spdx/rel-pkg-pypi-six-1.17.0-0"
+        "http://example.org/spdx/pkg-pkg-pypi-six-1.17.0-0"
       ],
       "rootElement": [
         "http://example.org/spdx/pkg-pkg-pypi-six-1.17.0-0"

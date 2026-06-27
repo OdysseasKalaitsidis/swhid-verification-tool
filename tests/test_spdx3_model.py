@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
+# SPDX-License-Identifier: MIT
+
 from datetime import datetime
 from spdx_tools.spdx3.model.spdx_document import SpdxDocument
 from spdx_tools.spdx3.model.creation_info import CreationInfo

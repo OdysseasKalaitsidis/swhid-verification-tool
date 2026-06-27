@@ -5,7 +5,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Software Heritage](https://img.shields.io/badge/SWH-Archived-red.svg)](https://www.softwareheritage.org/)
 
-A production-grade utility designed to map Package URLs (PURLs) to verified Software Heritage Identifiers (SWHIDs). This tool ensures cryptographic and structural provenance by establishing a verifiable link between software distributions and their canonical source code archived in the Software Heritage (SWH) ecosystem.
+A verification framework designed to map Package URLs (PURLs) to verified Software Heritage Identifiers (SWHIDs). This tool ensures cryptographic and structural provenance by establishing a verifiable link between software distributions and their canonical source code archived in the Software Heritage (SWH) ecosystem.
 
 ## Key Features
 
@@ -48,25 +48,25 @@ The tool can be configured via environment variables or a `.env` file:
 ### Quick Start
 Map a single PURL to a verified SWHID immediately:
 ```bash
-python -m shwid_tool.cli swhid-map pkg:pypi/six@1.17.0
+python -m swhid_tool.cli swhid-map pkg:pypi/six@1.17.0
 ```
 
 ### Batch Processing
 Generate an SPDX 3.0 dataset for multiple PURLs:
 ```bash
-python -m shwid_tool.cli batch-process input_purls.txt output_report.jsonld
+python -m swhid_tool.cli batch-process input_purls.txt output_report.jsonld
 ```
 
 ### Integrity Auditing
 Verify a local directory against a verified manifest:
 ```bash
-python -m shwid_tool.cli verify-path /path/to/installed/library manifest.jsonld
+python -m swhid_tool.cli verify-path /path/to/installed/library manifest.jsonld
 ```
 
 ### REST API
 Deploy as a service using FastAPI:
 ```bash
-python -m uvicorn shwid_tool.api:app --host 0.0.0.0 --port 8000
+python -m uvicorn swhid_tool.api:app --host 0.0.0.0 --port 8000
 ```
 
 ## Architecture

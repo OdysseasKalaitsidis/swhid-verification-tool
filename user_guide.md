@@ -9,12 +9,12 @@ Resolves a single Package URL (PURL) to a verified SWHID.
 
 **Usage:**
 ```bash
-python -m shwid_tool.cli swhid-map <PURL>
+python -m swhid_tool.cli swhid-map <PURL>
 ```
 
 **Example:**
 ```bash
-python -m shwid_tool.cli swhid-map pkg:pypi/requests@2.31.0
+python -m swhid_tool.cli swhid-map pkg:pypi/requests@2.31.0
 ```
 
 ### `batch-process`
@@ -22,12 +22,12 @@ Processes a list of PURLs from a text file and exports the results to an SPDX 3.
 
 **Usage:**
 ```bash
-python -m shwid_tool.cli batch-process <INPUT_FILE> <OUTPUT_FILE>
+python -m swhid_tool.cli batch-process <INPUT_FILE> <OUTPUT_FILE>
 ```
 
 **Example:**
 ```bash
-python -m shwid_tool.cli batch-process purls.txt results.jsonld
+python -m swhid_tool.cli batch-process purls.txt results.jsonld
 ```
 
 ### `verify-path`
@@ -35,7 +35,7 @@ Audits a local directory (e.g., an installed library) against a previously gener
 
 **Usage:**
 ```bash
-python -m shwid_tool.cli verify-path <PATH> <MANIFEST>
+python -m swhid_tool.cli verify-path <PATH> <MANIFEST>
 ```
 
 ---
@@ -46,7 +46,7 @@ The tool includes a FastAPI-based server for integration into automated workflow
 
 ### Start the Server
 ```bash
-python -m uvicorn shwid_tool.api:app --port 8000
+python -m uvicorn swhid_tool.api:app --port 8000
 ```
 
 ### Endpoints

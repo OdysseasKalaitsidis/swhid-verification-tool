@@ -10,7 +10,7 @@ The tool follows a **Strategy Pattern** to handle different package ecosystems.
 The central orchestrator that routes PURLs to the appropriate `VerificationStrategy`.
 
 ### `VerificationStrategy`
-An abstract base class defined in `shwid_tool/strategies/base.py`. Every ecosystem (PyPI, Cargo, etc.) implements this class to provide:
+An abstract base class defined in `swhid_tool/strategies/base.py`. Every ecosystem (PyPI, Cargo, etc.) implements this class to provide:
 1. **Source Discovery**: Finding the canonical source repository or sdist.
 2. **Normalization**: Cleaning the source to match SWH's archival format.
 3. **Verification**: Comparing computed SWHIDs with archived ones.
@@ -19,9 +19,9 @@ An abstract base class defined in `shwid_tool/strategies/base.py`. Every ecosyst
 
 To add support for a new ecosystem (e.g., `npm`):
 
-1. Create a new strategy class in `shwid_tool/strategies/npm_strategy.py`.
+1. Create a new strategy class in `swhid_tool/strategies/npm_strategy.py`.
 2. Inherit from `VerificationStrategy`.
-3. Register the new strategy in `SWHIDManager.__init__` within `shwid_tool/manager.py`.
+3. Register the new strategy in `SWHIDManager.__init__` within `swhid_tool/manager.py`.
 
 ## Testing
 
@@ -32,8 +32,13 @@ pytest tests/
 ```
 
 Individual test modules:
-- `test_shwid.py`: Core SWHID computation logic.
+- `test_core.py`: SWHID computation and SWH client logic.
+- `test_purl_parser.py`: PURL parsing for all supported ecosystems.
+- `test_strategies.py`: Strategy-level unit tests (Cargo, Maven, PyPI).
+- `test_scanner.py`: Installation scanner directory auditing.
 - `test_spdx3_model.py`: SPDX 3.0 serialization.
+- `test_exporter.py`: SPDX 3.0 JSON-LD export.
+- `test_swhid.py`: End-to-end CLI smoke test.
 - `test_validation.py`: SHACL validation of generated manifests.
 
 ## Development Environment Setup
