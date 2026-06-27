@@ -10,15 +10,23 @@ __pycache__/
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Build and Packaging
+build/
+dist/
+*.egg-info/
+egg-info/
 
 # Tool Specific Cache and Temp Files
 cache/
+tmp/
 tmp_*/
 findings/
 *.jsonld
 *.jsonld.jsonld
 .claude/
-
 
 # Environment and Secrets
 .env
