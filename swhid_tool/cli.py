@@ -85,7 +85,7 @@ def batch_process(
     elif trigger_save and not manager.swh.session.headers.get("Authorization"):
         console.print("[yellow]Warning: Triggering Save Code Now anonymously is heavily rate-limited.[/yellow]")
         if typer.confirm("Do you want to enter a Software Heritage API token?", default=True):
-            user_token = typer.prompt("Enter your Software Heritage API Token", hide_input=True)
+            user_token = typer.prompt("Enter your Software Heritage API Token", hide_input=False)
             if user_token:
                 manager.set_token(user_token)
                 
@@ -114,7 +114,7 @@ def audit(
     elif trigger_save and not manager.swh.session.headers.get("Authorization"):
         console.print("[yellow]Warning: Triggering Save Code Now anonymously is heavily rate-limited.[/yellow]")
         if typer.confirm("Do you want to enter a Software Heritage API token?", default=True):
-            user_token = typer.prompt("Enter your Software Heritage API Token", hide_input=True)
+            user_token = typer.prompt("Enter your Software Heritage API Token", hide_input=False)
             if user_token:
                 manager.set_token(user_token)
                 
