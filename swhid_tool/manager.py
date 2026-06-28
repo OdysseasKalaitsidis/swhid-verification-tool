@@ -7,6 +7,7 @@ from swhid_tool.core import SWHClient
 from swhid_tool.strategies.pypi_strategy import PyPIStrategy
 from swhid_tool.strategies.cargo_strategy import CargoStrategy
 from swhid_tool.strategies.maven_strategy import MavenStrategy
+from swhid_tool.strategies.npm_strategy import NpmStrategy
 
 class SWHIDManager:
     def __init__(self, auth_token: str = None):
@@ -15,6 +16,7 @@ class SWHIDManager:
             "pypi": PyPIStrategy(self.swh),
             "cargo": CargoStrategy(self.swh),
             "maven": MavenStrategy(self.swh),
+            "npm": NpmStrategy(self.swh),
         }
 
     def resolve(self, purl_str: str) -> Dict[str, Any]:
