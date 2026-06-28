@@ -112,8 +112,9 @@ class ProjectDetector:
                     line = line.strip()
                     if not line or line.startswith("#"):
                         continue
-                    # Match name==version
-                    match = re.match(r'^([a-zA-Z0-9_\-]+)\s*==\s*([a-zA-Z0-9\.\-_]+)', line)
+                    # Match name==version, name>=version, or name~=version
+                    # Package names can contain letters, numbers, _, -, and .
+                    match = re.match(r'^([a-zA-Z0-9_\-\.]+)\s*(?:==|>=|~=)\s*([a-zA-Z0-9\.\-_]+)', line)
                     if match:
                         purls.append(f"pkg:pypi/{match.group(1)}@{match.group(2)}")
         except Exception:

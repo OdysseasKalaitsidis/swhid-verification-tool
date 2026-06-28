@@ -11,9 +11,12 @@ from swhid_tool.strategies.npm_strategy import NpmStrategy
 from swhid_tool.strategies.golang_strategy import GoLangStrategy
 from swhid_tool.strategies.nuget_strategy import NugetStrategy
 
+import os
+
 class SWHIDManager:
     def __init__(self, auth_token: Optional[str] = None):
-        self.swh = SWHClient(auth_token)
+        token = auth_token or os.environ.get("SWH_AUTH_TOKEN")
+        self.swh = SWHClient(token)
         self.strategies = {
             "pypi": PyPIStrategy(self.swh),
             "cargo": CargoStrategy(self.swh),

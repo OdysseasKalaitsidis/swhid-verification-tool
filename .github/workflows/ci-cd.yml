@@ -39,6 +39,8 @@ jobs:
       run: pytest tests/
 
     - name: Run Self-Audit
+      env:
+        SWH_AUTH_TOKEN: ${{ secrets.SWH_AUTH_SECRET }}
       run: |
         # Run our own audit command on the repository
         python -m swhid_tool.cli audit
