@@ -1,9 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-import os
-import json
-import pytest
 from unittest.mock import MagicMock, patch
 from swhid_tool.core import SWHClient
 from swhid_tool.strategies.nuget_strategy import NugetStrategy

@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: MIT
 
 import typer
-from typing import Optional
 from swhid_tool.manager import SWHIDManager
 from rich.console import Console
 import json

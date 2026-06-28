@@ -3,12 +3,11 @@
 
 import os
 import io
-import re
 import shutil
 import zipfile
 import requests
 import urllib.parse
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient

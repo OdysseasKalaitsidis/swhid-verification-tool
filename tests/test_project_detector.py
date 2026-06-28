@@ -1,9 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-import os
 import json
-import pytest
 from swhid_tool.project_detector import ProjectDetector
 
 def test_project_detector_extracts_dependencies(tmp_path):

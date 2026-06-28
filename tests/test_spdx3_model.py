@@ -8,7 +8,6 @@ from spdx_tools.spdx3.model.organization import Organization
 from spdx_tools.spdx3.model.software.package import Package
 from spdx_tools.spdx3.model.external_identifier import ExternalIdentifier, ExternalIdentifierType
 from spdx_tools.spdx3.model.relationship import Relationship, RelationshipType
-from spdx_tools.spdx3.writer.json_ld.json_ld_writer import write_payload
 
 def test_spdx3_creation():
     # 1. Creation Info
@@ -52,7 +51,7 @@ def test_spdx3_creation():
     )
     
     # 4. Document
-    doc = SpdxDocument(
+    SpdxDocument(
         spdx_id="http://example.org/spdx/doc-1",
         creation_info=creation_info,
         name="Test SPDX 3.0 Document",

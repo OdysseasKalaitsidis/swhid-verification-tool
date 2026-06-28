@@ -4,7 +4,6 @@
 from fastapi import FastAPI, Query, HTTPException
 from swhid_tool.manager import SWHIDManager
 from swhid_tool.logging_config import setup_logging
-from typing import Dict, Any
 
 setup_logging()
 app = FastAPI(title="SWHID Verification API")

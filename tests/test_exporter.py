@@ -15,7 +15,8 @@ def test_exporter():
         }
     ]
     output = "findings/test_spdx3_v2.jsonld"
-    if not os.path.exists("findings"): os.makedirs("findings")
+    if not os.path.exists("findings"):
+        os.makedirs("findings")
     
     print(f"Exporting to {output}...")
     export_to_spdx3(findings, output)

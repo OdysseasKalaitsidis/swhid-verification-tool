@@ -1,14 +1,11 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-import os
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from swh.model.swhids import CoreSWHID, ObjectType
 from swh.model.model import Content, Directory, DirectoryEntry
-from swh.model.from_disk import Directory as DiskDirectory, Content as DiskContent
-from typing import Dict, List, Optional, Any
+from typing import Dict, Optional, Any
 import logging
 
 logger = logging.getLogger(__name__)

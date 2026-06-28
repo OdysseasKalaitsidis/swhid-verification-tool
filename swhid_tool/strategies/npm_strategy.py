@@ -8,7 +8,7 @@ import shutil
 import tarfile
 import requests
 import urllib.parse
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient

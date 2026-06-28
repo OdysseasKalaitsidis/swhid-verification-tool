@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
 class VerificationStrategy(ABC):
     @abstractmethod

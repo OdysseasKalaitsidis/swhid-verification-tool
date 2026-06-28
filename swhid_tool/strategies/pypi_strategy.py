@@ -2,16 +2,15 @@
 # SPDX-License-Identifier: MIT
 
 import os
-import re
 import io
 import shutil
 import tarfile
 import zipfile
 import requests
 import urllib.parse
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any
 from swhid_tool.strategies.base import VerificationStrategy
-from swhid_tool.core import SWHClient, compute_directory_swhid
+from swhid_tool.core import SWHClient
 from swh.model.from_disk import Directory as SWHDirectory
 
 class PyPIStrategy(VerificationStrategy):
@@ -129,7 +128,8 @@ class PyPIStrategy(VerificationStrategy):
                 url = project_urls.get(key, "")
                 if url and ("github.com" in url or "gitlab.com" in url):
                     repo_url = url.rstrip("/")
-                    if repo_url.endswith(".git"): repo_url = repo_url[:-4]
+                    if repo_url.endswith(".git"):
+                        repo_url = repo_url[:-4]
                     break
             
             if not repo_url:
@@ -205,10 +205,8 @@ class PyPIStrategy(VerificationStrategy):
             
             # Prefer sdist
             artifact = next((f for f in urls if f["packagetype"] == "sdist"), None)
-            is_wheel = False
             if not artifact:
                 artifact = next((f for f in urls if f["packagetype"] == "bdist_wheel"), None)
-                is_wheel = True
             
             if not artifact:
                 return {"status": "Failed", "reason": "No artifact found"}
@@ -217,7 +215,8 @@ class PyPIStrategy(VerificationStrategy):
             resp.raise_for_status()
             
             tmp_dir = f"tmp_pypi_{name}_{version}"
-            if os.path.exists(tmp_dir): shutil.rmtree(tmp_dir)
+            if os.path.exists(tmp_dir):
+                shutil.rmtree(tmp_dir)
             os.makedirs(tmp_dir)
             
             if artifact["filename"].endswith(".tar.gz"):

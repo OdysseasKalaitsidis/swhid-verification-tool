@@ -1,9 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-import json
 from datetime import datetime
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 from semantic_version import Version
 
 from spdx_tools.spdx3.model.spdx_document import SpdxDocument

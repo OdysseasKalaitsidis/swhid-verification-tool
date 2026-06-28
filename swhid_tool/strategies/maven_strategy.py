@@ -7,8 +7,7 @@ import zipfile
 import requests
 import xml.etree.ElementTree as ET
 import hashlib
-import os
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
 
@@ -63,11 +62,13 @@ class MavenStrategy(VerificationStrategy):
         root = ET.fromstring(pom_text)
         def find(element, tag):
             node = element.find(f"{{{self.NS}}}{tag}")
-            if node is None: node = element.find(tag)
+            if node is None:
+                node = element.find(tag)
             return node
         
         scm = find(root, "scm")
-        if scm is None: return {}
+        if scm is None:
+            return {}
         
         def text(tag):
             node = find(scm, tag)

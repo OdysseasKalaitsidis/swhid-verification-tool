@@ -10,7 +10,7 @@ import requests
 from typing import Dict, Any, List
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
-from swh.model.from_disk import Directory as SWHDirectory, Content as SWHContent
+from swh.model.from_disk import Directory as SWHDirectory
 
 class CargoStrategy(VerificationStrategy):
     CRATES_API = "https://static.crates.io/crates"
@@ -69,7 +69,8 @@ class CargoStrategy(VerificationStrategy):
         resp.raise_for_status()
 
         tmp_dir = f"tmp_cargo_{name}_{version}"
-        if os.path.exists(tmp_dir): shutil.rmtree(tmp_dir)
+        if os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir)
         os.makedirs(tmp_dir)
 
         with tarfile.open(fileobj=io.BytesIO(resp.content), mode="r:gz") as tar:

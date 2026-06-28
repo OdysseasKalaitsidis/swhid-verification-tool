@@ -2,8 +2,6 @@
 # SPDX-License-Identifier: MIT
 
 import os
-import json
-import sys
 from swhid_tool.manager import SWHIDManager
 from swhid_tool.batch_processor import BatchProcessor
 from swhid_tool.spdx_exporter import export_to_spdx3

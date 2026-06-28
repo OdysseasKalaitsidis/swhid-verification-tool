@@ -1,8 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-import os
-import pytest
 from unittest.mock import MagicMock
 from swhid_tool.core import SWHClient, compute_content_swhid
 from swhid_tool.scanner import InstallationScanner
@@ -18,7 +16,7 @@ def test_scan_directory(tmp_path):
     # Setup temp files
     file1 = tmp_path / "app.py"
     file2 = tmp_path / "utils.py"
-    file3 = tmp_path / "missing.py" # Will not be created
+    tmp_path / "missing.py" # Will not be created
     
     file1.write_bytes(b"print('app')")
     file2.write_bytes(b"print('utils')")

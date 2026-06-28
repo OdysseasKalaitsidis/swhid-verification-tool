@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-import pytest
 from unittest.mock import MagicMock, patch
 import requests
 from swhid_tool.core import (

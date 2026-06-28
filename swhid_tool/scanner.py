@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import os
-from typing import Dict, List, Any
+from typing import Dict, Any
 from swhid_tool.core import compute_content_swhid, SWHClient
 from rich.console import Console
 from rich.table import Table
