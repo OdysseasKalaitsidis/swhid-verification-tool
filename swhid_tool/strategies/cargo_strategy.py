@@ -6,7 +6,6 @@ import json
 import os
 import shutil
 import tarfile
-import requests
 from typing import Dict, Any, List
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient

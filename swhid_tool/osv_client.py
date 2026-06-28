@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import requests
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, cast
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -25,7 +25,7 @@ class OSVClient:
         try:
             resp = self.session.get(url, timeout=15)
             if resp.status_code == 200:
-                return resp.json()
+                return cast(Dict[str, Any], resp.json())
             else:
                 logger.error(f"Failed to fetch details for {vuln_id}: {resp.status_code}")
         except Exception as e:
