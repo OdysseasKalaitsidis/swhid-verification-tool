@@ -2,12 +2,14 @@
 # SPDX-License-Identifier: MIT
 
 import requests
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logger = logging.getLogger(__name__)
 
 OSV_API_URL = "https://api.osv.dev/v1/querybatch"
+OSV_VULN_URL = "https://api.osv.dev/v1/vulns"
 
 class OSVClient:
     """
@@ -16,6 +18,19 @@ class OSVClient:
     def __init__(self) -> None:
         self.session = requests.Session()
         self.session.headers.update({"User-Agent": "SWHID-Verification-Tool/1.0 (GSoC 2026)"})
+
+    def _fetch_vuln_details(self, vuln_id: str) -> Optional[Dict[str, Any]]:
+        """Fetches full details for a single vulnerability ID."""
+        url = f"{OSV_VULN_URL}/{vuln_id}"
+        try:
+            resp = self.session.get(url, timeout=15)
+            if resp.status_code == 200:
+                return resp.json()
+            else:
+                logger.error(f"Failed to fetch details for {vuln_id}: {resp.status_code}")
+        except Exception as e:
+            logger.error(f"Error fetching details for {vuln_id}: {e}")
+        return None
 
     def query_vulnerabilities(self, commits: List[str]) -> Dict[str, List[Dict[str, Any]]]:
         """
@@ -99,6 +114,36 @@ class OSVClient:
                 logger.error(f"OSV API returned status code {response.status_code}: {response.text}")
         except Exception as e:
             logger.error(f"Error querying OSV API: {e}")
+
+        # Gather all unique vulnerability IDs that lack a summary
+        vulns_to_fetch = set()
+        for idx_map in results_map.values():
+            for v_id, v in idx_map.items():
+                if "summary" not in v or not v["summary"]:
+                    vulns_to_fetch.add(v_id)
+
+        # Fetch full details for those vulnerabilities in parallel
+        if vulns_to_fetch:
+            detailed_vulns = {}
+            with ThreadPoolExecutor(max_workers=20) as executor:
+                future_to_id = {
+                    executor.submit(self._fetch_vuln_details, v_id): v_id 
+                    for v_id in vulns_to_fetch
+                }
+                for future in as_completed(future_to_id):
+                    v_id = future_to_id[future]
+                    try:
+                        details = future.result()
+                        if details:
+                            detailed_vulns[v_id] = details
+                    except Exception as e:
+                        logger.error(f"Error retrieving future for {v_id}: {e}")
+
+            # Merge the detailed info back into the results
+            for idx_map in results_map.values():
+                for v_id in list(idx_map.keys()):
+                    if v_id in detailed_vulns:
+                        idx_map[v_id].update(detailed_vulns[v_id])
 
         # Map back to PURLs
         final_mapping = {}

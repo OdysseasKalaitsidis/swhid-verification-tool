@@ -25,7 +25,7 @@ class ProjectDetector:
         for f in files:
             # Normalize path and split into parts
             parts = os.path.normpath(f).split(os.sep)
-            ignored = {"node_modules", "venv", ".venv", ".git", "bin", "obj", "dist", "build"}
+            ignored = {"node_modules", "venv", ".venv", ".git", "bin", "obj", "dist", "build", "tmp"}
             if not any(part in ignored for part in parts):
                 filtered_files.append(f)
         return list(set(filtered_files))

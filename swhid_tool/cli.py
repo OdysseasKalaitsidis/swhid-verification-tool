@@ -144,7 +144,10 @@ def write_markdown_report(file_path: str, findings: List[Dict[str, Any]], violat
                     md.append(f"#### `{f.get('purl')}`")
                     for v in vulns:
                         v_id = v.get("id", "Unknown")
-                        summary = v.get("summary", "No summary available")
+                        summary = v.get("summary") or v.get("details") or "No summary available"
+                        summary = summary.replace("\n", " ").replace("\r", " ").strip()
+                        if len(summary) > 100:
+                            summary = summary[:97] + "..."
                         details = v.get("details", "")
                         if len(details) > 300:
                             details = details[:297] + "..."
@@ -273,7 +276,8 @@ def audit(
             console.print(f"\n[bold red]✗ {purl}[/bold red] (SWHID: {swhid})")
             for v in vulns:
                 v_id = v.get("id", "Unknown")
-                summary = v.get("summary", "No summary available")
+                summary = v.get("summary") or v.get("details") or "No summary available"
+                summary = summary.replace("\n", " ").replace("\r", " ").strip()
                 if len(summary) > 80:
                     summary = summary[:77] + "..."
                 console.print(f"  - [red]{v_id}[/red]: {summary}")
