@@ -6,6 +6,7 @@ from typing import Dict, List, TypedDict
 from swhid_tool.core import compute_content_swhid, SWHClient
 from rich.console import Console
 from rich.table import Table
+from swh.model.from_disk import Directory as SWHDirectory
 
 class ScanResults(TypedDict):
     total_files: int
@@ -21,8 +22,8 @@ class InstallationScanner:
 
     def scan_directory(self, path: str, expected_swhids: Dict[str, str]) -> ScanResults:
         """
-        Scans a directory and compares file hashes against expected SWHIDs.
-        expected_swhids: { "rel_path/to/file": "swh:1:cnt:..." }
+        Scans a directory and compares file/directory hashes against expected SWHIDs.
+        expected_swhids: { "rel_path": "swh:1:..." }
         """
         results: ScanResults = {
             "total_files": 0,
@@ -39,17 +40,46 @@ class InstallationScanner:
                 results["missing"].append(rel_path)
                 continue
             
-            with open(full_path, "rb") as f:
-                content = f.read()
-                actual_swhid = compute_content_swhid(content)
-            
-            if actual_swhid == expected_swhid:
-                results["verified_files"] += 1
-            else:
+            try:
+                if os.path.isdir(full_path):
+                    # Resolve revision to directory if needed
+                    target_expected = expected_swhid
+                    if expected_swhid.startswith("swh:1:rev:"):
+                        rev_id = expected_swhid.split(":")[-1]
+                        rev_info = self.swh.get_revision(rev_id)
+                        if rev_info and "directory" in rev_info:
+                            target_expected = f"swh:1:dir:{rev_info['directory']}"
+                    
+                    # Compute directory SWHID recursively
+                    swhid_obj = SWHDirectory.from_disk(path=os.fsencode(full_path), max_content_length=None).swhid()
+                    actual_swhid = str(swhid_obj)
+                    
+                    if actual_swhid == target_expected:
+                        results["verified_files"] += 1
+                    else:
+                        results["mismatches"].append({
+                            "path": rel_path,
+                            "expected": target_expected,
+                            "actual": actual_swhid
+                        })
+                else:
+                    with open(full_path, "rb") as f:
+                        content = f.read()
+                        actual_swhid = compute_content_swhid(content)
+                    
+                    if actual_swhid == expected_swhid:
+                        results["verified_files"] += 1
+                    else:
+                        results["mismatches"].append({
+                            "path": rel_path,
+                            "expected": expected_swhid,
+                            "actual": actual_swhid
+                        })
+            except Exception as e:
                 results["mismatches"].append({
                     "path": rel_path,
                     "expected": expected_swhid,
-                    "actual": actual_swhid
+                    "actual": f"Error: {str(e)}"
                 })
         
         return results

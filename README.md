@@ -30,14 +30,16 @@ We have generated a verified showcase dataset containing 25 of the most popular 
 
 ## Key Features
 
-*   **Multi-Ecosystem Support**: Specialized verification strategies for PyPI, Crates.io (Cargo), and Maven Central.
+*   **Multi-Ecosystem Support**: Specialized verification strategies for **PyPI**, **npm**, **Cargo**, **Go Modules**, **Maven Central**, and **NuGet**.
 *   **High-Confidence Provenance**:
     *   **PyPI**: Extraction of commit SHAs from Sigstore/PEP 740 attestations via Fulcio certificates.
     *   **Cargo**: Deterministic normalization and restoration of original project state for byte-for-byte matching.
     *   **Maven**: SCM metadata resolution and verification of cleaned source artifacts.
+*   **OSV.dev Vulnerability Mapping**: Content-based vulnerability scanning. Maps resolved cryptographic commit SHAs (`swh:1:rev:...`) to known vulnerabilities in the OSV.dev database, eliminating false-negatives from package renaming/forks.
+*   **CI/CD Gatekeeping Policy Engine**: Define compliance rules in `swhid-policy.toml` (e.g. minimum confidence levels, fail-on-vulnerabilities, fail-on-mismatch, allowlists) to automatically break builds in CI/CD pipelines.
 *   **SPDX 3.0 Compliance**: Generation of RDF-compatible JSON-LD manifests using official SPDX models.
 *   **Automated Archival Integration**: Proactive use of the Software Heritage "Save Code Now" API.
-*   **Installation Verification**: Local filesystem scanner to audit installed packages against verified SWHID ground truth.
+*   **Installation Verification**: Local filesystem scanner to audit installed package directories and files recursively against verified SWHID ground truth.
 
 ## Installation
 

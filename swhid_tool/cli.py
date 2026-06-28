@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import typer
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from swhid_tool.manager import SWHIDManager
 from rich.console import Console
 import json
@@ -96,11 +96,77 @@ def batch_process(
     export_to_spdx3(findings, output_file)
     console.print(f"[green]Batch processing complete. Results saved to {output_file}[/green]")
 
+def write_markdown_report(file_path: str, findings: List[Dict[str, Any]], violations: List[Dict[str, Any]]) -> None:
+    """Writes a beautiful Markdown summary report for CI/CD integration."""
+    try:
+        total = len(findings)
+        verified = sum(1 for f in findings if f.get("status") == "Verified")
+        inferred = sum(1 for f in findings if f.get("status") == "Inferred")
+        partial = sum(1 for f in findings if f.get("status") == "Partial")
+        failed = total - verified - inferred - partial
+        
+        vuln_count = sum(len(f.get("vulnerabilities", [])) for f in findings)
+        
+        status_emoji = "❌ FAIL" if violations else "✅ PASS"
+        
+        md = []
+        md.append("## 🛡️ SWHID Security & Provenance Audit")
+        md.append(f"**Policy Status**: {status_emoji}  ")
+        md.append(f"**Total Dependencies**: {total} | **Verified**: {verified} | **Inferred**: {inferred} | **Partial**: {partial} | **Failed/Error**: {failed}  ")
+        md.append(f"**Security Vulnerabilities**: {vuln_count} known issues found by OSV.dev\n")
+        
+        if violations:
+            md.append("### ❌ Policy Violations")
+            for v in violations:
+                md.append(f"- **[{v['type']}]** `{v['purl']}`: {v['message']}")
+            md.append("")
+            
+        md.append("### 📦 Dependency Status")
+        md.append("| Package | Status | SWHID | Vulnerabilities |")
+        md.append("| :--- | :--- | :--- | :--- |")
+        for f in findings:
+            purl = f.get("purl", "")
+            status = f.get("status", "Unknown")
+            swhid = f.get("swhid") or "N/A"
+            vulns = f.get("vulnerabilities", [])
+            vuln_text = f"🚨 {len(vulns)} vulnerability" + ("s" if len(vulns) > 1 else "") if vulns else "✅ Clean"
+            
+            status_emoji_str = "🟢" if status == "Verified" else "🟡" if status in ["Inferred", "Partial"] else "🔴"
+            md.append(f"| `{purl}` | {status_emoji_str} {status} | `{swhid}` | {vuln_text} |")
+        md.append("")
+        
+        has_vulns = any(f.get("vulnerabilities") for f in findings)
+        if has_vulns:
+            md.append("### 🛡️ Vulnerability Details (OSV.dev)")
+            for f in findings:
+                vulns = f.get("vulnerabilities", [])
+                if vulns:
+                    md.append(f"#### `{f.get('purl')}`")
+                    for v in vulns:
+                        v_id = v.get("id", "Unknown")
+                        summary = v.get("summary", "No summary available")
+                        details = v.get("details", "")
+                        if len(details) > 300:
+                            details = details[:297] + "..."
+                        md.append(f"- **[{v_id}](https://osv.dev/vulnerability/{v_id})**: {summary}")
+                        if details:
+                            clean_details = details.replace("\n", "  \n  > ")
+                            md.append(f"  > {clean_details}")
+            md.append("")
+            
+        with open(file_path, "w", encoding="utf-8") as f_out:
+            f_out.write("\n".join(md))
+            
+    except Exception as e:
+        console.print(f"[bold red]Error writing markdown report:[/] {e}")
+
 @app.command()
 def audit(
     path: str = ".", 
     trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories"),
-    token: Optional[str] = typer.Option(None, "--token", help="Software Heritage API Token")
+    token: Optional[str] = typer.Option(None, "--token", help="Software Heritage API Token"),
+    policy: Optional[str] = typer.Option(None, "--policy", help="Path to swhid-policy.toml file"),
+    markdown_summary: Optional[str] = typer.Option(None, "--markdown-summary", help="Path to write a Markdown summary report (useful for CI/CD Step Summary)")
 ) -> None:
     """Automatically detects project dependencies, resolves their SWHIDs, and audits local installations."""
     import glob
@@ -108,6 +174,11 @@ def audit(
     from swhid_tool.batch_processor import BatchProcessor
     from swhid_tool.scanner import InstallationScanner
     from swhid_tool.core import SWHClient
+    from swhid_tool.policy import PolicyEngine
+    
+    # Load policy
+    policy_path = policy or ("swhid-policy.toml" if os.path.exists("swhid-policy.toml") else None)
+    policy_engine = PolicyEngine(policy_path)
     
     if token:
         manager.set_token(token)
@@ -228,11 +299,7 @@ def audit(
         purl = f.get("purl", "")
         swhid = f.get("swhid")
         if swhid:
-            # Extract package name from PURL
-            # pkg:npm/lodash@4.17.21 -> lodash
-            # pkg:nuget/Newtonsoft.Json@13.0.3 -> Newtonsoft.Json
             name_part = purl.split("/")[-1].split("@")[0]
-            # Handle scoped packages (e.g. @babel/core -> core)
             if ":" in name_part:
                 name_part = name_part.split(":")[-1]
             expected_swhids[name_part] = swhid
@@ -246,6 +313,7 @@ def audit(
             
     # Auto-detect local installation paths
     scanner = InstallationScanner(SWHClient())
+    all_scan_violations = []
     
     if has_npm:
         node_modules = os.path.join(path, "node_modules")
@@ -253,6 +321,7 @@ def audit(
             console.print(f"\n[bold blue]🔍 Auditing local npm installation at: {node_modules}[/bold blue]")
             results = scanner.scan_directory(node_modules, expected_swhids)
             scanner.report(results)
+            all_scan_violations.extend(policy_engine.evaluate_scan_results(results, "npm"))
             
     if has_nuget:
         nuget_cache = os.path.expanduser("~/.nuget/packages")
@@ -260,6 +329,7 @@ def audit(
             console.print(f"\n[bold blue]🔍 Auditing local NuGet cache at: {nuget_cache}[/bold blue]")
             results = scanner.scan_directory(nuget_cache, expected_swhids)
             scanner.report(results)
+            all_scan_violations.extend(policy_engine.evaluate_scan_results(results, "nuget"))
             
     if has_pypi:
         venv_path = os.environ.get("VIRTUAL_ENV")
@@ -269,6 +339,24 @@ def audit(
                 console.print(f"\n[bold blue]🔍 Auditing local PyPI virtualenv at: {site_packages[0]}[/bold blue]")
                 results = scanner.scan_directory(site_packages[0], expected_swhids)
                 scanner.report(results)
+                all_scan_violations.extend(policy_engine.evaluate_scan_results(results, "pypi"))
+
+    # Evaluate findings against policy
+    violations = policy_engine.evaluate_findings(findings)
+    total_violations = violations + all_scan_violations
+    
+    # Write markdown summary if requested
+    if markdown_summary:
+        write_markdown_report(markdown_summary, findings, total_violations)
+        
+    if total_violations:
+        console.print(f"\n[bold red]❌ Policy Evaluation Failed! Found {len(total_violations)} violations:[/bold red]")
+        for v in total_violations:
+            console.print(f"  - [bold red][{v['type']}][/bold red] {v['purl']}: {v['message']}")
+        raise typer.Exit(code=1)
+    
+    if policy_path:
+        console.print("\n[bold green]✓ Policy check passed! All dependencies are compliant.[/bold green]")
 
 if __name__ == "__main__":
     app()
