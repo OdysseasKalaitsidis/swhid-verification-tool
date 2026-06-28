@@ -5,7 +5,7 @@ import os
 import io
 import re
 import shutil
-import tarfile
+import zipfile
 import requests
 import urllib.parse
 from typing import Dict, Any, Optional
@@ -14,32 +14,29 @@ from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
 from swh.model.from_disk import Directory as SWHDirectory
 
-class NpmStrategy(VerificationStrategy):
-    NPM_REGISTRY = "https://registry.npmjs.org"
+class NugetStrategy(VerificationStrategy):
+    REGISTRATION_API = "https://api.nuget.org/v3/registration5-semver1"
 
     def __init__(self, swh_client: SWHClient):
         self.swh = swh_client
 
     def resolve(self, name: str, version: str, qualifiers: Dict[str, str]) -> Dict[str, Any]:
-        # Handle scoped packages (e.g. @babel:core -> @babel/core)
-        npm_name = name.replace(":", "/")
-        purl = f"pkg:npm/{npm_name}@{version}"
+        # NuGet names are case-insensitive, but API endpoints expect lowercase
+        lower_name = name.lower()
+        purl = f"pkg:nuget/{name}@{version}"
         findings = {"purl": purl, "strategies_tried": []}
 
         try:
-            # Fetch registry metadata for the package
-            # Scoped package names can be used directly in the URL
-            resp = requests.get(f"{self.NPM_REGISTRY}/{urllib.parse.quote(npm_name, safe='@')}")
+            # Fetch package version metadata from NuGet registration API
+            url = f"{self.REGISTRATION_API}/{lower_name}/{version}.json"
+            resp = requests.get(url, timeout=15)
             if resp.status_code != 200:
-                return {"purl": purl, "status": "Error", "reason": f"Package not found in npm registry: {resp.status_code}"}
+                return {"purl": purl, "status": "Error", "reason": f"Package version not found in NuGet registry: {resp.status_code}"}
 
-            package_data = resp.json()
-            version_data = package_data.get("versions", {}).get(version)
-            if not version_data:
-                return {"purl": purl, "status": "Error", "reason": f"Version {version} not found in npm registry"}
+            version_data = resp.json()
 
             # 1. Strategy A: Metadata & Tag Matching
-            metadata_result = self._strategy_a_metadata(npm_name, version, version_data, package_data)
+            metadata_result = self._strategy_a_metadata(name, version, version_data)
             findings["strategies_tried"].append({"name": "A: Metadata", "result": metadata_result})
             if metadata_result.get("status") == "Verified":
                 findings.update(metadata_result)
@@ -49,8 +46,8 @@ class NpmStrategy(VerificationStrategy):
                 findings.update(metadata_result)
                 findings["confidence"] = metadata_result.get("status")
 
-            # 2. Strategy B: File-level / Tarball Matching
-            file_level_result = self._strategy_b_file_level(npm_name, version, version_data)
+            # 2. Strategy B: File-level / Nupkg Matching
+            file_level_result = self._strategy_b_file_level(name, version, version_data)
             findings["strategies_tried"].append({"name": "B: File-level", "result": file_level_result})
             
             # Confidence scoring: Verified (3) > Inferred (2) > Partial (1) > Failed/Error (0)
@@ -66,47 +63,46 @@ class NpmStrategy(VerificationStrategy):
         except Exception as e:
             return {"purl": purl, "status": "Error", "reason": str(e)}
 
-    def _strategy_a_metadata(self, name: str, version: str, version_data: Dict[str, Any], package_data: Dict[str, Any]) -> Dict[str, Any]:
+    def _strategy_a_metadata(self, name: str, version: str, version_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Strategy A: Metadata/Git tag matching.
-        Extracts repository URL and directory, and finds a matching tag in SWH.
+        Strategy A: Extract Git repo URL from catalog entry, and match version tag in SWH.
         """
         try:
-            # Extract repository URL (from version metadata or fallback to top-level metadata)
-            repo_info = version_data.get("repository") or package_data.get("repository")
-            if not repo_info:
-                return {"status": "Failed", "reason": "No repository field in metadata"}
-
+            catalog_entry = version_data.get("catalogEntry", {})
+            if isinstance(catalog_entry, str):
+                # Fetch the catalog entry JSON from the URL
+                catalog_resp = requests.get(catalog_entry, timeout=15)
+                if catalog_resp.status_code == 200:
+                    catalog_entry = catalog_resp.json()
+                else:
+                    catalog_entry = {}
+            
+            # Find repository URL
             repo_url = ""
+            repo_info = catalog_entry.get("repository")
             if isinstance(repo_info, dict):
                 repo_url = repo_info.get("url", "")
-            elif isinstance(repo_info, str):
-                repo_url = repo_info
+            
+            # Fallback to projectUrl if repository is not specified
+            if not repo_url:
+                project_url = catalog_entry.get("projectUrl", "")
+                if project_url and ("github.com" in project_url or "gitlab.com" in project_url):
+                    repo_url = project_url
 
             if not repo_url:
-                return {"status": "Failed", "reason": "Repository URL not found in repository field"}
+                return {"status": "Failed", "reason": "Repository URL not found in NuGet metadata"}
 
-            # Normalize Git URL (e.g. git+https://github.com/user/repo.git -> https://github.com/user/repo)
+            # Normalize Git URL
             repo_url = repo_url.replace("git+", "").replace("git://", "https://")
-            if repo_url.startswith("git@github.com:"):
-                repo_url = repo_url.replace("git@github.com:", "https://github.com/")
             if repo_url.endswith(".git"):
                 repo_url = repo_url[:-4]
-            
-            # Clean ssh://git@ or other prefixes
-            repo_url = re.sub(r'^ssh://git@', 'https://', repo_url)
-
-            # Extract repository directory (for monorepos)
-            repo_dir = ""
-            if isinstance(repo_info, dict):
-                repo_dir = repo_info.get("directory", "")
 
             # Check if SWH has archived this repo
             encoded_url = urllib.parse.quote_plus(repo_url)
             swh_url = f"https://archive.softwareheritage.org/api/1/origin/{encoded_url}/visit/latest/"
             swh_resp = self.swh.session.get(swh_url, timeout=30)
 
-            possible_tags = [version, f"v{version}", f"release-{version}", f"{name.split('/')[-1]}-{version}"]
+            possible_tags = [version, f"v{version}", f"release-{version}"]
 
             if swh_resp.status_code == 200:
                 snapshot_id = swh_resp.json().get("snapshot")
@@ -135,8 +131,7 @@ class NpmStrategy(VerificationStrategy):
                                 "strategy": "A",
                                 "confidence": "Verified",
                                 "repo_url": repo_url,
-                                "tag_matched": matched_tag_name,
-                                "directory": repo_dir
+                                "tag_matched": matched_tag_name
                             }
 
                 return {
@@ -162,41 +157,40 @@ class NpmStrategy(VerificationStrategy):
 
     def _strategy_b_file_level(self, name: str, version: str, version_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Strategy B: Tarball/File-level matching.
-        Downloads the published tgz, unpacks it, and computes the directory SWHID.
+        Strategy B: Download .nupkg file, extract, and compute SWHID.
         """
         try:
-            dist_info = version_data.get("dist", {})
-            tarball_url = dist_info.get("tarball")
-            if not tarball_url:
-                return {"status": "Failed", "reason": "No tarball URL found in registry"}
+            nupkg_url = version_data.get("packageContent")
+            if not nupkg_url:
+                return {"status": "Failed", "reason": "No packageContent URL found in NuGet metadata"}
 
-            resp = requests.get(tarball_url)
+            resp = requests.get(nupkg_url)
             resp.raise_for_status()
 
-            # Clean name for safe directory path
-            safe_name = name.replace("/", "_").replace("@", "")
-            tmp_dir = f"tmp_npm_{safe_name}_{version}"
+            # Create temp directory
+            tmp_dir = f"tmp_nuget_{name}_{version}"
             if os.path.exists(tmp_dir):
                 shutil.rmtree(tmp_dir)
             os.makedirs(tmp_dir)
 
-            # Unpack tarball
-            with tarfile.open(fileobj=io.BytesIO(resp.content), mode="r:gz") as tar:
-                tar.extractall(path=tmp_dir, filter="data")
+            # Unpack nupkg (which is a standard zip file)
+            with zipfile.ZipFile(io.BytesIO(resp.content)) as zip_ref:
+                zip_ref.extractall(tmp_dir)
 
-            # npm tarballs always unpack into a single 'package' directory
-            package_dir = os.path.join(tmp_dir, "package")
-            if not os.path.exists(package_dir):
-                # Fallback if package structure is different
-                items = os.listdir(tmp_dir)
-                if len(items) == 1 and os.path.isdir(os.path.join(tmp_dir, items[0])):
-                    package_dir = os.path.join(tmp_dir, items[0])
-                else:
-                    package_dir = tmp_dir
+            # Normalization: Remove NuGet-specific packaging files
+            # These are generated by the NuGet packaging process and not part of the source.
+            for root, dirs, files in os.walk(tmp_dir, topdown=False):
+                for f in files:
+                    if f.endswith(".nuspec") or f == "[Content_Types].xml" or f.endswith(".psmdcp"):
+                        os.remove(os.path.join(root, f))
+                
+                # Remove metadata directories
+                for d in dirs:
+                    if d in ["_rels", "package"]:
+                        shutil.rmtree(os.path.join(root, d))
 
             # Compute directory SWHID using SWHDirectory.from_disk
-            swhid_obj = SWHDirectory.from_disk(path=os.fsencode(package_dir), max_content_length=None).swhid()
+            swhid_obj = SWHDirectory.from_disk(path=os.fsencode(tmp_dir), max_content_length=None).swhid()
             swhid = str(swhid_obj)
 
             # Clean up
@@ -207,7 +201,7 @@ class NpmStrategy(VerificationStrategy):
                 "status": "Verified" if found else "Partial",
                 "swhid": swhid,
                 "strategy": "B",
-                "confidence": "Verified" if found else "Partial",
+                "confidence": "Verified" if found else "Partial"
             }
 
         except Exception as e:

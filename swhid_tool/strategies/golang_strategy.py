@@ -30,22 +30,26 @@ class GoLangStrategy(VerificationStrategy):
         findings = {"purl": purl, "strategies_tried": []}
 
         try:
-            # 1. Strategy A: Git Repository & Tag Matching
+            # 1. Strategy A: Metadata & Tag Matching
             metadata_result = self._strategy_a_metadata(module_path, version)
             findings["strategies_tried"].append({"name": "A: Metadata", "result": metadata_result})
             if metadata_result.get("status") == "Verified":
                 findings.update(metadata_result)
                 findings["confidence"] = "Verified"
                 return findings
-            elif metadata_result.get("status") == "Inferred":
+            elif metadata_result.get("status") in ["Inferred", "Partial"]:
                 findings.update(metadata_result)
-                findings["confidence"] = "Inferred"
+                findings["confidence"] = metadata_result.get("status")
 
             # 2. Strategy B: Go Proxy Zip Matching
             file_level_result = self._strategy_b_file_level(module_path, version)
             findings["strategies_tried"].append({"name": "B: File-level", "result": file_level_result})
             
-            if file_level_result.get("status") == "Verified" or findings.get("status") != "Inferred":
+            # Confidence scoring: Verified (3) > Inferred (2) > Partial (1) > Failed/Error (0)
+            def get_score(status):
+                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status, 0)
+                
+            if get_score(file_level_result.get("status")) >= get_score(findings.get("status")):
                 findings.update(file_level_result)
                 findings["confidence"] = file_level_result.get("confidence", "None")
 
