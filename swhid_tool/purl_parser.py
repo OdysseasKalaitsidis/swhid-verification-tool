@@ -13,7 +13,6 @@ def parse_purl(purl_str: str) -> Tuple[str, str, str, Optional[str]]:
     name = purl.name
     version = purl.version
     
-    # Optional: handle namespaces for maven, etc.
     if purl.namespace:
         name = f"{purl.namespace}:{name}"
         
