@@ -20,6 +20,9 @@ class BatchProcessor:
     def process_purls(self, purls: List[str], trigger_save: bool = False) -> List[Dict[str, Any]]:
         from concurrent.futures import ThreadPoolExecutor, as_completed
         
+        # Configure SWHClient save behavior globally for this run
+        self.manager.swh.suppress_save = not trigger_save
+        
         results = [None] * len(purls)  # type: List[Any]
         purl_to_index = {purl: idx for idx, purl in enumerate(purls)}
         

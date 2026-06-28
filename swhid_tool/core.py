@@ -16,6 +16,7 @@ DEFAULT_TIMEOUT = 30  # seconds
 class SWHClient:
     def __init__(self, auth_token: Optional[str] = None):
         self.session = requests.Session()
+        self.suppress_save = True
         
         # Configure robust retry strategy
         retry_strategy = Retry(
@@ -57,6 +58,9 @@ class SWHClient:
 
     def trigger_save_code_now(self, origin_url: str, visit_type: str = "git") -> Dict[str, Any]:
         """Triggers a 'Save Code Now' request for an origin."""
+        if self.suppress_save:
+            return {"status": "Suppressed", "message": "Save Code Now is disabled by default"}
+            
         url = f"{SWH_API_BASE}/origin/save/{visit_type}/url/{origin_url}/"
         try:
             response = self.session.post(url, timeout=DEFAULT_TIMEOUT)
