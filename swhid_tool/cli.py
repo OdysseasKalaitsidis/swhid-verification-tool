@@ -134,6 +134,26 @@ def audit(
     processor = BatchProcessor(manager)
     findings = processor.process_purls(purls, trigger_save=trigger_save)
     
+    # Query OSV.dev for vulnerabilities based on resolved commit SHAs
+    console.print("\n[bold blue]🛡️ Querying OSV.dev for vulnerabilities...[/bold blue]")
+    from swhid_tool.osv_client import OSVClient
+    osv = OSVClient()
+    
+    commit_shas = []
+    for f in findings:
+        swhid = f.get("swhid")
+        if swhid and swhid.startswith("swh:1:rev:"):
+            commit_shas.append(swhid.split(":")[-1])
+            
+    vuln_map = osv.query_vulnerabilities(commit_shas)
+    
+    for f in findings:
+        swhid = f.get("swhid")
+        if swhid and swhid.startswith("swh:1:rev:"):
+            commit_sha = swhid.split(":")[-1]
+            if commit_sha in vuln_map:
+                f["vulnerabilities"] = vuln_map[commit_sha]
+                
     # Print resolution results table
     from rich.table import Table
     table = Table(title="Dependency SWHID Resolution Results")
@@ -177,6 +197,26 @@ def audit(
                 
     if not has_issues:
         console.print("\n[bold green]✓ All dependencies are fully compliant and cryptographically verified![/bold green]")
+        
+    # Print a detailed, enterprise-grade Security Alerts report from OSV.dev
+    console.print("\n[bold red]🛡️ Security Alerts (OSV.dev):[/bold red]")
+    has_vulns = False
+    for f in findings:
+        vulns = f.get("vulnerabilities", [])
+        if vulns:
+            has_vulns = True
+            purl = f.get("purl", "")
+            swhid = f.get("swhid", "")
+            console.print(f"\n[bold red]✗ {purl}[/bold red] (SWHID: {swhid})")
+            for v in vulns:
+                v_id = v.get("id", "Unknown")
+                summary = v.get("summary", "No summary available")
+                if len(summary) > 80:
+                    summary = summary[:77] + "..."
+                console.print(f"  - [red]{v_id}[/red]: {summary}")
+                
+    if not has_vulns:
+        console.print("[green]✓ No known vulnerabilities found in verified commits.[/green]\n")
     
     # Map findings to expected dict for scanner: { package_name: swhid }
     expected_swhids = {}
