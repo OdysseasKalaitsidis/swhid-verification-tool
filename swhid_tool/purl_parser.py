@@ -2,16 +2,16 @@
 # SPDX-License-Identifier: MIT
 
 from packageurl import PackageURL
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Optional
 
-def parse_purl(purl_str: str) -> Tuple[str, str, str, Dict[str, str]]:
+def parse_purl(purl_str: str) -> Tuple[str, str, Optional[str], Dict[str, str]]:
     """
     Parses a PURL string and returns (ecosystem, name, version, qualifiers).
     """
     purl = PackageURL.from_string(purl_str)
     ecosystem = purl.type or ""
     name = purl.name or ""
-    version = purl.version or ""
+    version = purl.version
     qualifiers = purl.qualifiers or {}
     
     if purl.namespace:

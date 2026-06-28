@@ -25,8 +25,10 @@ class SWHIDManager:
 
     def resolve(self, purl_str: str) -> Dict[str, Any]:
         ecosystem, name, version, qualifiers = parse_purl(purl_str)
+        if not version:
+            return {"purl": purl_str, "status": "Error", "reason": "Package version is required for SWHID resolution"}
+            
         strategy = self.strategies.get(ecosystem)
-        
         if not strategy:
             raise ValueError(f"Unsupported ecosystem: {ecosystem}")
             
