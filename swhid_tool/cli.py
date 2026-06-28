@@ -114,6 +114,25 @@ def audit(
     processor = BatchProcessor(manager)
     findings = processor.process_purls(purls, trigger_save=trigger_save)
     
+    # Print resolution results table
+    from rich.table import Table
+    table = Table(title="Dependency SWHID Resolution Results")
+    table.add_column("Package", style="cyan")
+    table.add_column("SWHID", style="green")
+    table.add_column("Status", style="bold")
+    table.add_column("Confidence", style="yellow")
+    
+    for f in findings:
+        status = f.get("status", "Unknown")
+        status_color = "green" if status == "Verified" else "yellow" if status in ["Inferred", "Partial"] else "red"
+        table.add_row(
+            f.get("purl", ""),
+            f.get("swhid", "N/A"),
+            f"[{status_color}]{status}[/{status_color}]",
+            f.get("confidence", "None")
+        )
+    console.print(table)
+    
     # Map findings to expected dict for scanner: { package_name: swhid }
     expected_swhids = {}
     has_npm = False
