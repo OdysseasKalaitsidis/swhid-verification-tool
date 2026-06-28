@@ -17,7 +17,7 @@ class BatchProcessor:
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
 
-    def process_purls(self, purls: List[str]) -> List[Dict[str, Any]]:
+    def process_purls(self, purls: List[str], trigger_save: bool = False) -> List[Dict[str, Any]]:
         from concurrent.futures import ThreadPoolExecutor, as_completed
         
         results = [None] * len(purls)  # type: List[Any]
@@ -51,8 +51,8 @@ class BatchProcessor:
                 logger.info(f"Resolving {purl}")
                 result = self.manager.resolve(purl)
                 
-                # Trigger Save Code Now if not verified but repo is known
-                if result.get("status") in ["Partial", "Inferred"] and "repo_url" in result:
+                # Trigger Save Code Now if enabled and not verified but repo is known
+                if trigger_save and result.get("status") in ["Partial", "Inferred"] and "repo_url" in result:
                     save_result = self.manager.swh.trigger_save_code_now(result["repo_url"])
                     result["save_code_now"] = save_result
                     

@@ -70,7 +70,11 @@ def verify_path(path: str, manifest: str) -> None:
     scanner.report(results)
 
 @app.command()
-def batch_process(input_file: str, output_file: str) -> None:
+def batch_process(
+    input_file: str, 
+    output_file: str, 
+    trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories")
+) -> None:
     """Processes a list of PURLs and exports to SPDX 3.0."""
     from swhid_tool.batch_processor import BatchProcessor
     from swhid_tool.spdx_exporter import export_to_spdx3
@@ -78,12 +82,15 @@ def batch_process(input_file: str, output_file: str) -> None:
     processor = BatchProcessor(manager)
     purls = read_purls(input_file)
     
-    findings = processor.process_purls(purls)
+    findings = processor.process_purls(purls, trigger_save=trigger_save)
     export_to_spdx3(findings, output_file)
     console.print(f"[green]Batch processing complete. Results saved to {output_file}[/green]")
 
 @app.command()
-def audit(path: str = ".") -> None:
+def audit(
+    path: str = ".", 
+    trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories")
+) -> None:
     """Automatically detects project dependencies, resolves their SWHIDs, and audits local installations."""
     import glob
     from swhid_tool.project_detector import ProjectDetector
@@ -105,7 +112,7 @@ def audit(path: str = ".") -> None:
         
     console.print("\n[bold blue]🚀 Resolving SWHIDs and generating manifest...[/bold blue]")
     processor = BatchProcessor(manager)
-    findings = processor.process_purls(purls)
+    findings = processor.process_purls(purls, trigger_save=trigger_save)
     
     # Map findings to expected dict for scanner: { package_name: swhid }
     expected_swhids = {}
