@@ -137,39 +137,46 @@ def audit(
     # Print resolution results table
     from rich.table import Table
     table = Table(title="Dependency SWHID Resolution Results")
-    table.add_column("Package", style="cyan", width=35)
-    table.add_column("Status", style="bold", width=12)
-    table.add_column("SWHID", style="green", width=44)
-    table.add_column("Details / Action Required", style="white")
+    table.add_column("Package", style="cyan")
+    table.add_column("Status", style="bold")
+    table.add_column("SWHID", style="green")
     
     for f in findings:
         status = f.get("status", "Unknown")
         status_color = "green" if status == "Verified" else "yellow" if status in ["Inferred", "Partial"] else "red"
-        
-        # Build rich details message
-        reason = f.get("reason", "")
-        repo_url = f.get("repo_url", "")
-        
-        if status == "Verified":
-            details = "[green]✓ Cryptographically verified[/green]"
-            if repo_url:
-                details += f" from {repo_url}"
-        elif status == "Inferred":
-            details = f"[yellow]⚠ Repo found, but version tag not archived yet.[/yellow]\n  Repo: {repo_url}\n  [bold]Action:[/] Run with [bold cyan]--trigger-save[/bold cyan] to archive it."
-        elif status == "Partial":
-            details = "[yellow]⚠ Local SWHID computed, but not found in SWH archive.[/yellow]"
-        elif status == "Error" or status == "Failed":
-            details = f"[red]✗ Resolution failed: {reason}[/red]"
-        else:
-            details = reason or "N/A"
-            
         table.add_row(
             f.get("purl", ""),
             f"[{status_color}]{status}[/{status_color}]",
-            f.get("swhid") or "N/A",
-            details
+            f.get("swhid") or "N/A"
         )
     console.print(table)
+
+    # Print a detailed, enterprise-grade Action Items report that never truncates
+    console.print("\n[bold]📋 Non-Compliant / Unverified Dependencies:[/bold]")
+    has_issues = False
+    for f in findings:
+        status = f.get("status", "Unknown")
+        if status != "Verified":
+            has_issues = True
+            purl = f.get("purl", "")
+            repo_url = f.get("repo_url", "N/A")
+            reason = f.get("reason", "N/A")
+            
+            console.print(f"\n[bold red]✗ {purl}[/bold red] [{status}]")
+            if status == "Inferred":
+                console.print("  [yellow]Reason:[/] Repository exists in Software Heritage, but the specific version tag is missing.")
+                console.print(f"  [yellow]Repository:[/] {repo_url}")
+                console.print("  [yellow]Action Required:[/] Run with [bold cyan]--trigger-save[/bold cyan] to archive this version. Once archived (takes 1-2 mins), it will become [bold green]Verified[/bold green].")
+            elif status == "Partial":
+                console.print("  [yellow]Reason:[/] Local files match, but this directory SWHID is not yet archived.")
+                if repo_url != "N/A":
+                    console.print(f"  [yellow]Repository:[/] {repo_url}")
+                console.print("  [yellow]Action Required:[/] Run with [bold cyan]--trigger-save[/bold cyan] to archive these files.")
+            else:
+                console.print(f"  [red]Error:[/] {reason}")
+                
+    if not has_issues:
+        console.print("\n[bold green]✓ All dependencies are fully compliant and cryptographically verified![/bold green]")
     
     # Map findings to expected dict for scanner: { package_name: swhid }
     expected_swhids = {}
