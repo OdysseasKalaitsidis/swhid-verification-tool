@@ -1,11 +1,32 @@
 # SWHID Verification Tool
 
-[![GSoC 2026](https://img.shields.io/badge/GSoC-2026-orange.svg)](https://summerofcode.withgoogle.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Software Heritage](https://img.shields.io/badge/SWH-Archived-red.svg)](https://www.softwareheritage.org/)
 
 A verification framework designed to map Package URLs (PURLs) to verified Software Heritage Identifiers (SWHIDs). This tool ensures cryptographic and structural provenance by establishing a verifiable link between software distributions and their canonical source code archived in the Software Heritage (SWH) ecosystem.
+
+## The Semantic Gap
+
+In modern software development, we interact with dependencies using package-level identifiers (e.g., `lodash@4.17.21` or `requests@2.31.0`). However, these packages are mutable and vulnerable to supply chain tampering. 
+
+To guarantee reproducibility and security, we need **cryptographic, content-addressed identifiers** like Software Heritage Identifiers (SWHIDs). Currently, there is a **semantic gap** between the package managers and the archive. This tool bridges that gap by automatically resolving package releases to verified SWHIDs across 5 major registries: **PyPI**, **npm**, **Cargo**, **Go Modules**, and **Maven Central**.
+
+## 📊 Showcase Dataset
+
+We have generated a verified showcase dataset containing 25 of the most popular packages across all 5 ecosystems. The resulting **SPDX 3.0 JSON-LD** manifest is available at [`dataset/showcase_manifest.jsonld`](dataset/showcase_manifest.jsonld).
+
+### Verification Statistics
+
+| Metric | Count | Percentage |
+| :--- | :--- | :--- |
+| **Total Packages** | 25 | 100% |
+| **Inferred (Medium Confidence)** | 18 | 72.0% |
+| **Verified (High Confidence)** | 1 | 4.0% |
+| **Partial (Low Confidence)** | 1 | 4.0% |
+| **Errors/Failed** | 5 | 20.0% |
+
+*Note: The "Inferred" status indicates that the repository was successfully matched and verified in the Software Heritage archive, but the specific version tag was not found in the latest snapshot. Running the tool with a Software Heritage API token resolves rate-limiting errors (HTTP 429) encountered during "Save Code Now" triggers.*
 
 ## Key Features
 
