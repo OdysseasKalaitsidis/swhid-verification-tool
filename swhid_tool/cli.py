@@ -82,5 +82,82 @@ def batch_process(input_file: str, output_file: str):
     export_to_spdx3(findings, output_file)
     console.print(f"[green]Batch processing complete. Results saved to {output_file}[/green]")
 
+@app.command()
+def audit(path: str = "."):
+    """Automatically detects project dependencies, resolves their SWHIDs, and audits local installations."""
+    import glob
+    from swhid_tool.project_detector import ProjectDetector
+    from swhid_tool.batch_processor import BatchProcessor
+    from swhid_tool.scanner import InstallationScanner
+    from swhid_tool.core import SWHClient
+    
+    console.print(f"[bold blue]🔍 Scanning project directory: {path}[/bold blue]")
+    detector = ProjectDetector(path)
+    purls = detector.detect_and_extract()
+    
+    if not purls:
+        console.print("[bold red]Error: No supported package manager files found (package.json, *.csproj, requirements.txt, Cargo.toml, go.mod, pom.xml).[/bold red]")
+        raise typer.Exit(code=1)
+        
+    console.print(f"[green]Found {len(purls)} dependencies across detected ecosystems.[/green]")
+    for p in purls:
+        console.print(f"  - {p}")
+        
+    console.print("\n[bold blue]🚀 Resolving SWHIDs and generating manifest...[/bold blue]")
+    processor = BatchProcessor(manager)
+    findings = processor.process_purls(purls)
+    
+    # Map findings to expected dict for scanner: { package_name: swhid }
+    expected_swhids = {}
+    has_npm = False
+    has_nuget = False
+    has_pypi = False
+    
+    for f in findings:
+        purl = f.get("purl", "")
+        swhid = f.get("swhid")
+        if swhid:
+            # Extract package name from PURL
+            # pkg:npm/lodash@4.17.21 -> lodash
+            # pkg:nuget/Newtonsoft.Json@13.0.3 -> Newtonsoft.Json
+            name_part = purl.split("/")[-1].split("@")[0]
+            # Handle scoped packages (e.g. @babel/core -> core)
+            if ":" in name_part:
+                name_part = name_part.split(":")[-1]
+            expected_swhids[name_part] = swhid
+            
+        if "pkg:npm/" in purl:
+            has_npm = True
+        if "pkg:nuget/" in purl:
+            has_nuget = True
+        if "pkg:pypi/" in purl:
+            has_pypi = True
+            
+    # Auto-detect local installation paths
+    scanner = InstallationScanner(SWHClient())
+    
+    if has_npm:
+        node_modules = os.path.join(path, "node_modules")
+        if os.path.exists(node_modules):
+            console.print(f"\n[bold blue]🔍 Auditing local npm installation at: {node_modules}[/bold blue]")
+            results = scanner.scan_directory(node_modules, expected_swhids)
+            scanner.report(results)
+            
+    if has_nuget:
+        nuget_cache = os.path.expanduser("~/.nuget/packages")
+        if os.path.exists(nuget_cache):
+            console.print(f"\n[bold blue]🔍 Auditing local NuGet cache at: {nuget_cache}[/bold blue]")
+            results = scanner.scan_directory(nuget_cache, expected_swhids)
+            scanner.report(results)
+            
+    if has_pypi:
+        venv_path = os.environ.get("VIRTUAL_ENV")
+        if venv_path:
+            site_packages = glob.glob(os.path.join(venv_path, "lib", "python*", "site-packages"))
+            if site_packages:
+                console.print(f"\n[bold blue]🔍 Auditing local PyPI virtualenv at: {site_packages[0]}[/bold blue]")
+                results = scanner.scan_directory(site_packages[0], expected_swhids)
+                scanner.report(results)
+
 if __name__ == "__main__":
     app()
