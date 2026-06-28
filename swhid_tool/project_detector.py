@@ -15,38 +15,47 @@ class ProjectDetector:
     def __init__(self, project_path: str = "."):
         self.project_path = os.path.abspath(project_path)
 
+    def _find_files(self, pattern: str) -> List[str]:
+        # Use recursive globbing to find files in subdirectories
+        files = glob.glob(os.path.join(self.project_path, "**", pattern), recursive=True)
+        # Also check the root directory
+        files.extend(glob.glob(os.path.join(self.project_path, pattern)))
+        
+        filtered_files = []
+        for f in files:
+            # Normalize path and split into parts
+            parts = os.path.normpath(f).split(os.sep)
+            ignored = {"node_modules", "venv", ".venv", ".git", "bin", "obj", "dist", "build"}
+            if not any(part in ignored for part in parts):
+                filtered_files.append(f)
+        return list(set(filtered_files))
+
     def detect_and_extract(self) -> List[str]:
         purls = []
         
         # 1. npm (package.json)
-        package_json_path = os.path.join(self.project_path, "package.json")
-        if os.path.exists(package_json_path):
-            purls.extend(self._extract_npm(package_json_path))
+        for package_json in self._find_files("package.json"):
+            purls.extend(self._extract_npm(package_json))
 
         # 2. .NET (csproj files)
-        csproj_files = glob.glob(os.path.join(self.project_path, "*.csproj"))
-        for csproj in csproj_files:
+        for csproj in self._find_files("*.csproj"):
             purls.extend(self._extract_nuget(csproj))
 
         # 3. Python (requirements.txt)
-        req_txt_path = os.path.join(self.project_path, "requirements.txt")
-        if os.path.exists(req_txt_path):
-            purls.extend(self._extract_pypi(req_txt_path))
+        for req_txt in self._find_files("requirements.txt"):
+            purls.extend(self._extract_pypi(req_txt))
 
         # 4. Rust (Cargo.toml)
-        cargo_toml_path = os.path.join(self.project_path, "Cargo.toml")
-        if os.path.exists(cargo_toml_path):
-            purls.extend(self._extract_cargo(cargo_toml_path))
+        for cargo_toml in self._find_files("Cargo.toml"):
+            purls.extend(self._extract_cargo(cargo_toml))
 
         # 5. Go (go.mod)
-        go_mod_path = os.path.join(self.project_path, "go.mod")
-        if os.path.exists(go_mod_path):
-            purls.extend(self._extract_go(go_mod_path))
+        for go_mod in self._find_files("go.mod"):
+            purls.extend(self._extract_go(go_mod))
 
         # 6. Maven (pom.xml)
-        pom_xml_path = os.path.join(self.project_path, "pom.xml")
-        if os.path.exists(pom_xml_path):
-            purls.extend(self._extract_maven(pom_xml_path))
+        for pom_xml in self._find_files("pom.xml"):
+            purls.extend(self._extract_maven(pom_xml))
 
         # Deduplicate PURLs
         return list(set(purls))
