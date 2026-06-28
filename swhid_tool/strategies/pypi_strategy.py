@@ -36,12 +36,9 @@ class PyPIStrategy(VerificationStrategy):
         # 2. Strategy B: Metadata
         metadata_result = self._strategy_b_metadata(name, version)
         findings["strategies_tried"].append({"name": "B: Metadata", "result": metadata_result})
-        if metadata_result.get("status") == "Inferred":
+        if metadata_result.get("status") in ["Verified", "Inferred"]:
             findings.update(metadata_result)
-            findings["confidence"] = "Inferred"
-            # We don't return yet, maybe Strategy C can get more "Verified" status?
-            # Actually, the instructions say "three-tiered fallback", so if A fails, try B, if B fails, try C.
-            # But B only gives a commit. We might want to verify that commit.
+            findings["confidence"] = metadata_result.get("status")
             return findings
 
         # 3. Strategy C: File-level
@@ -230,25 +227,40 @@ class PyPIStrategy(VerificationStrategy):
                 with zipfile.ZipFile(io.BytesIO(resp.content)) as zip_ref:
                     zip_ref.extractall(tmp_dir)
             
-            # Normalization: Strip compiled extensions and metadata
-            source_files = {}
-            for root, _, files in os.walk(tmp_dir):
-                for f in files:
-                    if f.endswith(".py"): # Only pure Python
-                        full_path = os.path.join(root, f)
-                        rel_path = os.path.relpath(full_path, tmp_dir)
-                        # Strip inner directory if sdist
-                        if "/" in rel_path:
-                            rel_path = "/".join(rel_path.split("/")[1:])
-                        
-                        with open(full_path, "rb") as f_obj:
-                            source_files[rel_path] = f_obj.read()
+            # Find the inner directory
+            items = os.listdir(tmp_dir)
+            if len(items) == 1 and os.path.isdir(os.path.join(tmp_dir, items[0])):
+                inner_dir = os.path.join(tmp_dir, items[0])
+            else:
+                inner_dir = tmp_dir
 
-            if not source_files:
+            # Normalization: Clean the directory, keeping only .py files
+            file_count = 0
+            for root, dirs, files in os.walk(inner_dir, topdown=False):
+                for f in files:
+                    file_path = os.path.join(root, f)
+                    if f.endswith(".py"):
+                        file_count += 1
+                    else:
+                        os.remove(file_path)
+                
+                # Also remove empty directories
+                for d in dirs:
+                    dir_path = os.path.join(root, d)
+                    try:
+                        if not os.listdir(dir_path):
+                            os.rmdir(dir_path)
+                    except OSError:
+                        pass
+
+            if file_count == 0:
                 shutil.rmtree(tmp_dir)
                 return {"status": "Failed", "reason": "No .py files found in artifact"}
 
-            swhid = compute_directory_swhid(source_files)
+            # Compute directory SWHID
+            swhid_obj = SWHDirectory.from_disk(path=os.fsencode(inner_dir), max_content_length=None).swhid()
+            swhid = str(swhid_obj)
+            
             shutil.rmtree(tmp_dir)
 
             found = self.swh.check_swhid(swhid)
@@ -257,7 +269,7 @@ class PyPIStrategy(VerificationStrategy):
                 "swhid": swhid,
                 "strategy": "C",
                 "confidence": "Verified" if found else "Partial",
-                "file_count": len(source_files)
+                "file_count": file_count
             }
         except Exception as e:
             return {"status": "Error", "reason": str(e)}
