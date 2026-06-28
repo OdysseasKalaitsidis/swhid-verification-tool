@@ -1,0 +1,19 @@
+# SWHID Verification Tool - Compliance Policy
+# This file configures the policy engine for CI/CD gatekeeping.
+
+[policy]
+# Fail the build if any local file/directory has a cryptographic mismatch against the archive
+fail_on_mismatch = true
+
+# The minimum confidence level required for dependencies.
+# We allow "Partial" to account for Software Heritage archival lag of newly installed packages.
+minimum_confidence_level = "Partial"
+
+# Do not fail on vulnerabilities by default (reporting only)
+fail_on_vulnerability = false
+
+# Allowlist for private or internal packages
+allowlist = []
+
+# Vulnerability IDs to ignore
+ignored_vulnerabilities = []
