@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import typer
+from typing import List
 from swhid_tool.manager import SWHIDManager
 from rich.console import Console
 import json
@@ -14,8 +15,6 @@ setup_logging()
 app = typer.Typer(help="SWHID Verification Tool")
 console = Console()
 manager = SWHIDManager()
-
-from typing import List
 
 def read_purls(file_path: str) -> List[str]:
     """Robustly read PURLs with multiple encoding fallbacks."""

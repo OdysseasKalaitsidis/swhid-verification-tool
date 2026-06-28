@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 from fastapi import FastAPI, Query, HTTPException
+from typing import Dict, Any
 from swhid_tool.manager import SWHIDManager
 from swhid_tool.logging_config import setup_logging
 
@@ -9,8 +10,6 @@ setup_logging()
 app = FastAPI(title="SWHID Verification API")
 manager = SWHIDManager()
 
-
-from typing import Dict, Any
 
 @app.get("/resolve")
 async def resolve_purl(purl: str = Query(..., description="The Package URL to resolve")) -> Dict[str, Any]:
