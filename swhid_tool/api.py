@@ -10,8 +10,10 @@ app = FastAPI(title="SWHID Verification API")
 manager = SWHIDManager()
 
 
+from typing import Dict, Any
+
 @app.get("/resolve")
-async def resolve_purl(purl: str = Query(..., description="The Package URL to resolve")):
+async def resolve_purl(purl: str = Query(..., description="The Package URL to resolve")) -> Dict[str, Any]:
     """
     Resolves a PURL to a SWHID, returning confidence level and strategy used.
     """
@@ -27,7 +29,7 @@ async def resolve_purl(purl: str = Query(..., description="The Package URL to re
         }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
+ 
 @app.get("/health")
-async def health():
+async def health() -> Dict[str, str]:
     return {"status": "ok"}

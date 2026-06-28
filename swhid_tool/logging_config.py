@@ -4,8 +4,9 @@
 import logging
 import sys
 from pathlib import Path
+from typing import Optional
 
-def setup_logging(level: str = "INFO", log_file: str = None):
+def setup_logging(level: str = "INFO", log_file: Optional[str] = None) -> None:
     """Configures logging for the application."""
     
     # Create formatter
@@ -17,7 +18,7 @@ def setup_logging(level: str = "INFO", log_file: str = None):
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
 
-    handlers = [console_handler]
+    handlers: list[logging.Handler] = [console_handler]
 
     # File Handler (Optional)
     if log_file:

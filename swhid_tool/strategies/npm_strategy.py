@@ -8,7 +8,7 @@ import shutil
 import tarfile
 import requests
 import urllib.parse
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
@@ -24,7 +24,7 @@ class NpmStrategy(VerificationStrategy):
         # Handle scoped packages (e.g. @babel:core -> @babel/core)
         npm_name = name.replace(":", "/")
         purl = f"pkg:npm/{npm_name}@{version}"
-        findings = {"purl": purl, "strategies_tried": []}
+        findings: Dict[str, Any] = {"purl": purl, "strategies_tried": []}
 
         try:
             # Fetch registry metadata for the package
@@ -54,8 +54,8 @@ class NpmStrategy(VerificationStrategy):
             findings["strategies_tried"].append({"name": "B: File-level", "result": file_level_result})
             
             # Confidence scoring: Verified (3) > Inferred (2) > Partial (1) > Failed/Error (0)
-            def get_score(status):
-                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status, 0)
+            def get_score(status: Optional[str]) -> int:
+                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status or "", 0)
                 
             if get_score(file_level_result.get("status")) >= get_score(findings.get("status")):
                 findings.update(file_level_result)

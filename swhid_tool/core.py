@@ -49,7 +49,8 @@ class SWHClient:
         try:
             response = self.session.get(url, timeout=DEFAULT_TIMEOUT)
             if response.status_code == 200:
-                return response.json()
+                from typing import cast
+                return cast(Dict[str, Any], response.json())
         except requests.exceptions.RequestException as e:
             logger.error(f"Error fetching revision {rev_id}: {e}")
         return None
@@ -60,7 +61,8 @@ class SWHClient:
         try:
             response = self.session.post(url, timeout=DEFAULT_TIMEOUT)
             if response.status_code in [200, 201]:
-                return response.json()
+                from typing import cast
+                return cast(Dict[str, Any], response.json())
             return {"status": "Error", "message": response.text, "code": response.status_code}
         except requests.exceptions.RequestException as e:
             logger.error(f"Error triggering Save Code Now for {origin_url}: {e}")

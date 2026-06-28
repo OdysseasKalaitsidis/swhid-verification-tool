@@ -15,7 +15,9 @@ app = typer.Typer(help="SWHID Verification Tool")
 console = Console()
 manager = SWHIDManager()
 
-def read_purls(file_path: str):
+from typing import List
+
+def read_purls(file_path: str) -> List[str]:
     """Robustly read PURLs with multiple encoding fallbacks."""
     for encoding in ["utf-8-sig", "utf-16", "utf-16le", "utf-16be", "cp1253"]:
         try:
@@ -26,7 +28,7 @@ def read_purls(file_path: str):
     raise ValueError(f"Could not decode {file_path}. Please ensure it is UTF-8 or UTF-16.")
 
 @app.command("swhid-map")
-def swhid_map(purl: str):
+def swhid_map(purl: str) -> None:
     """Resolves a PURL to a SWHID and verifies it against the SWH archive."""
     try:
         console.print(f"[bold blue]Resolving {purl}[/bold blue]")
@@ -41,14 +43,14 @@ def swhid_map(purl: str):
         console.print(f"[bold red]Error:[/bold red] {str(e)}")
 
 @app.command()
-def verify_installation():
+def verify_installation() -> None:
     """Verifies that all required dependencies and API keys are configured."""
     console.print("[bold green]Installation Verified![/bold green]")
     console.print("- Typer: [green]OK[/green]")
     console.print("- SWH API: [green]OK[/green]")
 
 @app.command()
-def verify_path(path: str, manifest: str):
+def verify_path(path: str, manifest: str) -> None:
     """Verifies a local directory against an SPDX manifest containing SWHIDs."""
     from swhid_tool.scanner import InstallationScanner
     from swhid_tool.core import SWHClient
@@ -69,7 +71,7 @@ def verify_path(path: str, manifest: str):
     scanner.report(results)
 
 @app.command()
-def batch_process(input_file: str, output_file: str):
+def batch_process(input_file: str, output_file: str) -> None:
     """Processes a list of PURLs and exports to SPDX 3.0."""
     from swhid_tool.batch_processor import BatchProcessor
     from swhid_tool.spdx_exporter import export_to_spdx3
@@ -82,7 +84,7 @@ def batch_process(input_file: str, output_file: str):
     console.print(f"[green]Batch processing complete. Results saved to {output_file}[/green]")
 
 @app.command()
-def audit(path: str = "."):
+def audit(path: str = ".") -> None:
     """Automatically detects project dependencies, resolves their SWHIDs, and audits local installations."""
     import glob
     from swhid_tool.project_detector import ProjectDetector

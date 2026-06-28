@@ -7,7 +7,7 @@ import zipfile
 import requests
 import xml.etree.ElementTree as ET
 import hashlib
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Tuple
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
 
@@ -25,7 +25,7 @@ class MavenStrategy(VerificationStrategy):
         
         group_id, artifact_id = name.split(":")
         purl = f"pkg:maven/{group_id}/{artifact_id}@{version}"
-        findings = {"purl": purl}
+        findings: Dict[str, Any] = {"purl": purl}
 
         try:
             group_path = group_id.replace(".", "/")
@@ -48,10 +48,11 @@ class MavenStrategy(VerificationStrategy):
             if "first_verified_swhid" in sources_jar_result:
                 findings["swhid"] = sources_jar_result["first_verified_swhid"]
                 del findings["first_verified_swhid"]
-                
+
             return findings
+
         except Exception as e:
-            return {"status": "Error", "reason": str(e)}
+            return {"purl": purl, "status": "Error", "reason": str(e)}
 
     def _fetch_pom(self, base_url: str) -> str:
         resp = requests.get(base_url + ".pom")
@@ -60,7 +61,7 @@ class MavenStrategy(VerificationStrategy):
 
     def _parse_scm(self, pom_text: str) -> Dict[str, str]:
         root = ET.fromstring(pom_text)
-        def find(element, tag):
+        def find(element: ET.Element, tag: str) -> Optional[ET.Element]:
             node = element.find(f"{{{self.NS}}}{tag}")
             if node is None:
                 node = element.find(tag)
@@ -70,13 +71,13 @@ class MavenStrategy(VerificationStrategy):
         if scm is None:
             return {}
         
-        def text(tag):
+        def text(tag: str) -> str:
             node = find(scm, tag)
             return (node.text or "").strip() if node is not None else ""
         
         return {"url": text("url"), "tag": text("tag")}
 
-    def _extract_github_owner_repo(self, url: str) -> tuple:
+    def _extract_github_owner_repo(self, url: str) -> Tuple[Optional[str], Optional[str]]:
         if not url:
             return None, None
         m = re.search(r"github\.com/([^/]+)/([^/\s]+?)(?:\.git)?$", url)
@@ -120,7 +121,7 @@ class MavenStrategy(VerificationStrategy):
                 owner, repo = self._extract_github_owner_repo(scm.get("url", ""))
                 tag = scm.get("tag", "")
                 
-                if not owner or not tag:
+                if not owner or not repo or not tag:
                     return {
                         "status": "Inferred",
                         "reason": "Could not extract GitHub owner/repo or tag from SCM info",

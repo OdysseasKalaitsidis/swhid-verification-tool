@@ -27,7 +27,7 @@ class GoLangStrategy(VerificationStrategy):
         # Let's rebuild the full module path
         module_path = name.replace(":", "/")
         purl = f"pkg:golang/{module_path}@{version}"
-        findings = {"purl": purl, "strategies_tried": []}
+        findings: Dict[str, Any] = {"purl": purl, "strategies_tried": []}
 
         try:
             # 1. Strategy A: Metadata & Tag Matching
@@ -46,8 +46,8 @@ class GoLangStrategy(VerificationStrategy):
             findings["strategies_tried"].append({"name": "B: File-level", "result": file_level_result})
             
             # Confidence scoring: Verified (3) > Inferred (2) > Partial (1) > Failed/Error (0)
-            def get_score(status):
-                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status, 0)
+            def get_score(status: Optional[str]) -> int:
+                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status or "", 0)
                 
             if get_score(file_level_result.get("status")) >= get_score(findings.get("status")):
                 findings.update(file_level_result)

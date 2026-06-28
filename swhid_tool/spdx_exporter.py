@@ -14,7 +14,7 @@ from spdx_tools.spdx3.model.profile_identifier import ProfileIdentifierType
 from spdx_tools.spdx3.payload import Payload
 from spdx_tools.spdx3.writer.json_ld.json_ld_writer import write_payload
 
-def export_to_spdx3(findings: List[Dict[str, Any]], output_path: str):
+def export_to_spdx3(findings: List[Dict[str, Any]], output_path: str) -> str:
     """
     Exports verification findings to SPDX 3.0 JSON-LD format using spdx-tools models.
     """

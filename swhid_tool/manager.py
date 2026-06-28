@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Odysseas Kalaitsidis
 # SPDX-License-Identifier: MIT
 
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from swhid_tool.purl_parser import parse_purl
 from swhid_tool.core import SWHClient
 from swhid_tool.strategies.pypi_strategy import PyPIStrategy
@@ -12,7 +12,7 @@ from swhid_tool.strategies.golang_strategy import GoLangStrategy
 from swhid_tool.strategies.nuget_strategy import NugetStrategy
 
 class SWHIDManager:
-    def __init__(self, auth_token: str = None):
+    def __init__(self, auth_token: Optional[str] = None):
         self.swh = SWHClient(auth_token)
         self.strategies = {
             "pypi": PyPIStrategy(self.swh),

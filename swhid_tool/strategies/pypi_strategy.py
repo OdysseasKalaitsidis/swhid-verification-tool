@@ -22,7 +22,7 @@ class PyPIStrategy(VerificationStrategy):
 
     def resolve(self, name: str, version: str, qualifiers: Dict[str, str]) -> Dict[str, Any]:
         purl = f"pkg:pypi/{name}@{version}"
-        findings = {"purl": purl, "strategies_tried": []}
+        findings: Dict[str, Any] = {"purl": purl, "strategies_tried": []}
 
         # 1. Strategy A: Attestation
         attestation_result = self._strategy_a_attestation(name, version)

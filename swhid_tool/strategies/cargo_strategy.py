@@ -21,7 +21,7 @@ class CargoStrategy(VerificationStrategy):
 
     def resolve(self, name: str, version: str, qualifiers: Dict[str, str]) -> Dict[str, Any]:
         purl = f"pkg:cargo/{name}@{version}"
-        findings = {"purl": purl}
+        findings: Dict[str, Any] = {"purl": purl}
 
         try:
             # 1. Download and Extract

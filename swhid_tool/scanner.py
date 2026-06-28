@@ -2,10 +2,16 @@
 # SPDX-License-Identifier: MIT
 
 import os
-from typing import Dict, Any
+from typing import Dict, Any, List, TypedDict
 from swhid_tool.core import compute_content_swhid, SWHClient
 from rich.console import Console
 from rich.table import Table
+
+class ScanResults(TypedDict):
+    total_files: int
+    verified_files: int
+    mismatches: List[Dict[str, str]]
+    missing: List[str]
 
 console = Console()
 
@@ -13,12 +19,12 @@ class InstallationScanner:
     def __init__(self, swh_client: SWHClient):
         self.swh = swh_client
 
-    def scan_directory(self, path: str, expected_swhids: Dict[str, str]) -> Dict[str, Any]:
+    def scan_directory(self, path: str, expected_swhids: Dict[str, str]) -> ScanResults:
         """
         Scans a directory and compares file hashes against expected SWHIDs.
         expected_swhids: { "rel_path/to/file": "swh:1:cnt:..." }
         """
-        results = {
+        results: ScanResults = {
             "total_files": 0,
             "verified_files": 0,
             "mismatches": [],
@@ -48,7 +54,7 @@ class InstallationScanner:
         
         return results
 
-    def report(self, results: Dict[str, Any]):
+    def report(self, results: ScanResults) -> None:
         table = Table(title="Installation Verification Results")
         table.add_column("Category", style="cyan")
         table.add_column("Count", style="magenta")
@@ -67,5 +73,5 @@ class InstallationScanner:
         
         if results["missing"]:
             console.print("\n[yellow]Missing files:[/yellow]")
-            for m in results["missing"]:
-                console.print(f"- {m}")
+            for missing_file in results["missing"]:
+                console.print(f"- {missing_file}")

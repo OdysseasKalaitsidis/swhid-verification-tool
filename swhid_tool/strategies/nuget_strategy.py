@@ -7,7 +7,7 @@ import shutil
 import zipfile
 import requests
 import urllib.parse
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
@@ -23,7 +23,7 @@ class NugetStrategy(VerificationStrategy):
         # NuGet names are case-insensitive, but API endpoints expect lowercase
         lower_name = name.lower()
         purl = f"pkg:nuget/{name}@{version}"
-        findings = {"purl": purl, "strategies_tried": []}
+        findings: Dict[str, Any] = {"purl": purl, "strategies_tried": []}
 
         try:
             # Fetch package version metadata from NuGet registration API
@@ -50,8 +50,8 @@ class NugetStrategy(VerificationStrategy):
             findings["strategies_tried"].append({"name": "B: File-level", "result": file_level_result})
             
             # Confidence scoring: Verified (3) > Inferred (2) > Partial (1) > Failed/Error (0)
-            def get_score(status):
-                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status, 0)
+            def get_score(status: Optional[str]) -> int:
+                return {"Verified": 3, "Inferred": 2, "Partial": 1}.get(status or "", 0)
                 
             if get_score(file_level_result.get("status")) >= get_score(findings.get("status")):
                 findings.update(file_level_result)
