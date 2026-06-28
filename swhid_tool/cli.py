@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import typer
-from typing import List
+from typing import List, Optional
 from swhid_tool.manager import SWHIDManager
 from rich.console import Console
 import json
@@ -73,12 +73,22 @@ def verify_path(path: str, manifest: str) -> None:
 def batch_process(
     input_file: str, 
     output_file: str, 
-    trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories")
+    trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories"),
+    token: Optional[str] = typer.Option(None, "--token", help="Software Heritage API Token")
 ) -> None:
     """Processes a list of PURLs and exports to SPDX 3.0."""
     from swhid_tool.batch_processor import BatchProcessor
     from swhid_tool.spdx_exporter import export_to_spdx3
     
+    if token:
+        manager.set_token(token)
+    elif trigger_save and not manager.swh.session.headers.get("Authorization"):
+        console.print("[yellow]Warning: Triggering Save Code Now anonymously is heavily rate-limited.[/yellow]")
+        if typer.confirm("Do you want to enter a Software Heritage API token?", default=True):
+            user_token = typer.prompt("Enter your Software Heritage API Token", hide_input=True)
+            if user_token:
+                manager.set_token(user_token)
+                
     processor = BatchProcessor(manager)
     purls = read_purls(input_file)
     
@@ -89,7 +99,8 @@ def batch_process(
 @app.command()
 def audit(
     path: str = ".", 
-    trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories")
+    trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories"),
+    token: Optional[str] = typer.Option(None, "--token", help="Software Heritage API Token")
 ) -> None:
     """Automatically detects project dependencies, resolves their SWHIDs, and audits local installations."""
     import glob
@@ -98,6 +109,15 @@ def audit(
     from swhid_tool.scanner import InstallationScanner
     from swhid_tool.core import SWHClient
     
+    if token:
+        manager.set_token(token)
+    elif trigger_save and not manager.swh.session.headers.get("Authorization"):
+        console.print("[yellow]Warning: Triggering Save Code Now anonymously is heavily rate-limited.[/yellow]")
+        if typer.confirm("Do you want to enter a Software Heritage API token?", default=True):
+            user_token = typer.prompt("Enter your Software Heritage API Token", hide_input=True)
+            if user_token:
+                manager.set_token(user_token)
+                
     console.print(f"[bold blue]🔍 Scanning project directory: {path}[/bold blue]")
     detector = ProjectDetector(path)
     purls = detector.detect_and_extract()

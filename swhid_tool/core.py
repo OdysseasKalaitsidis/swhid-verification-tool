@@ -30,9 +30,14 @@ class SWHClient:
         self.session.mount("http://", adapter)
         
         if auth_token:
-            self.session.headers.update({"Authorization": f"Bearer {auth_token}"})
+            self.set_token(auth_token)
         
         self.session.headers.update({"User-Agent": "SWHID-Verification-Tool/1.0 (GSoC 2026)"})
+
+    def set_token(self, token: str) -> None:
+        """Dynamically sets the Software Heritage API token."""
+        if token:
+            self.session.headers.update({"Authorization": f"Bearer {token}"})
 
     def check_swhid(self, swhid: str) -> bool:
         """Checks if a SWHID exists in the archive."""

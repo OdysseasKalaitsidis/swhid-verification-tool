@@ -26,6 +26,10 @@ class SWHIDManager:
             "nuget": NugetStrategy(self.swh),
         }
 
+    def set_token(self, token: str) -> None:
+        """Sets the SWH auth token in the client."""
+        self.swh.set_token(token)
+
     def resolve(self, purl_str: str) -> Dict[str, Any]:
         ecosystem, name, version, qualifiers = parse_purl(purl_str)
         if not version:
