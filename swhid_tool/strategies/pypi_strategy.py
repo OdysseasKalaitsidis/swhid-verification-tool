@@ -173,12 +173,13 @@ class PyPIStrategy(VerificationStrategy):
                                 "tag_matched": matched_tag_name
                             }
                 
+                self.swh.trigger_save_code_now(repo_url)
                 return {
                     "status": "Inferred",
                     "repo_url": repo_url,
                     "strategy": "B",
                     "confidence": "Inferred",
-                    "reason": "Origin archived but no exact tag match found in SWH snapshot"
+                    "reason": "Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update"
                 }
             else:
                 # Trigger Save Code Now
