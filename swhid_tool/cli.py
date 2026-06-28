@@ -117,19 +117,37 @@ def audit(
     # Print resolution results table
     from rich.table import Table
     table = Table(title="Dependency SWHID Resolution Results")
-    table.add_column("Package", style="cyan")
-    table.add_column("SWHID", style="green")
-    table.add_column("Status", style="bold")
-    table.add_column("Confidence", style="yellow")
+    table.add_column("Package", style="cyan", width=35)
+    table.add_column("Status", style="bold", width=12)
+    table.add_column("SWHID", style="green", width=44)
+    table.add_column("Details / Action Required", style="white")
     
     for f in findings:
         status = f.get("status", "Unknown")
         status_color = "green" if status == "Verified" else "yellow" if status in ["Inferred", "Partial"] else "red"
+        
+        # Build rich details message
+        reason = f.get("reason", "")
+        repo_url = f.get("repo_url", "")
+        
+        if status == "Verified":
+            details = "[green]✓ Cryptographically verified[/green]"
+            if repo_url:
+                details += f" from {repo_url}"
+        elif status == "Inferred":
+            details = f"[yellow]⚠ Repo found, but version tag not archived yet.[/yellow]\n  Repo: {repo_url}\n  [bold]Action:[/] Run with [bold cyan]--trigger-save[/bold cyan] to archive it."
+        elif status == "Partial":
+            details = "[yellow]⚠ Local SWHID computed, but not found in SWH archive.[/yellow]"
+        elif status == "Error" or status == "Failed":
+            details = f"[red]✗ Resolution failed: {reason}[/red]"
+        else:
+            details = reason or "N/A"
+            
         table.add_row(
             f.get("purl", ""),
-            f.get("swhid", "N/A"),
             f"[{status_color}]{status}[/{status_color}]",
-            f.get("confidence", "None")
+            f.get("swhid") or "N/A",
+            details
         )
     console.print(table)
     
