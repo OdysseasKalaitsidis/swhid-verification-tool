@@ -205,25 +205,17 @@ def audit(
     processor = BatchProcessor(manager)
     findings = processor.process_purls(purls, trigger_save=trigger_save)
     
-    # Query OSV.dev for vulnerabilities based on resolved commit SHAs
+    # Query OSV.dev for vulnerabilities using hybrid (PURL + Commit) scanning
     console.print("\n[bold blue]🛡️ Querying OSV.dev for vulnerabilities...[/bold blue]")
     from swhid_tool.osv_client import OSVClient
     osv = OSVClient()
     
-    commit_shas = []
-    for f in findings:
-        swhid = f.get("swhid")
-        if swhid and swhid.startswith("swh:1:rev:"):
-            commit_shas.append(swhid.split(":")[-1])
-            
-    vuln_map = osv.query_vulnerabilities(commit_shas)
+    vuln_map = osv.query_vulnerabilities_hybrid(findings)
     
     for f in findings:
-        swhid = f.get("swhid")
-        if swhid and swhid.startswith("swh:1:rev:"):
-            commit_sha = swhid.split(":")[-1]
-            if commit_sha in vuln_map:
-                f["vulnerabilities"] = vuln_map[commit_sha]
+        purl = f.get("purl")
+        if purl in vuln_map:
+            f["vulnerabilities"] = vuln_map[purl]
                 
     # Print resolution results table
     from rich.table import Table
