@@ -129,6 +129,7 @@ class PolicyEngine:
         policy = self.config["policy"]
         min_confidence = policy.get("minimum_confidence_level", "Inferred")
         fail_on_vuln = policy.get("fail_on_vulnerability", False)
+        max_severity = policy.get("max_severity", "MEDIUM")
         ignored_vulns = policy.get("ignored_vulnerabilities", [])
 
         # Map confidence names to numeric scores for comparison
@@ -162,14 +163,63 @@ class PolicyEngine:
                 if v_id in ignored_vulns:
                     continue
 
+                severity = self.parse_severity(v)
+                severity_score = self.get_severity_score(severity)
+                max_severity_score = self.get_severity_score(max_severity)
+
                 if fail_on_vuln:
                     violations.append({
                         "purl": purl,
                         "type": "vulnerability_violation",
-                        "message": f"Package has known vulnerability {v_id}: {v.get('summary', 'No summary')}"
+                        "message": f"Package has known vulnerability {v_id} [{severity}]: {v.get('summary', 'No summary')}"
+                    })
+                elif max_severity_score > 0 and severity_score >= max_severity_score:
+                    violations.append({
+                        "purl": purl,
+                        "type": "vulnerability_violation",
+                        "message": f"Package has known {severity} severity vulnerability {v_id} (threshold: {max_severity}): {v.get('summary', 'No summary')}"
                     })
 
         return violations
+
+    def parse_severity(self, v: Dict[str, Any]) -> str:
+        """Parses the qualitative severity level from an OSV vulnerability entry."""
+        db_specific = v.get("database_specific") or {}
+        cvss_info = db_specific.get("cvss") or {}
+        
+        severity = db_specific.get("severity") or cvss_info.get("severity")
+        if severity:
+            return severity.upper()
+            
+        severity_list = v.get("severity") or []
+        for sev in severity_list:
+            score_str = sev.get("score", "")
+            try:
+                score = float(score_str)
+                if score >= 9.0:
+                    return "CRITICAL"
+                elif score >= 7.0:
+                    return "HIGH"
+                elif score >= 4.0:
+                    return "MEDIUM"
+                elif score > 0:
+                    return "LOW"
+            except ValueError:
+                pass
+                
+        return "UNKNOWN"
+
+    def get_severity_score(self, severity: str) -> int:
+        """Maps a qualitative severity string to a numeric score for comparison."""
+        levels = {
+            "CRITICAL": 4,
+            "HIGH": 3,
+            "MEDIUM": 2,
+            "LOW": 1,
+            "UNKNOWN": 0,
+            "NONE": 0
+        }
+        return levels.get(severity.upper(), 0)
 
     def evaluate_scan_results(self, scan_results: ScanResults, package_name: str) -> List[Dict[str, Any]]:
         """

@@ -96,9 +96,25 @@ def batch_process(
     export_to_spdx3(findings, output_file)
     console.print(f"[green]Batch processing complete. Results saved to {output_file}[/green]")
 
+def get_fixed_version(v: Dict[str, Any]) -> Optional[str]:
+    """Extracts the first fixed version from the OSV vulnerability entry."""
+    affected_list = v.get("affected") or []
+    for affected in affected_list:
+        ranges = affected.get("ranges") or []
+        for r in ranges:
+            events = r.get("events") or []
+            for event in events:
+                fixed = event.get("fixed")
+                if fixed:
+                    return str(fixed)
+    return None
+
 def write_markdown_report(file_path: str, findings: List[Dict[str, Any]], violations: List[Dict[str, Any]]) -> None:
     """Writes a beautiful Markdown summary report for CI/CD integration."""
     try:
+        from swhid_tool.policy import PolicyEngine
+        policy_engine = PolicyEngine()
+        
         total = len(findings)
         verified = sum(1 for f in findings if f.get("status") == "Verified")
         inferred = sum(1 for f in findings if f.get("status") == "Inferred")
@@ -112,7 +128,7 @@ def write_markdown_report(file_path: str, findings: List[Dict[str, Any]], violat
         md = []
         md.append("## 🛡️ SWHID Security & Provenance Audit")
         md.append(f"**Policy Status**: {status_emoji}  ")
-        md.append(f"**Total Dependencies**: {total} | **Verified**: {verified} | **Inferred**: {inferred} | **Partial**: {partial} | **Failed/Error**: {failed}  ")
+        md.append(f"**Total Dependencies**: {total} | **Verified**: {verified} | **Inferred (Unverified)**: {inferred} | **Partial**: {partial} | **Failed/Error**: {failed}  ")
         md.append(f"**Security Vulnerabilities**: {vuln_count} known issues found by OSV.dev\n")
         
         if violations:
@@ -144,14 +160,19 @@ def write_markdown_report(file_path: str, findings: List[Dict[str, Any]], violat
                     md.append(f"#### `{f.get('purl')}`")
                     for v in vulns:
                         v_id = v.get("id", "Unknown")
+                        severity = policy_engine.parse_severity(v)
                         summary = v.get("summary") or v.get("details") or "No summary available"
                         summary = summary.replace("\n", " ").replace("\r", " ").strip()
                         if len(summary) > 100:
                             summary = summary[:97] + "..."
+                        
+                        fixed_ver = get_fixed_version(v)
+                        pinning_text = f" (Fixed in: `{fixed_ver}`)" if fixed_ver else " (No fix available)"
+                        
                         details = v.get("details", "")
                         if len(details) > 300:
                             details = details[:297] + "..."
-                        md.append(f"- **[{v_id}](https://osv.dev/vulnerability/{v_id})**: {summary}")
+                        md.append(f"- **[{v_id}](https://osv.dev/vulnerability/{v_id})** `[{severity}]`: {summary}{pinning_text}")
                         if details:
                             clean_details = details.replace("\n", "  \n  > ")
                             md.append(f"  > {clean_details}")
@@ -169,7 +190,8 @@ def audit(
     trigger_save: bool = typer.Option(False, "--trigger-save", help="Trigger Save Code Now for unarchived repositories"),
     token: Optional[str] = typer.Option(None, "--token", help="Software Heritage API Token"),
     policy: Optional[str] = typer.Option(None, "--policy", help="Path to swhid-policy.toml file"),
-    markdown_summary: Optional[str] = typer.Option(None, "--markdown-summary", help="Path to write a Markdown summary report (useful for CI/CD Step Summary)")
+    markdown_summary: Optional[str] = typer.Option(None, "--markdown-summary", help="Path to write a Markdown summary report (useful for CI/CD Step Summary)"),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Print full, untruncated SWHIDs in the console table")
 ) -> None:
     """Automatically detects project dependencies, resolves their SWHIDs, and audits local installations."""
     import glob
@@ -225,15 +247,18 @@ def audit(
     table = Table(title="Dependency SWHID Resolution Results")
     table.add_column("Package", style="cyan")
     table.add_column("Status", style="bold")
-    table.add_column("SWHID", style="green")
+    table.add_column("SWHID", style="green", no_wrap=not verbose)
     
     for f in findings:
         status = f.get("status", "Unknown")
         status_color = "green" if status == "Verified" else "yellow" if status in ["Inferred", "Partial"] else "red"
+        swhid = f.get("swhid") or "N/A"
+        if not verbose and len(swhid) > 30:
+            swhid = swhid[:27] + "..."
         table.add_row(
             f.get("purl", ""),
             f"[{status_color}]{status}[/{status_color}]",
-            f.get("swhid") or "N/A"
+            swhid
         )
     console.print(table)
 
@@ -250,10 +275,12 @@ def audit(
             
             console.print(f"\n[bold red]✗ {purl}[/bold red] [{status}]")
             if status == "Inferred":
+                console.print("  [yellow]Integrity:[/] [red]UNVERIFIED[/red] (No cryptographic proof - SWHID is N/A).")
                 console.print("  [yellow]Reason:[/] Repository exists in Software Heritage, but the specific version tag is missing.")
                 console.print(f"  [yellow]Repository:[/] {repo_url}")
                 console.print("  [yellow]Action Required:[/] Run with [bold cyan]--trigger-save[/bold cyan] to archive this version. Once archived (takes 1-2 mins), it will become [bold green]Verified[/bold green].")
             elif status == "Partial":
+                console.print("  [yellow]Integrity:[/] [red]UNVERIFIED[/red] (No cryptographic proof - SWHID is locally generated only).")
                 console.print("  [yellow]Reason:[/] Local files match, but this directory SWHID is not yet archived.")
                 if repo_url != "N/A":
                     console.print(f"  [yellow]Repository:[/] {repo_url}")
@@ -276,11 +303,18 @@ def audit(
             console.print(f"\n[bold red]✗ {purl}[/bold red] (SWHID: {swhid})")
             for v in vulns:
                 v_id = v.get("id", "Unknown")
+                severity = policy_engine.parse_severity(v)
                 summary = v.get("summary") or v.get("details") or "No summary available"
                 summary = summary.replace("\n", " ").replace("\r", " ").strip()
                 if len(summary) > 80:
                     summary = summary[:77] + "..."
-                console.print(f"  - [red]{v_id}[/red]: {summary}")
+                
+                fixed_ver = get_fixed_version(v)
+                pinning_text = f" (Fixed in: [green]{fixed_ver}[/green])" if fixed_ver else " (No fix available)"
+                
+                # Highlight critical/high severities in red, others in yellow
+                sev_color = "red" if severity in ["CRITICAL", "HIGH"] else "yellow"
+                console.print(f"  - [red]{v_id}[/red] [[{sev_color}]{severity}[/{sev_color}]]: {summary}{pinning_text}")
                 
     if not has_vulns:
         console.print("[green]✓ No known vulnerabilities found in verified commits.[/green]\n")
@@ -344,6 +378,22 @@ def audit(
     # Write markdown summary if requested
     if markdown_summary:
         write_markdown_report(markdown_summary, findings, total_violations)
+
+    # Print a detailed, honest Audit Summary before declaring pass/fail
+    total = len(findings)
+    verified = sum(1 for f in findings if f.get("status") == "Verified")
+    inferred = sum(1 for f in findings if f.get("status") == "Inferred")
+    partial = sum(1 for f in findings if f.get("status") == "Partial")
+    failed = total - verified - inferred - partial
+    
+    vuln_packages = sum(1 for f in findings if f.get("vulnerabilities"))
+    total_vulns = sum(len(f.get("vulnerabilities", [])) for f in findings)
+    unverified_count = inferred + partial
+    
+    console.print("\n[bold]📊 Audit Summary:[/bold]")
+    console.print(f"  - Total Dependencies Scanned: {total}")
+    console.print(f"  - Integrity: [green]{verified} Verified[/green] | [yellow]{unverified_count} Unverified[/yellow] (Inferred: {inferred}, Partial: {partial}) | [red]{failed} Failed[/red]")
+    console.print(f"  - Security: [red]{total_vulns}[/red] vulnerabilities found across [red]{vuln_packages}[/red] packages")
         
     if total_violations:
         console.print(f"\n[bold red]❌ Policy Evaluation Failed! Found {len(total_violations)} violations:[/bold red]")
@@ -351,8 +401,15 @@ def audit(
             console.print(f"  - [bold red][{v['type']}][/bold red] {v['purl']}: {v['message']}")
         raise typer.Exit(code=1)
     
-    if policy_path:
-        console.print("\n[bold green]✓ Policy check passed! All dependencies are compliant.[/bold green]")
+    # If the policy passed but there are unverified packages or ignored vulnerabilities, warn the user
+    if unverified_count > 0 or total_vulns > 0:
+        console.print("\n[yellow]⚠ Policy check passed, but with warnings (non-blocking):[/yellow]")
+        if unverified_count > 0:
+            console.print(f"  - [yellow][integrity][/yellow] {unverified_count} dependencies have unverified integrity (no cryptographic proof).")
+        if total_vulns > 0:
+            console.print(f"  - [yellow][security][/yellow] {total_vulns} vulnerabilities found but ignored by policy threshold (max_severity={policy_engine.config['policy'].get('max_severity')}).")
+    elif policy_path:
+        console.print("\n[bold green]✓ Policy check passed! All dependencies are compliant and verified.[/bold green]")
 
 if __name__ == "__main__":
     app()

@@ -11,12 +11,18 @@ logger = logging.getLogger(__name__)
 OSV_API_URL = "https://api.osv.dev/v1/querybatch"
 OSV_VULN_URL = "https://api.osv.dev/v1/vulns"
 
+from requests.adapters import HTTPAdapter
+
 class OSVClient:
     """
     Client for querying the Open Source Vulnerability (OSV.dev) database.
     """
     def __init__(self) -> None:
         self.session = requests.Session()
+        # Configure connection pool size to match the max concurrency
+        adapter = HTTPAdapter(pool_connections=20, pool_maxsize=20)
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
         self.session.headers.update({"User-Agent": "SWHID-Verification-Tool/1.0 (GSoC 2026)"})
 
     def _fetch_vuln_details(self, vuln_id: str) -> Optional[Dict[str, Any]]:
