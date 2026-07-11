@@ -16,7 +16,6 @@ Usage:
 import os
 import sys
 import csv
-import json
 import shutil
 import argparse
 import requests
@@ -362,7 +361,8 @@ def write_findings_report(
         s = f.get("strategy", "N/A")
         strategy_counts[s] = strategy_counts.get(s, 0) + 1
     
-    pct = lambda c: f"{c/total*100:.1f}%" if total else "0%"
+    def pct(c: float) -> str:
+        return f"{c/total*100:.1f}%" if total else "0%"
     
     # Build report
     md = []
@@ -370,10 +370,10 @@ def write_findings_report(
     md.append(f"\n*Generated on {timestamp}*\n")
     
     md.append("## Executive Summary\n")
-    md.append(f"This report documents the results of computing and verifying Software Heritage")
+    md.append("This report documents the results of computing and verifying Software Heritage")
     md.append(f"Identifiers (SWHIDs) for **{total} packages** across **{len(eco_stats)} package")
-    md.append(f"ecosystems**. The dataset covers the most popular packages from PyPI, npm,")
-    md.append(f"Crates.io, Go Modules, Maven Central, and NuGet.\n")
+    md.append("ecosystems**. The dataset covers the most popular packages from PyPI, npm,")
+    md.append("Crates.io, Go Modules, Maven Central, and NuGet.\n")
     
     md.append("## Overall Results\n")
     md.append("| Status | Count | Percentage | Meaning |")
@@ -504,7 +504,7 @@ def main() -> None:
     n = args.per_ecosystem
     
     print("=" * 70)
-    print(f"  SWHID Verification Dataset Generator")
+    print("  SWHID Verification Dataset Generator")
     print(f"  Target: {n} packages × 6 ecosystems = {n * 6} packages")
     print("=" * 70)
     
@@ -571,26 +571,28 @@ def main() -> None:
     inferred = sum(1 for f in findings if f.get("status") == "Inferred")
     partial = sum(1 for f in findings if f.get("status") == "Partial")
     errors = total - verified - inferred - partial
-    pct = lambda c: f"{c/total*100:.1f}%" if total else "0%"
+    
+    def pct(c: float) -> str:
+        return f"{c/total*100:.1f}%" if total else "0%"
     
     readme_path = os.path.join(OUTPUT_DIR, "README.md")
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(f"""# SWHID Verification Dataset
-
+ 
 This directory contains the comprehensive SWHID verification dataset mapping
 {total} of the most popular packages across 6 ecosystems to their SWHIDs.
-
+ 
 ## Files
-
+ 
 | File | Description |
 | :--- | :--- |
 | `swhid_dataset.csv` | Full dataset in CSV format for analysis |
 | `full_manifest.jsonld` | SPDX 3.0 JSON-LD manifest with all verified mappings |
 | `findings_report.md` | Detailed findings report with per-ecosystem analysis |
 | `showcase_manifest.jsonld` | Original 25-package showcase manifest |
-
+ 
 ## Dataset Statistics
-
+ 
 | Metric | Count | Percentage |
 | :--- | ---: | ---: |
 | **Total Packages** | {total} | 100% |
@@ -598,14 +600,14 @@ This directory contains the comprehensive SWHID verification dataset mapping
 | **Inferred (Medium Confidence)** | {inferred} | {pct(inferred)} |
 | **Partial (Low Confidence)** | {partial} | {pct(partial)} |
 | **Errors/Failed** | {errors} | {pct(errors)} |
-
+ 
 *Generated on {datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")} by `scripts/generate_full_dataset.py`.*
 """)
     print(f"  ✅ Dataset README:   {readme_path}")
     
     # Summary
     print("\n" + "=" * 70)
-    print(f"  ✅ Dataset generation complete!")
+    print("  ✅ Dataset generation complete!")
     print(f"  Total: {total} | Verified: {verified} | Inferred: {inferred} | Partial: {partial} | Errors: {errors}")
     print("=" * 70)
 
