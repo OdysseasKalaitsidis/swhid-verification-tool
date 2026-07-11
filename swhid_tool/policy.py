@@ -13,7 +13,7 @@ if sys.version_info >= (3, 11):
     import tomllib
 else:
     try:
-        import tomli as tomllib  # type: ignore[no-redef]
+        import tomli as tomllib
     except ImportError:
         raise ImportError(
             "The 'tomli' package is required for Python < 3.11. "
@@ -132,7 +132,7 @@ class PolicyEngine:
         
         severity = db_specific.get("severity") or cvss_info.get("severity")
         if severity:
-            return severity.upper()
+            return str(severity).upper()
             
         severity_list = v.get("severity") or []
         for sev in severity_list:
