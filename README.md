@@ -10,7 +10,7 @@ A verification framework designed to map Package URLs (PURLs) to verified Softwa
 
 In modern software development, we interact with dependencies using package-level identifiers (e.g., `lodash@4.17.21` or `requests@2.31.0`). However, these packages are mutable and vulnerable to supply chain tampering. 
 
-To guarantee reproducibility and security, we need **cryptographic, content-addressed identifiers** like Software Heritage Identifiers (SWHIDs). Currently, there is a **semantic gap** between the package managers and the archive. This tool bridges that gap by automatically resolving package releases to verified SWHIDs across 5 major registries: **PyPI**, **npm**, **Cargo**, **Go Modules**, and **Maven Central**.
+To guarantee reproducibility and security, we need **cryptographic, content-addressed identifiers** like Software Heritage Identifiers (SWHIDs). Currently, there is a **semantic gap** between the package managers and the archive. This tool bridges that gap by automatically resolving package releases to verified SWHIDs across 6 major registries: **PyPI**, **npm**, **Cargo**, **Go Modules**, **Maven Central**, and **NuGet**.
 
 ## 📊 Showcase Dataset
 
@@ -86,7 +86,7 @@ Verify a local directory against a verified manifest:
 python -m swhid_tool.cli verify-path /path/to/installed/library manifest.jsonld
 ```
 
-### REST API
+### REST API (Experimental)
 Deploy as a service using FastAPI:
 ```bash
 python -m uvicorn swhid_tool.api:app --host 0.0.0.0 --port 8000
@@ -132,5 +132,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-This project was developed as part of the **Google Summer of Code (GSoC) 2026** program, under the mentorship of **Software Heritage**.
-
+This project was independently developed, inspired by a GSoC proposal for [Software Heritage](https://www.softwareheritage.org/). The [SWHID standard (ISO/IEC 18670:2025)](https://swhid.org) and the Software Heritage archive are projects of [Inria](https://www.inria.fr/).

@@ -2,11 +2,23 @@
 # SPDX-License-Identifier: MIT
 
 import os
-import re
+import sys
 import fnmatch
 import logging
 from typing import Dict, List, Any, Optional
 from swhid_tool.scanner import ScanResults
+
+# Use standard library tomllib (Python 3.11+) with tomli fallback
+if sys.version_info >= (3, 11):
+    import tomllib
+else:
+    try:
+        import tomli as tomllib  # type: ignore[no-redef]
+    except ImportError:
+        raise ImportError(
+            "The 'tomli' package is required for Python < 3.11. "
+            "Install it with: pip install tomli"
+        )
 
 logger = logging.getLogger(__name__)
 
@@ -35,82 +47,13 @@ class PolicyEngine:
 
     def load_policy(self, path: str) -> None:
         try:
-            with open(path, "r", encoding="utf-8") as f:
-                content = f.read()
-            parsed = self._parse_toml(content)
+            with open(path, "rb") as f:
+                parsed = tomllib.load(f)
             if "policy" in parsed:
                 self.config["policy"].update(parsed["policy"])
             logger.info(f"Loaded policy from {path}: {self.config['policy']}")
         except Exception as e:
             logger.error(f"Failed to load policy file {path}: {e}")
-
-    def _parse_toml(self, content: str) -> Dict[str, Any]:
-        result: Dict[str, Any] = {}
-        current_section = result
-        
-        lines = []
-        for line in content.splitlines():
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            lines.append(line)
-            
-        joined_lines = []
-        in_list = False
-        list_buffer = ""
-        for line in lines:
-            if "[" in line and "]" not in line and "=" in line:
-                in_list = True
-                list_buffer = line
-            elif in_list:
-                list_buffer += " " + line
-                if "]" in line:
-                    in_list = False
-                    joined_lines.append(list_buffer)
-                    list_buffer = ""
-            else:
-                joined_lines.append(line)
-                
-        for line in joined_lines:
-            if line.startswith("[") and line.endswith("]"):
-                section_name = line[1:-1].strip()
-                result[section_name] = {}
-                current_section = result[section_name]
-            elif "=" in line:
-                key, val = line.split("=", 1)
-                key = key.strip()
-                val = val.strip()
-                
-                if val.lower() == "true":
-                    parsed_val: Any = True
-                elif val.lower() == "false":
-                    parsed_val = False
-                elif val.startswith("[") and val.endswith("]"):
-                    inner = val[1:-1].strip()
-                    if not inner:
-                        parsed_val = []
-                    else:
-                        items = []
-                        for item in re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', inner):
-                            items.append(item)
-                        if not items and inner:
-                            items = [x.strip() for x in inner.split(",")]
-                        parsed_val = items
-                elif val.startswith('"') and val.endswith('"'):
-                    parsed_val = val[1:-1]
-                elif val.startswith("'") and val.endswith("'"):
-                    parsed_val = val[1:-1]
-                else:
-                    try:
-                        if "." in val:
-                            parsed_val = float(val)
-                        else:
-                            parsed_val = int(val)
-                    except ValueError:
-                        parsed_val = val
-                current_section[key] = parsed_val
-                
-        return result
 
     def is_allowlisted(self, purl: str) -> bool:
         allowlist = self.config["policy"].get("allowlist", [])

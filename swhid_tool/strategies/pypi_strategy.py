@@ -5,6 +5,7 @@ import os
 import io
 import shutil
 import tarfile
+import tempfile
 import zipfile
 import requests
 import urllib.parse
@@ -215,10 +216,7 @@ class PyPIStrategy(VerificationStrategy):
             resp = requests.get(artifact["url"])
             resp.raise_for_status()
             
-            tmp_dir = f"tmp_pypi_{name}_{version}"
-            if os.path.exists(tmp_dir):
-                shutil.rmtree(tmp_dir)
-            os.makedirs(tmp_dir)
+            tmp_dir = tempfile.mkdtemp(prefix=f"swhid_pypi_{name}_{version}_")
             
             if artifact["filename"].endswith(".tar.gz"):
                 with tarfile.open(fileobj=io.BytesIO(resp.content), mode="r:gz") as tar:

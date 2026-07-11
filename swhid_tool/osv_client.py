@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import requests
+from requests.adapters import HTTPAdapter
 from typing import List, Dict, Any, Optional, cast
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -10,8 +11,6 @@ logger = logging.getLogger(__name__)
 
 OSV_API_URL = "https://api.osv.dev/v1/querybatch"
 OSV_VULN_URL = "https://api.osv.dev/v1/vulns"
-
-from requests.adapters import HTTPAdapter
 
 class OSVClient:
     """
@@ -23,7 +22,7 @@ class OSVClient:
         adapter = HTTPAdapter(pool_connections=20, pool_maxsize=20)
         self.session.mount("https://", adapter)
         self.session.mount("http://", adapter)
-        self.session.headers.update({"User-Agent": "SWHID-Verification-Tool/1.0 (GSoC 2026)"})
+        self.session.headers.update({"User-Agent": "SWHID-Verification-Tool/1.0"})
 
     def _fetch_vuln_details(self, vuln_id: str) -> Optional[Dict[str, Any]]:
         """Fetches full details for a single vulnerability ID."""

@@ -1,16 +1,25 @@
-# SWHID Showcase Dataset
+# SWHID Verification Dataset
 
-This directory contains a pre-generated SPDX 3.0 verification dataset mapping popular packages to their Software Heritage Identifiers (SWHIDs).
+This directory contains the comprehensive SWHID verification dataset mapping
+300 of the most popular packages across 6 ecosystems to their SWHIDs.
+
+## Files
+
+| File | Description |
+| :--- | :--- |
+| `swhid_dataset.csv` | Full dataset in CSV format for analysis |
+| `full_manifest.jsonld` | SPDX 3.0 JSON-LD manifest with all verified mappings |
+| `findings_report.md` | Detailed findings report with per-ecosystem analysis |
+| `showcase_manifest.jsonld` | Original 25-package showcase manifest |
 
 ## Dataset Statistics
 
 | Metric | Count | Percentage |
-| :--- | :--- | :--- |
-| **Total Packages** | 25 | 100% |
-| **Verified (High Confidence)** | 1 | 4.0% |
-| **Inferred (Medium Confidence)** | 18 | 72.0% |
-| **Partial (Low Confidence)** | 1 | 4.0% |
-| **Errors/Failed** | 5 | 20.0% |
-| **SWH 'Save Code Now' Triggers** | 0 | - |
+| :--- | ---: | ---: |
+| **Total Packages** | 300 | 100% |
+| **Verified (High Confidence)** | 10 | 3.3% |
+| **Inferred (Medium Confidence)** | 82 | 27.3% |
+| **Partial (Low Confidence)** | 143 | 47.7% |
+| **Errors/Failed** | 65 | 21.7% |
 
-*Generated automatically by `scripts/generate_showcase_dataset.py`.*
+*Generated on 2026-07-11 by `scripts/generate_full_dataset.py`.*
