@@ -48,7 +48,7 @@ class CargoStrategy(VerificationStrategy):
             if sha1:
                 verification = self._verify_file_level(source_path, sha1, path_in_vcs)
                 findings.update(verification)
-                if verification["mismatches"] == 0:
+                if verification.get("status") == "Verified":
                     findings["confidence"] = "Verified"
                 else:
                     findings["confidence"] = "Partial"

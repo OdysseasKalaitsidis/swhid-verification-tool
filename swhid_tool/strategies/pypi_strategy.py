@@ -90,7 +90,12 @@ class PyPIStrategy(VerificationStrategy):
             
             for ext in cert.extensions:
                 if ext.oid.dotted_string == COMMIT_SHA_OID:
-                    commit_sha = ext.value.value.decode("utf-8")
+                    raw = ext.value.value
+                    if len(raw) > 2 and raw[0] == 0x0c:  # DER UTF8String tag
+                        length = raw[1]
+                        commit_sha = raw[2:2+length].decode("utf-8")
+                    else:
+                        commit_sha = raw.decode("utf-8")
                     break
             
             # Fallback to SAN if OID not found (common in older sigstore)
