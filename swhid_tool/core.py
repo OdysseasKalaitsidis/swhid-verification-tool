@@ -40,14 +40,96 @@ class SWHClient:
             self.session.headers.update({"Authorization": f"Bearer {token}"})
 
     def check_swhid(self, swhid: str) -> bool:
-        """Checks if a SWHID exists in the archive."""
-        url = f"{SWH_API_BASE}/provenance/{swhid}/"
+        """
+        Checks if a SWHID exists in the archive.
+
+        NOTE: this previously hit /api/1/provenance/{swhid}/, which is not a
+        valid public endpoint. The real provenance API lives at
+        /api/1/provenance/whereis/(target)/ and, per SWH's own docs, "is not
+        publicly available and requires authentication and special user
+        permission" - so the old code would report "not found" for every
+        SWHID regardless of whether it was actually archived. Route by SWHID
+        type to the correct, public, per-object endpoint instead (the same
+        pattern the original PoC used successfully).
+        """
         try:
+            parts = swhid.split(":")
+            if len(parts) < 4:
+                return False
+            obj_type, obj_hash = parts[2], parts[3]
+            endpoint = {
+                "cnt": f"content/sha1_git:{obj_hash}",
+                "dir": f"directory/{obj_hash}",
+                "rev": f"revision/{obj_hash}",
+                "rel": f"release/{obj_hash}",
+                "snp": f"snapshot/{obj_hash}",
+            }.get(obj_type)
+            if endpoint is None:
+                logger.error(f"Unknown SWHID type in {swhid}")
+                return False
+            url = f"{SWH_API_BASE}/{endpoint}/"
             response = self.session.get(url, timeout=DEFAULT_TIMEOUT)
             return response.status_code == 200
         except requests.exceptions.RequestException as e:
             logger.error(f"Error checking SWHID {swhid}: {e}")
             return False
+
+    def get_directory_for_revision(self, rev_id: str, path_in_vcs: str = "") -> Optional[str]:
+        """
+        Given a git commit sha1, returns the SWH directory hash for that
+        revision's root, or for the given subdirectory if path_in_vcs is set
+        (monorepo case).
+        """
+        revision = self.get_revision(rev_id)
+        if revision is None:
+            return None
+        root_dir = revision.get("directory")
+        if not root_dir:
+            return None
+        if not path_in_vcs:
+            return root_dir
+
+        current = root_dir
+        for part in path_in_vcs.strip("/").split("/"):
+            url = f"{SWH_API_BASE}/directory/{current}/"
+            try:
+                resp = self.session.get(url, timeout=DEFAULT_TIMEOUT)
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Error fetching directory {current}: {e}")
+                return None
+            if resp.status_code != 200:
+                return None
+            match = next((e for e in resp.json() if e["name"] == part and e["type"] == "dir"), None)
+            if match is None:
+                return None
+            current = match["target"]
+        return current
+
+    def build_directory_blob_index(self, dir_hash: str, prefix: str = "") -> Dict[str, str]:
+        """
+        Recursively walks a SWH directory tree, returning {relative_path: content_sha1_git}
+        for every regular file. Mirrors the approach proven in the original PoC's
+        crate_normalizer.py (_build_swh_tree).
+        """
+        url = f"{SWH_API_BASE}/directory/{dir_hash}/"
+        try:
+            resp = self.session.get(url, timeout=DEFAULT_TIMEOUT)
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching directory {dir_hash}: {e}")
+            return {}
+        if resp.status_code != 200:
+            return {}
+
+        blobs: Dict[str, str] = {}
+        for entry in resp.json():
+            rel = f"{prefix}{entry['name']}" if not prefix else f"{prefix}/{entry['name']}"
+            if entry["type"] == "dir":
+                blobs.update(self.build_directory_blob_index(entry["target"], rel))
+            elif entry["type"] == "file":
+                blobs[rel] = entry["target"]
+            # symlinks intentionally skipped, matching the proven PoC behavior
+        return blobs
+
 
     def get_revision(self, rev_id: str) -> Optional[Dict[str, Any]]:
         """Gets revision info from SWH."""

@@ -9,7 +9,7 @@ import tarfile
 from typing import Dict, Any, List
 from swhid_tool.strategies.base import VerificationStrategy
 from swhid_tool.core import SWHClient
-from swh.model.from_disk import Directory as SWHDirectory
+from swh.model.from_disk import Directory as SWHDirectory, Content as SWHContent
 
 class CargoStrategy(VerificationStrategy):
     CRATES_API = "https://static.crates.io/crates"
@@ -106,19 +106,36 @@ class CargoStrategy(VerificationStrategy):
         """
         commit_swhid = f"swh:1:rev:{sha1}"
         if not self.swh.check_swhid(commit_swhid):
-            return {"status": "Partial", "reason": f"Commit {sha1} not found in SWH archive"}
-        
-        # In a full implementation, we would use the SWH API to fetch the directory SWHID
-        # for the specific path_in_vcs within the commit.
-        # For now, we compute the local directory SWHID (normalized) and 
-        # suggest that it should be found within the commit's tree.
-        
-        local_swhid = str(SWHDirectory.from_disk(path=os.fsencode(source_path), max_content_length=None).swhid())
-        
+            return {"status": "Partial", "mismatches": None, "reason": f"Commit {sha1} not found in SWH archive"}
+
+        swh_dir_hash = self.swh.get_directory_for_revision(sha1, path_in_vcs)
+        if swh_dir_hash is None:
+            return {"status": "Partial", "mismatches": None, "reason": "Could not resolve directory for commit/path_in_vcs"}
+
+        swh_blobs = self.swh.build_directory_blob_index(swh_dir_hash)
+
+        matched, mismatched, not_in_git = [], [], []
+        for root, dirs, files in os.walk(source_path):
+            dirs.sort()
+            for fname in sorted(files):
+                full_path = os.path.join(root, fname)
+                rel = os.path.relpath(full_path, source_path).replace("\\", "/")
+                our_hash = str(
+                    SWHContent.from_file(path=os.fsencode(full_path), max_content_length=None).swhid()
+                ).split(":")[-1]
+                swh_hash = swh_blobs.get(rel)
+                if swh_hash is None:
+                    not_in_git.append(rel)
+                elif our_hash == swh_hash:
+                    matched.append(rel)
+                else:
+                    mismatched.append(rel)
+
         return {
-            "status": "Verified",
+            "status": "Verified" if not mismatched else "Partial",
             "commit_swhid": commit_swhid,
-            "local_directory_swhid": local_swhid,
             "path_in_vcs": path_in_vcs or "root",
-            "matches": "Directory matched after normalization"
+            "matched": len(matched),
+            "mismatches": len(mismatched),
+            "not_in_git": len(not_in_git),
         }
