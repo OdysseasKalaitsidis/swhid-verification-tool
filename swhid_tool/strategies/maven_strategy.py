@@ -21,7 +21,7 @@ class MavenStrategy(VerificationStrategy):
     def resolve(self, name: str, version: str, qualifiers: Dict[str, str]) -> Dict[str, Any]:
         # Maven name is group:artifact
         if ":" not in name:
-            return {"status": "Error", "reason": "Maven name must be group:artifact"}
+            return {"purl": f"pkg:maven/{name}@{version}", "status": "Error", "reason": "Maven name must be group:artifact"}
         
         group_id, artifact_id = name.split(":")
         purl = f"pkg:maven/{group_id}/{artifact_id}@{version}"

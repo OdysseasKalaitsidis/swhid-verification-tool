@@ -84,7 +84,7 @@ class SWHClient:
         if revision is None:
             return None
         root_dir = revision.get("directory")
-        if not root_dir:
+        if not isinstance(root_dir, str):
             return None
         if not path_in_vcs:
             return root_dir
@@ -102,7 +102,10 @@ class SWHClient:
             match = next((e for e in resp.json() if e["name"] == part and e["type"] == "dir"), None)
             if match is None:
                 return None
-            current = match["target"]
+            current_target = match.get("target")
+            if not isinstance(current_target, str):
+                return None
+            current = current_target
         return current
 
     def build_directory_blob_index(self, dir_hash: str, prefix: str = "") -> Dict[str, str]:

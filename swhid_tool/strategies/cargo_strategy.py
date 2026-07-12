@@ -60,7 +60,7 @@ class CargoStrategy(VerificationStrategy):
             return findings
 
         except Exception as e:
-            return {"status": "Error", "reason": str(e)}
+            return {"purl": purl, "status": "Error", "reason": str(e)}
 
     def _download_and_extract(self, name: str, version: str) -> str:
         url = f"{self.CRATES_API}/{name}/{name}-{version}.crate"
