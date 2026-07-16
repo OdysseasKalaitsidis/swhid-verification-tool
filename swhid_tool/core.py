@@ -32,7 +32,7 @@ class SWHClient:
         if auth_token:
             self.set_token(auth_token)
         
-        self.session.headers.update({"User-Agent": "SWHID-Verification-Tool/1.0"})
+        self.session.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"})
 
     def set_token(self, token: str) -> None:
         """Dynamically sets the Software Heritage API token."""

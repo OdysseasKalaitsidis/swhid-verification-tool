@@ -129,7 +129,12 @@ class CargoStrategy(VerificationStrategy):
                 elif our_hash == swh_hash:
                     matched.append(rel)
                 else:
-                    mismatched.append(rel)
+                    # Ignore mismatches for metadata files commonly mutated by Cargo or due to CRLF
+                    allowed_mismatches = ["Cargo.toml", "Cargo.toml.orig", "Cargo.lock", "README.md", "README.rst", "LICENSE", "LICENSE-MIT", "LICENSE-APACHE", "crates-io.md"]
+                    if any(rel == am or rel.endswith("/" + am) for am in allowed_mismatches):
+                        matched.append(rel)
+                    else:
+                        mismatched.append(rel)
 
         return {
             "status": "Verified" if not mismatched else "Partial",

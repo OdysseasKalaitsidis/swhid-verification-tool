@@ -36,16 +36,24 @@ class PyPIStrategy(VerificationStrategy):
         # 2. Strategy B: Metadata
         metadata_result = self._strategy_b_metadata(name, version)
         findings["strategies_tried"].append({"name": "B: Metadata", "result": metadata_result})
-        if metadata_result.get("status") in ["Verified", "Inferred"]:
+        if metadata_result.get("status") == "Verified":
             findings.update(metadata_result)
-            findings["confidence"] = metadata_result.get("status")
+            findings["confidence"] = "Verified"
             return findings
 
         # 3. Strategy C: File-level
         file_level_result = self._strategy_c_file_level(name, version)
         findings["strategies_tried"].append({"name": "C: File-level", "result": file_level_result})
-        findings.update(file_level_result)
-        findings["confidence"] = file_level_result.get("confidence", "None")
+        
+        if file_level_result.get("status") == "Verified":
+            findings.update(file_level_result)
+            findings["confidence"] = "Verified"
+        elif metadata_result.get("status") == "Inferred":
+            findings.update(metadata_result)
+            findings["confidence"] = "Inferred"
+        else:
+            findings.update(file_level_result)
+            findings["confidence"] = file_level_result.get("confidence", "None")
 
         return findings
 
@@ -237,15 +245,21 @@ class PyPIStrategy(VerificationStrategy):
             else:
                 inner_dir = tmp_dir
 
-            # Normalization: Clean the directory, keeping only .py files
+            # Normalization: Clean the directory by stripping generated/metadata files
+            for root, dirs, files in os.walk(inner_dir, topdown=False):
+                for d in list(dirs):
+                    if d.endswith(".egg-info") or d == "__pycache__" or d.endswith(".dist-info"):
+                        shutil.rmtree(os.path.join(root, d))
+                        dirs.remove(d)
+
             file_count = 0
             for root, dirs, files in os.walk(inner_dir, topdown=False):
                 for f in files:
                     file_path = os.path.join(root, f)
-                    if f.endswith(".py"):
-                        file_count += 1
-                    else:
+                    if f in ["PKG-INFO", "setup.cfg"] or f.endswith(".pyc") or f.endswith(".pyo"):
                         os.remove(file_path)
+                    else:
+                        file_count += 1
                 
                 # Also remove empty directories
                 for d in dirs:
