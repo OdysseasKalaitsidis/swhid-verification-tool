@@ -1,301 +1,301 @@
 purl,ecosystem,name,version,status,confidence,swhid,strategy,repo_url,tag_matched,commit_sha,reason,timestamp
-pkg:pypi/boto3@1.43.46,pypi,boto3,1.43.46,Inferred,Inferred,,B,https://github.com/boto/boto3,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/packaging@26.2,pypi,packaging,26.2,Inferred,Inferred,,B,https://github.com/pypa/packaging,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/urllib3@2.7.0,pypi,urllib3,2.7.0,Partial,Partial,swh:1:dir:14f2b17633443113cc3a2cd45d5b03b868460cde,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/certifi@2026.6.17,pypi,certifi,2026.6.17,Inferred,Inferred,,B,https://github.com/certifi/python-certifi,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/idna@3.18,pypi,idna,3.18,Inferred,Inferred,,B,https://github.com/kjd/idna,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/requests@2.34.2,pypi,requests,2.34.2,Inferred,Inferred,,B,https://github.com/psf/requests,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/typing-extensions@4.16.0,pypi,typing-extensions,4.16.0,Inferred,Inferred,,B,https://github.com/python/typing_extensions,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/charset-normalizer@3.4.9,pypi,charset-normalizer,3.4.9,Partial,Partial,swh:1:dir:eaf06f4b399c8ffa0290703562850270bb11e655,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/botocore@1.43.46,pypi,botocore,1.43.46,Inferred,Inferred,,B,https://github.com/boto/botocore,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/setuptools@83.0.0,pypi,setuptools,83.0.0,Inferred,Inferred,,B,https://github.com/pypa/setuptools,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/cryptography@49.0.0,pypi,cryptography,49.0.0,Partial,Partial,swh:1:dir:5574c0961c1bb06ef47f1702c05fe69d9194d16e,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/aiobotocore@3.7.0,pypi,aiobotocore,3.7.0,Inferred,Inferred,,B,https://github.com/aio-libs/aiobotocore,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pygments@2.20.0,pypi,pygments,2.20.0,Inferred,Inferred,,B,https://github.com/pygments/pygments,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pluggy@1.6.0,pypi,pluggy,1.6.0,Partial,Partial,swh:1:dir:acaa89b2787941ccfe8c770712d64e571b3790ea,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/python-dateutil@2.9.0.post0,pypi,python-dateutil,2.9.0.post0,Verified,Verified,swh:1:rev:1ae807774053c071acc9e7d3d27778fba0a7773e,B,https://github.com/dateutil/dateutil,2.9.0.post0,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/six@1.17.0,pypi,six,1.17.0,Verified,Verified,swh:1:rev:ebd9b3af90247b8858d415a05e96e9ee61e48d07,B,https://github.com/benjaminp/six,1.17.0,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pyyaml@6.0.3,pypi,pyyaml,6.0.3,Partial,Partial,swh:1:dir:674c2e4512afc33d8037280e99c5e94a44af34ce,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/numpy@2.5.1,pypi,numpy,2.5.1,Partial,Partial,swh:1:dir:ccf4d28d842b392d0ae342364a823840371af3ab,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/cffi@2.1.0,pypi,cffi,2.1.0,Partial,Partial,swh:1:dir:7c49c95698206536c1cdd322147ff118acfcf394,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pydantic@2.13.4,pypi,pydantic,2.13.4,Inferred,Inferred,,B,https://github.com/pydantic/pydantic,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pytest@9.1.1,pypi,pytest,9.1.1,Inferred,Inferred,,B,https://github.com/pytest-dev/pytest,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/click@8.4.2,pypi,click,8.4.2,Inferred,Inferred,,B,https://github.com/pallets/click,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pycparser@3.0,pypi,pycparser,3.0,Inferred,Inferred,,B,https://github.com/eliben/pycparser,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/iniconfig@2.3.0,pypi,iniconfig,2.3.0,Verified,Verified,swh:1:rev:7faed13ae50bad7c5da3f5782f254a8a7736bb84,B,https://github.com/pytest-dev/iniconfig,v2.3.0,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/grpcio-status@1.82.1,pypi,grpcio-status,1.82.1,Partial,Partial,swh:1:dir:944a733c0f7122b0aa69d0268140aee835ab25f1,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pydantic-core@2.47.0,pypi,pydantic-core,2.47.0,Partial,Partial,swh:1:dir:61dfa50139c482c580b78121d772613a450eeb96,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/anyio@4.14.1,pypi,anyio,4.14.1,Partial,Partial,swh:1:dir:3b00c4c297168119c303b054789b2f834916c96b,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/s3transfer@0.19.1,pypi,s3transfer,0.19.1,Inferred,Inferred,,B,https://github.com/boto/s3transfer,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/attrs@26.1.0,pypi,attrs,26.1.0,Inferred,Inferred,,B,https://github.com/python-attrs/attrs,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/protobuf@7.35.1,pypi,protobuf,7.35.1,Partial,Partial,swh:1:dir:399574c0b28cf8292fc8337e6048f04d936bdda2,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/h11@0.16.0,pypi,h11,0.16.0,Partial,Partial,swh:1:dir:a89701e136f67f1d3631a53a7885d72b82e3c1e7,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/fsspec@2026.6.0,pypi,fsspec,2026.6.0,Inferred,Inferred,,B,https://github.com/fsspec/filesystem_spec,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/annotated-types@0.7.0,pypi,annotated-types,0.7.0,Verified,Verified,swh:1:rev:0735cd3d4c272b88405b6b04009716b691115210,B,https://github.com/annotated-types/annotated-types,v0.7.0,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pandas@3.0.3,pypi,pandas,3.0.3,Partial,Partial,swh:1:dir:8230c6190d54a68efb5362f93a92056b4776f323,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/s3fs@2026.6.0,pypi,s3fs,2026.6.0,Partial,Partial,swh:1:dir:5e9ac3aced0ff6dd0b4d0912904435e0f5939140,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/markupsafe@3.0.3,pypi,markupsafe,3.0.3,Inferred,Inferred,,B,https://github.com/pallets/markupsafe,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/httpx@0.28.1,pypi,httpx,0.28.1,Inferred,Inferred,,B,https://github.com/encode/httpx,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/httpcore@1.0.9,pypi,httpcore,1.0.9,Inferred,Inferred,,B,https://github.com/encode/httpcore,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/platformdirs@4.10.0,pypi,platformdirs,4.10.0,Verified,Verified,swh:1:rev:04cb1361a064132102612ab05053351196a62b40,B,https://github.com/tox-dev/platformdirs,4.10.0,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/typing-inspection@0.4.2,pypi,typing-inspection,0.4.2,Inferred,Inferred,,B,https://github.com/pydantic/typing-inspection,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/jinja2@3.1.6,pypi,jinja2,3.1.6,Inferred,Inferred,,B,https://github.com/pallets/jinja,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/python-dotenv@1.2.2,pypi,python-dotenv,1.2.2,Inferred,Inferred,,B,https://github.com/theskumar/python-dotenv,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pip@26.1.2,pypi,pip,26.1.2,Inferred,Inferred,,B,https://github.com/pypa/pip,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/filelock@3.29.7,pypi,filelock,3.29.7,Partial,Partial,swh:1:dir:99d40979cce76dc6b2b0a47ac341c5a1becf4a38,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pathspec@1.1.1,pypi,pathspec,1.1.1,Partial,Partial,swh:1:dir:2cf6684728e693a242d36db6c9c05d8dc2d68575,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/pyjwt@2.13.0,pypi,pyjwt,2.13.0,Verified,Verified,swh:1:rev:7144e4534c34810f4525dc4578a32addd8212cff,B,https://github.com/jpadilla/pyjwt,2.13.0,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/litellm@1.91.2,pypi,litellm,1.91.2,Inferred,Inferred,,B,https://github.com/BerriAI/litellm,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/aiohttp@3.14.1,pypi,aiohttp,3.14.1,Partial,Partial,swh:1:dir:f3eac571bb8a820e33a2e54dbfced5d33b197e43,C,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/rich@15.0.0,pypi,rich,15.0.0,Inferred,Inferred,,B,https://github.com/Textualize/rich,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:pypi/jmespath@1.1.0,pypi,jmespath,1.1.0,Inferred,Inferred,,B,https://github.com/jmespath/jmespath.py,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:npm/lodash@4.18.1,npm,lodash,4.18.1,Inferred,Inferred,,A,https://github.com/lodash/lodash,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:npm/chalk@5.6.2,npm,chalk,5.6.2,Inferred,Inferred,,A,https://github.com/chalk/chalk,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:npm/react@19.2.7,npm,react,19.2.7,Partial,Partial,swh:1:dir:76e3ff0a32582da0b3a387d6399f7b49e4da3766,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/express@5.2.1,npm,express,5.2.1,Partial,Partial,swh:1:dir:e34b0a188c9788483fdd0e8bd4bf0754a6c789b7,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/commander@15.0.0,npm,commander,15.0.0,Partial,Partial,swh:1:dir:b56f28ac5940bedad711a84a06ce08bd2df9b155,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/moment@2.30.1,npm,moment,2.30.1,Partial,Partial,swh:1:dir:1fa8660b7b021912c12255f662d421470871adb0,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/debug@4.4.3,npm,debug,4.4.3,Partial,Partial,swh:1:dir:36f14d19ac67cab45b1de78cbdee960fb78b38fe,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/async@3.2.6,npm,async,3.2.6,Partial,Partial,swh:1:dir:f01b03a4ab83e661a3d5a5fb0646e8575e490d5a,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/bluebird@3.7.2,npm,bluebird,3.7.2,Partial,Partial,swh:1:dir:894b0e4dda05072f77ee777601cc8d9779327196,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/request@2.88.2,npm,request,2.88.2,Partial,Partial,swh:1:dir:5cfa99939d46cbfeba44490c453e5b12bec8578e,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/underscore@1.13.8,npm,underscore,1.13.8,Partial,Partial,swh:1:dir:711c037f8260be344ca2eea2227abfa66fa182bc,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/uuid@14.0.1,npm,uuid,14.0.1,Partial,Partial,swh:1:dir:5c3978645f57efdd4759927706fb7a647cc08026,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/axios@1.18.1,npm,axios,1.18.1,Partial,Partial,swh:1:dir:1df870b4126d3b8821cb37e444348d30a4fc184d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/glob@13.0.6,npm,glob,13.0.6,Partial,Partial,swh:1:dir:1754c307f01a7f7793cd3327f9882a28d87c55a2,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/mkdirp@3.0.1,npm,mkdirp,3.0.1,Partial,Partial,swh:1:dir:3a60d3ee462e0483fc81e4c24ecc63b6afa40950,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/minimist@1.2.8,npm,minimist,1.2.8,Partial,Partial,swh:1:dir:c61a58ccc3002d1fa2d8854d6783aecf86dc0565,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/semver@7.8.5,npm,semver,7.8.5,Partial,Partial,swh:1:dir:b3dad436463f171df2f6de973c3c9f7e245ff5c8,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/colors@1.4.0,npm,colors,1.4.0,Partial,Partial,swh:1:dir:35e3048093e1ea9cb11d50a9370eb5cae226950e,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/body-parser@2.3.0,npm,body-parser,2.3.0,Partial,Partial,swh:1:dir:4dc124b334a5af113bc88a8d45b348aafcdfc019,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/through2@5.0.5,npm,through2,5.0.5,Partial,Partial,swh:1:dir:f24ce2229220f73a2f313664c2579b45dcc647fb,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/yargs@18.0.0,npm,yargs,18.0.0,Partial,Partial,swh:1:dir:b58eb14ac1a0fce9885441e5c639ee34b675a799,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/fs-extra@11.3.6,npm,fs-extra,11.3.6,Partial,Partial,swh:1:dir:af0c6540a6cd01b56d713da654084fdac619dba4,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/inquirer@14.0.2,npm,inquirer,14.0.2,Partial,Partial,swh:1:dir:90415b7a7c02d54ace96efff22f89847f7cd4d4d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/webpack@5.108.4,npm,webpack,5.108.4,Partial,Partial,swh:1:dir:5a892268cde802870e2a17b6660d70090ea30c83,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/prop-types@15.8.1,npm,prop-types,15.8.1,Partial,Partial,swh:1:dir:c62bd8ec5657b52dde18577a218167cf7a6e2169,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/rxjs@7.8.2,npm,rxjs,7.8.2,Partial,Partial,swh:1:dir:dc10bd8d2a24e2283b29cf66424cf9359fefda6d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/tslib@2.8.1,npm,tslib,2.8.1,Partial,Partial,swh:1:dir:bf34c0ce4a3a0b594830750ea5e3189ee512741d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/core-js@3.49.0,npm,core-js,3.49.0,Partial,Partial,swh:1:dir:77f3c1a646805327c62b65c8c43e393b87965e55,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/classnames@2.5.1,npm,classnames,2.5.1,Partial,Partial,swh:1:dir:d9b37f4f26e0b363f59a515a4f6eb56033e60b78,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/jquery@4.0.0,npm,jquery,4.0.0,Partial,Partial,swh:1:dir:39da88c5104b8b8c570abe104edfeeefb6a0e1a9,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/ws@8.21.0,npm,ws,8.21.0,Partial,Partial,swh:1:dir:d35f8c06acf3a07cd8cf1739f9e6e6aa4a7075ab,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/cheerio@1.2.0,npm,cheerio,1.2.0,Partial,Partial,swh:1:dir:78f1652dcf42e3b6ee0db2dcec1c187a7c8610bc,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/rimraf@6.1.3,npm,rimraf,6.1.3,Partial,Partial,swh:1:dir:aa9d30738689835d90cd99d1c0954d0a889d3638,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/dotenv@17.4.2,npm,dotenv,17.4.2,Partial,Partial,swh:1:dir:e31e54609e4a08943282582376d8da62195a557f,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/eslint@10.7.0,npm,eslint,10.7.0,Partial,Partial,swh:1:dir:a7b36380164af48dc35073e2ca074e3ec789557c,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/prettier@3.9.5,npm,prettier,3.9.5,Partial,Partial,swh:1:dir:7e42b78ed56e7b4fa4d62c3fd334365b902f095d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/typescript@7.0.2,npm,typescript,7.0.2,Partial,Partial,swh:1:dir:3428cd50c725565a935932020c175af17fce43d7,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/mocha@11.7.6,npm,mocha,11.7.6,Partial,Partial,swh:1:dir:23a9884599da3dbc9d2aa1cfd1b777feb31d7990,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/jest@30.4.2,npm,jest,30.4.2,Partial,Partial,swh:1:dir:5917417e9c4721f027d2a4ec060751617469ba14,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/babel-core@6.26.3,npm,babel-core,6.26.3,Partial,Partial,swh:1:dir:82244068437b4dc7ad6f0c41a37059b93ed4c5e4,B,https://github.com/babel/babel/tree/master/packages/babel-core,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:npm/ora@9.4.1,npm,ora,9.4.1,Partial,Partial,swh:1:dir:14ab880c1081b1d490c7e893581de7cba260a531,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/execa@9.6.1,npm,execa,9.6.1,Partial,Partial,swh:1:dir:031af022b0adaadbbf15744273d68735a12d108f,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/nano@11.0.6,npm,nano,11.0.6,Partial,Partial,swh:1:dir:5c0713e388a74eb918af4d86a7f9809bc4d0f6af,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/passport@0.7.0,npm,passport,0.7.0,Partial,Partial,swh:1:dir:e4ed8f3a5d46f6c3d89e0d9d5cdb86fee71bc9f8,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/mongoose@9.7.4,npm,mongoose,9.7.4,Partial,Partial,swh:1:dir:0262231aeadbe24b9778c2d15c0c0aac2429099e,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/redis@6.1.0,npm,redis,6.1.0,Partial,Partial,swh:1:dir:61531b6e5b6963a60602391b777db3b9517b1e75,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/pg@8.22.0,npm,pg,8.22.0,Partial,Partial,swh:1:dir:10bb8bf7a1cb9008bf694b44b49d9b2456641d67,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/mysql2@3.22.6,npm,mysql2,3.22.6,Partial,Partial,swh:1:dir:44489887f43b374aad0f567272b909ab1d226623,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/socket.io@4.8.3,npm,socket.io,4.8.3,Partial,Partial,swh:1:dir:32dcbc8d7bfa2212a8e66a8f7e70b2d5964fff04,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:npm/cors@2.8.6,npm,cors,2.8.6,Partial,Partial,swh:1:dir:f9b7fa70774128bd1566efebed7d67b7c78394ad,B,,,,,2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-,,,,Error,Error,,,,,,'mismatches',2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/gin-gonic/gin@v1.9.0,golang,github.com/gin-gonic/gin,v1.9.0,Partial,Partial,swh:1:dir:5836ecd2f6866038f6d2481acdbe80b401861e25,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/sirupsen/logrus@v1.9.3,golang,github.com/sirupsen/logrus,v1.9.3,Partial,Partial,swh:1:dir:c12a219d47e40b7ec9ec0d2fe415b6b5dee02ee6,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/golang.org/x/text@v0.14.0,golang,golang.org/x/text,v0.14.0,Partial,Partial,swh:1:dir:d072db728aedc21566b6765e7c7076d694c32ef4,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/spf13/cobra@v1.8.0,golang,github.com/spf13/cobra,v1.8.0,Partial,Partial,swh:1:dir:db27fbf14d40d1f841102990f3550b4c28b9768b,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/stretchr/testify@v1.9.0,golang,github.com/stretchr/testify,v1.9.0,Partial,Partial,swh:1:dir:6e4269731b71bb42a2ac8f6621c0ae54799a7abb,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/gorilla/mux@v1.8.1,golang,github.com/gorilla/mux,v1.8.1,Partial,Partial,swh:1:dir:f8d5a04a419e836156cccec093412c42f489405b,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/go-chi/chi@v5.0.12,golang,github.com/go-chi/chi,v5.0.12,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/spf13/viper@v1.18.2,golang,github.com/spf13/viper,v1.18.2,Partial,Partial,swh:1:dir:4d43133d15109446bcd666a1aab94fe17a4da03a,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/google.golang.org/grpc@v1.62.1,golang,google.golang.org/grpc,v1.62.1,Partial,Partial,swh:1:dir:fa99f0c874e21d192fd33c5bd6866e453706f945,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/prometheus/client_golang@v1.19.0,golang,github.com/prometheus/client_golang,v1.19.0,Partial,Partial,swh:1:dir:e79e400022468a14ae80ec08635e32ab1dc4827b,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/go-redis/redis@v8.11.5,golang,github.com/go-redis/redis,v8.11.5,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/stretchr/objx@v0.5.2,golang,github.com/stretchr/objx,v0.5.2,Partial,Partial,swh:1:dir:9f76c065f3e4292bbc25b7e750b53eab3c1a14b5,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/go.uber.org/zap@v1.27.0,golang,go.uber.org/zap,v1.27.0,Partial,Partial,swh:1:dir:e0f2deffdb5d3c090dd020c3dcf7f939febe6610,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/golang/protobuf@v1.5.4,golang,github.com/golang/protobuf,v1.5.4,Partial,Partial,swh:1:dir:64084f2998fc3246f47d720109049f91add93c26,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/google/uuid@v1.6.0,golang,github.com/google/uuid,v1.6.0,Partial,Partial,swh:1:dir:cc4703efbb8a436cb8cfe07d9f7740dae03090dc,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/pkg/errors@v0.9.1,golang,github.com/pkg/errors,v0.9.1,Partial,Partial,swh:1:dir:dd0db94cf1cb171e0b1524b376294d8b1d4c7abb,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/fatih/color@v1.16.0,golang,github.com/fatih/color,v1.16.0,Partial,Partial,swh:1:dir:55cd5f0568678ba7cd4c670f371b095241590878,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/mitchellh/mapstructure@v1.5.0,golang,github.com/mitchellh/mapstructure,v1.5.0,Partial,Partial,swh:1:dir:fbdff7fea2e719bc1ab8aa88414d5788075e0ac6,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/aws/aws-sdk-go@v1.51.6,golang,github.com/aws/aws-sdk-go,v1.51.6,Partial,Partial,swh:1:dir:51411f59eb5656d9ac2131c9a1ba144264fb3ec8,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/hashicorp/consul@v1.18.1,golang,github.com/hashicorp/consul,v1.18.1,Partial,Partial,swh:1:dir:a44f82074a41ec098f8421278b0c8dbafa649814,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/docker/docker@v25.0.5,golang,github.com/docker/docker,v25.0.5,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/lib/pq@v1.10.9,golang,github.com/lib/pq,v1.10.9,Partial,Partial,swh:1:dir:b57c900d0a8daf9f6fd4cf5e104fb3c64b92c6c0,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/jackc/pgx@v5.5.5,golang,github.com/jackc/pgx,v5.5.5,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/go-sql-driver/mysql@v1.8.1,golang,github.com/go-sql-driver/mysql,v1.8.1,Partial,Partial,swh:1:dir:95921b72dbbeda0013fece7c82a1b87b0d5df514,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/gorilla/websocket@v1.5.1,golang,github.com/gorilla/websocket,v1.5.1,Partial,Partial,swh:1:dir:7fd1e4cc484b3b18292dd0e1371a472946627cd2,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/labstack/echo@v4.11.4,golang,github.com/labstack/echo,v4.11.4,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/golang.org/x/crypto@v0.21.0,golang,golang.org/x/crypto,v0.21.0,Partial,Partial,swh:1:dir:c78fba02e71033faf8d6ef46dad83a1d33e3a82d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/golang.org/x/net@v0.22.0,golang,golang.org/x/net,v0.22.0,Partial,Partial,swh:1:dir:2d2d3d4c88f7565fbdc8c7e6409a9792ff22d5ce,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/golang.org/x/sys@v0.18.0,golang,golang.org/x/sys,v0.18.0,Partial,Partial,swh:1:dir:da276610e791f12cff7647b0714a03062bc7a706,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/golang.org/x/tools@v0.19.0,golang,golang.org/x/tools,v0.19.0,Partial,Partial,swh:1:dir:b4cc10afd43eaa258b7cb24700ca8927db947ad9,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/go-playground/validator@v10.19.0,golang,github.com/go-playground/validator,v10.19.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/rs/zerolog@v1.32.0,golang,github.com/rs/zerolog,v1.32.0,Partial,Partial,swh:1:dir:e7a2a2b344ecd522f37d7c7d5cbf11e7cdf7cc59,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/nats-io/nats.go@v1.34.0,golang,github.com/nats-io/nats.go,v1.34.0,Partial,Partial,swh:1:dir:ceb0c4fa9df33ec59226b72977bb41cecce2412f,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/tidwall/gjson@v1.17.1,golang,github.com/tidwall/gjson,v1.17.1,Partial,Partial,swh:1:dir:935d71b1e3fc4ce2409bff13e0b39937ee7461a6,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/patrickmn/go-cache@v2.1.0,golang,github.com/patrickmn/go-cache,v2.1.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/dgrijalva/jwt-go@v3.2.0,golang,github.com/dgrijalva/jwt-go,v3.2.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/gofiber/fiber@v2.52.2,golang,github.com/gofiber/fiber,v2.52.2,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/gin-contrib/cors@v1.6.0,golang,github.com/gin-contrib/cors,v1.6.0,Partial,Partial,swh:1:dir:9d1a0d0a1d08e264cc07b8fd785bb23ce75a881f,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/go-kit/kit@v0.13.0,golang,github.com/go-kit/kit,v0.13.0,Partial,Partial,swh:1:dir:7a600926279d870c7e1667f771351faa9a40558e,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/gogo/protobuf@v1.3.2,golang,github.com/gogo/protobuf,v1.3.2,Partial,Partial,swh:1:dir:cf2bc48b35233d539280e14243976674590faec5,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/pelletier/go-toml@v2.1.1,golang,github.com/pelletier/go-toml,v2.1.1,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/hashicorp/go-hclog@v1.6.2,golang,github.com/hashicorp/go-hclog,v1.6.2,Partial,Partial,swh:1:dir:4b94e9e3dcb34a4fa413ed06a3cb11adfc61e71f,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/joho/godotenv@v1.5.1,golang,github.com/joho/godotenv,v1.5.1,Partial,Partial,swh:1:dir:df09f0777e3d2c56543897e1f3d0dfc775e95666,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/DATA-DOG/go-sqlmock@v1.5.2,golang,github.com/DATA-DOG/go-sqlmock,v1.5.2,Partial,Partial,swh:1:dir:af0bc28f9c28f37a8bd0921d57971c6a730d16a1,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/cespare/xxhash@v2.2.0,golang,github.com/cespare/xxhash,v2.2.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/golang-migrate/migrate@v4.17.0,golang,github.com/golang-migrate/migrate,v4.17.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/grpc-ecosystem/grpc-gateway@v2.19.1,golang,github.com/grpc-ecosystem/grpc-gateway,v2.19.1,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/uber-go/fx@v1.21.0,golang,github.com/uber-go/fx,v1.21.0,Partial,Partial,swh:1:dir:79705861e9c4ccd06ac3ab5ac2d61c53b4da845a,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/shopspring/decimal@v1.3.1,golang,github.com/shopspring/decimal,v1.3.1,Partial,Partial,swh:1:dir:2e813fb75787cdf0e881261857833a7d142b1d6c,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:golang/github.com/jmoiron/sqlx@v1.3.5,golang,github.com/jmoiron/sqlx,v1.3.5,Partial,Partial,swh:1:dir:f774a6e36b612fb93f591972699de76b46e1f6b7,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/junit/junit@4.13.2,maven,junit/junit,4.13.2,Partial,Partial,,,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.slf4j/slf4j-api@2.0.13,maven,org.slf4j/slf4j-api,2.0.13,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.commons/commons-lang3@3.14.0,maven,org.apache.commons/commons-lang3,3.14.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.17.0,maven,com.fasterxml.jackson.core/jackson-databind,2.17.0,Verified,Verified,,,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.mockito/mockito-core@5.11.0,maven,org.mockito/mockito-core,5.11.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.google.guava/guava@33.1.0-jre,maven,com.google.guava/guava,33.1.0-jre,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.logging.log4j/log4j-core@2.23.1,maven,org.apache.logging.log4j/log4j-core,2.23.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.httpcomponents/httpclient@4.5.14,maven,org.apache.httpcomponents/httpclient,4.5.14,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.google.code.gson/gson@2.10.1,maven,com.google.code.gson/gson,2.10.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.projectlombok/lombok@1.18.32,maven,org.projectlombok/lombok,1.18.32,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.commons/commons-collections4@4.4,maven,org.apache.commons/commons-collections4,4.4,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/commons-io/commons-io@2.16.0,maven,commons-io/commons-io,2.16.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.springframework/spring-core@6.1.5,maven,org.springframework/spring-core,6.1.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.springframework/spring-context@6.1.5,maven,org.springframework/spring-context,6.1.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.springframework.boot/spring-boot@3.2.4,maven,org.springframework.boot/spring-boot,3.2.4,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/ch.qos.logback/logback-classic@1.5.3,maven,ch.qos.logback/logback-classic,1.5.3,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.commons/commons-text@1.12.0,maven,org.apache.commons/commons-text,1.12.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.fasterxml.jackson.core/jackson-core@2.17.0,maven,com.fasterxml.jackson.core/jackson-core,2.17.0,Verified,Verified,,,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.yaml/snakeyaml@2.2,maven,org.yaml/snakeyaml,2.2,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/commons-codec/commons-codec@1.17.0,maven,commons-codec/commons-codec,1.17.0,Inferred,Partial,,,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.assertj/assertj-core@3.25.3,maven,org.assertj/assertj-core,3.25.3,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.jetbrains.kotlin/kotlin-stdlib@1.9.23,maven,org.jetbrains.kotlin/kotlin-stdlib,1.9.23,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.maven/maven-core@3.9.6,maven,org.apache.maven/maven-core,3.9.6,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.squareup.okhttp3/okhttp@4.12.0,maven,com.squareup.okhttp3/okhttp,4.12.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/io.netty/netty-all@4.1.108.Final,maven,io.netty/netty-all,4.1.108.Final,Skipped,Partial,,,,,,No sources.jar found,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.testng/testng@7.10.1,maven,org.testng/testng,7.10.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.h2database/h2@2.2.224,maven,com.h2database/h2,2.2.224,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.postgresql/postgresql@42.7.3,maven,org.postgresql/postgresql,42.7.3,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.mysql/mysql-connector-j@8.3.0,maven,com.mysql/mysql-connector-j,8.3.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.kafka/kafka-clients@3.7.0,maven,org.apache.kafka/kafka-clients,3.7.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/io.micrometer/micrometer-core@1.12.4,maven,io.micrometer/micrometer-core,1.12.4,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.hibernate/hibernate-core@6.4.4.Final,maven,org.hibernate/hibernate-core,6.4.4.Final,Skipped,Partial,,,,,,No sources.jar found,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.zaxxer/HikariCP@5.1.0,maven,com.zaxxer/HikariCP,5.1.0,Verified,Verified,,,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.amazonaws/aws-java-sdk-core@1.12.688,maven,com.amazonaws/aws-java-sdk-core,1.12.688,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/io.grpc/grpc-core@1.63.0,maven,io.grpc/grpc-core,1.63.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.commons/commons-math3@3.6.1,maven,org.apache.commons/commons-math3,3.6.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.bouncycastle/bcprov-jdk18on@1.77,maven,org.bouncycastle/bcprov-jdk18on,1.77,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/javax.servlet/javax.servlet-api@4.0.1,maven,javax.servlet/javax.servlet-api,4.0.1,Verified,Verified,,,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.json/json@20240303,maven,org.json/json,20240303,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.google.protobuf/protobuf-java@4.26.0,maven,com.google.protobuf/protobuf-java,4.26.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/io.swagger.core.v3/swagger-core@2.2.21,maven,io.swagger.core.v3/swagger-core,2.2.21,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.poi/poi@5.2.5,maven,org.apache.poi/poi,5.2.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.flywaydb/flyway-core@10.10.0,maven,org.flywaydb/flyway-core,10.10.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.google.errorprone/error_prone_core@2.26.1,maven,com.google.errorprone/error_prone_core,2.26.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/io.jsonwebtoken/jjwt-api@0.12.5,maven,io.jsonwebtoken/jjwt-api,0.12.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.mapstruct/mapstruct@1.5.5.Final,maven,org.mapstruct/mapstruct,1.5.5.Final,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/com.google.inject/guice@7.0.0,maven,com.google.inject/guice,7.0.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.eclipse.jetty/jetty-server@12.0.7,maven,org.eclipse.jetty/jetty-server,12.0.7,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/io.vertx/vertx-core@4.5.7,maven,io.vertx/vertx-core,4.5.7,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:maven/org.apache.camel/camel-core@4.5.0,maven,org.apache.camel/camel-core,4.5.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Newtonsoft.Json@13.0.4,nuget,Newtonsoft.Json,13.0.4,Partial,Partial,swh:1:dir:96556403304e16c9624e425c6f116d1196bcfc20,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/System.Text.Json@10.0.9,nuget,System.Text.Json,10.0.9,Partial,Partial,swh:1:dir:94cfa3fb3acb2a4e937e7e44051de3dcbf6adccd,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Serilog@4.4.0,nuget,Serilog,4.4.0,Partial,Partial,swh:1:dir:d46679d55cd0f44244b4801a5423632c28898721,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/AutoMapper@16.2.0,nuget,AutoMapper,16.2.0,Partial,Partial,swh:1:dir:2e905f59dc882afc29fc807005ee2e6b351c29e5,B,https://github.com/LuckyPennySoftware/AutoMapper,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/FluentValidation@12.1.1,nuget,FluentValidation,12.1.1,Partial,Partial,swh:1:dir:52d8db109b352b71f73b297f029c3b2cf1f1404f,B,https://github.com/JeremySkinner/fluentvalidation,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Dapper@2.1.79,nuget,Dapper,2.1.79,Partial,Partial,swh:1:dir:7a83e66478c042c6a7fb40a9ffbbf0ca17711bf5,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/MediatR@14.2.0,nuget,MediatR,14.2.0,Partial,Partial,swh:1:dir:3e25e5c96b8da579378ee0f2f6d652b4cbc2224a,B,https://github.com/LuckyPennySoftware/MediatR,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Polly@8.7.0,nuget,Polly,8.7.0,Partial,Partial,swh:1:dir:4c808de4c94dabd2cb8853e3ba6f42b1eddee9ae,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Swashbuckle.AspNetCore@10.2.3,nuget,Swashbuckle.AspNetCore,10.2.3,Partial,Partial,swh:1:dir:23cbf7516c495c473b808e8372cbc906ebcd3510,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/xunit@2.9.3,nuget,xunit,2.9.3,Partial,Partial,swh:1:dir:62854c12b96f50f3f27ee3dd9b7b1d6316652635,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/NUnit@4.6.1,nuget,NUnit,4.6.1,Partial,Partial,swh:1:dir:7d09403210ad93aeab1027363cb634095ee8b318,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Moq@4.20.72,nuget,Moq,4.20.72,Partial,Partial,swh:1:dir:ab5c2eea1699fbbfa261d4b22abe5765116c80a7,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/FluentAssertions@8.10.0,nuget,FluentAssertions,8.10.0,Partial,Partial,swh:1:dir:9c0f59fc05246b4945d56ffa9a731b480bb06758,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Bogus@35.6.5,nuget,Bogus,35.6.5,Partial,Partial,swh:1:dir:731355629d83f5c0e1d0183679540002c8890d1a,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Humanizer.Core@3.0.10,nuget,Humanizer.Core,3.0.10,Partial,Partial,swh:1:dir:431692e181aec79ba6ae5dbff78ccc28c55b3b76,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/CsvHelper@33.1.0,nuget,CsvHelper,33.1.0,Partial,Partial,swh:1:dir:712e5853af99b70ba1170d27394689889f6e24ea,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/RestSharp@114.0.0,nuget,RestSharp,114.0.0,Partial,Partial,swh:1:dir:0eb44c13d2d08e756d86108e3783a468568ce339,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/MailKit@4.17.0,nuget,MailKit,4.17.0,Partial,Partial,swh:1:dir:f4185ef4029da26a89f9fd12d3bbb019fcc78473,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/HtmlAgilityPack@1.12.4,nuget,HtmlAgilityPack,1.12.4,Partial,Partial,swh:1:dir:4149efbc26e35caa6ab0e9841529350107ded6c7,B,https://github.com/zzzprojects/html-agility-pack/,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Npgsql@10.0.3,nuget,Npgsql,10.0.3,Partial,Partial,swh:1:dir:b8fc919e72164a9474a2c738e6628f2950429ee1,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/StackExchange.Redis@3.0.17,nuget,StackExchange.Redis,3.0.17,Partial,Partial,swh:1:dir:955e2cf94876b6da20ae62bfdef987288488c097,B,https://github.com/StackExchange/StackExchange.Redis/,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/MongoDB.Driver@3.10.0,nuget,MongoDB.Driver,3.10.0,Partial,Partial,swh:1:dir:7a3f2b15d5e8fd2523412dbbac7e3f7dee958281,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/EntityFramework@6.5.2,nuget,EntityFramework,6.5.2,Partial,Partial,swh:1:dir:b1a65aeaaf8a233109da2052d9cc2896aa999959,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Microsoft.EntityFrameworkCore@10.0.9,nuget,Microsoft.EntityFrameworkCore,10.0.9,Partial,Partial,swh:1:dir:9b87d762861ce46aa932bab9e15877e83727734c,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Hangfire.Core@1.8.23,nuget,Hangfire.Core,1.8.23,Partial,Partial,swh:1:dir:99cdec2095c97e82d50ccd51b4b492836ef474bc,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/MassTransit@9.1.2,nuget,MassTransit,9.1.2,Partial,Partial,swh:1:dir:1380658af4bc6da55a97c98732f1f5a07ad48776,B,https://github.com/Massient/MassTransit,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/NLog@6.1.4,nuget,NLog,6.1.4,Partial,Partial,swh:1:dir:9d73c7f373d807833a53b4367eafe3c85e29c18a,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/log4net@3.3.2,nuget,log4net,3.3.2,Partial,Partial,swh:1:dir:acc8b4c238cced9e75c77084597c2387692a2f9b,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Autofac@9.3.1,nuget,Autofac,9.3.1,Partial,Partial,swh:1:dir:6baf547bb51f9918df85accd25a6a24fe990f272,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Grpc.Net.Client@2.80.0,nuget,Grpc.Net.Client,2.80.0,Partial,Partial,swh:1:dir:54d449e00768f6939f41582fbd6f2d757b3509a2,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/protobuf-net@3.2.56,nuget,protobuf-net,3.2.56,Partial,Partial,swh:1:dir:417defa4d063f22baac5aa65c1e4558e8fdc24af,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/MessagePack@3.1.8,nuget,MessagePack,3.1.8,Partial,Partial,swh:1:dir:eebc6deca359e398295c6728710351d42ac7e9b4,B,https://github.com/MessagePack-CSharp/MessagePack-CSharp,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/BenchmarkDotNet@0.15.8,nuget,BenchmarkDotNet,0.15.8,Partial,Partial,swh:1:dir:5445d6501bfd30d5f993639b216194c5e40c431d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Shouldly@4.3.0,nuget,Shouldly,4.3.0,Partial,Partial,swh:1:dir:a99cfa35e80b3c9cb6eb5cf0fe8dbae50d2d457d,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/AngleSharp@1.5.2,nuget,AngleSharp,1.5.2,Partial,Partial,swh:1:dir:2d3cbded8f2767e034385443478fd3f331f40d34,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/SixLabors.ImageSharp@4.0.0,nuget,SixLabors.ImageSharp,4.0.0,Partial,Partial,swh:1:dir:ea1a6cb7d0461ab87b60c1cd0a5fd1b1eca641da,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/SkiaSharp@4.150.0,nuget,SkiaSharp,4.150.0,Partial,Partial,swh:1:dir:d1ba2500dc382e601086e7c4ec201fb4e81d851c,B,https://go.microsoft.com/fwlink/?linkid=868515,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Markdig@1.3.2,nuget,Markdig,1.3.2,Partial,Partial,swh:1:dir:ef7335e43b1802e2c1ac24d5bb425e49a869d26f,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/YamlDotNet@18.1.0,nuget,YamlDotNet,18.1.0,Inferred,Inferred,,A,https://github.com/aaubry/YamlDotNet,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Jint@4.11.0,nuget,Jint,4.11.0,Inferred,Inferred,,A,https://github.com/sebastienros/jint,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/MiniProfiler.AspNetCore.Mvc@4.5.4,nuget,MiniProfiler.AspNetCore.Mvc,4.5.4,Partial,Partial,swh:1:dir:30bcc34dea2764972e9f4918624779ce08dec560,B,,,,,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/AWSSDK.Core@4.0.100.4,nuget,AWSSDK.Core,4.0.100.4,Partial,Partial,swh:1:dir:0e35b95122925865d51d29cb68e43565ddabf1c5,B,https://github.com/aws/aws-sdk-net/,,,Origin not archived in SWH; triggered Save Code Now,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Azure.Storage.Blobs@12.29.1,nuget,Azure.Storage.Blobs,12.29.1,Inferred,Inferred,,A,https://github.com/Azure/azure-sdk-for-net,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Google.Cloud.Storage.V1@4.15.0,nuget,Google.Cloud.Storage.V1,4.15.0,Inferred,Inferred,,A,https://github.com/googleapis/google-cloud-dotnet,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/NSwag.AspNetCore@14.7.1,nuget,NSwag.AspNetCore,14.7.1,Inferred,Inferred,,A,https://github.com/RicoSuter/NSwag,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Scrutor@7.0.0,nuget,Scrutor,7.0.0,Inferred,Inferred,,A,https://github.com/khellang/Scrutor,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Mapster@10.0.10,nuget,Mapster,10.0.10,Inferred,Inferred,,A,https://github.com/MapsterMapper/Mapster,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/Refit@13.1.0,nuget,Refit,13.1.0,Inferred,Inferred,,A,https://github.com/reactiveui/refit,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/LazyCache@2.4.0,nuget,LazyCache,2.4.0,Inferred,Inferred,,A,https://github.com/alastairtree/LazyCache,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
-pkg:nuget/EFCore.BulkExtensions@10.0.1,nuget,EFCore.BulkExtensions,10.0.1,Inferred,Inferred,,A,https://github.com/borisdj/EFCore.BulkExtensions,,,Origin archived but no exact tag match found in SWH snapshot; triggered Save Code Now to update,2026-07-11T19:02:05.330191+00:00
+pkg:pypi/boto3@1.43.49,pypi,boto3,1.43.49,Verified,Verified,swh:1:dir:37919af86effb6ed857a0058d0c19bbb6171287b,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/packaging@26.2,pypi,packaging,26.2,Verified,Verified,swh:1:rev:9bfe549d54c8e83441f00860e0d3cdd63b865e26,A,,,9bfe549d54c8e83441f00860e0d3cdd63b865e26,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/urllib3@2.7.0,pypi,urllib3,2.7.0,Verified,Verified,swh:1:rev:9a950b92d999f906b6020bb2d1076ee56cddd5d2,A,,,9a950b92d999f906b6020bb2d1076ee56cddd5d2,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/certifi@2026.6.17,pypi,certifi,2026.6.17,Verified,Verified,swh:1:rev:d0ac52f3d93a514224197c7efb66c41b1beae5d1,A,,,d0ac52f3d93a514224197c7efb66c41b1beae5d1,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/idna@3.18,pypi,idna,3.18,Verified,Verified,swh:1:rev:f39ea903ba49eb5a0b2c6723c9a929b41ed4a0f1,A,,,f39ea903ba49eb5a0b2c6723c9a929b41ed4a0f1,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/requests@2.34.2,pypi,requests,2.34.2,Verified,Verified,swh:1:rev:6e83187b8feb273ed4c6cdab5efd8d54901dfab3,A,,,6e83187b8feb273ed4c6cdab5efd8d54901dfab3,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/typing-extensions@4.16.0,pypi,typing-extensions,4.16.0,Verified,Verified,swh:1:rev:f29cd28d8ed7642cafb1d18daf5aa41be6a5c0aa,A,,,f29cd28d8ed7642cafb1d18daf5aa41be6a5c0aa,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/charset-normalizer@3.4.9,pypi,charset-normalizer,3.4.9,Verified,Verified,swh:1:rev:cc6840753f17f00dea4e339ce37507747217e916,A,,,cc6840753f17f00dea4e339ce37507747217e916,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/botocore@1.43.49,pypi,botocore,1.43.49,Verified,Verified,swh:1:dir:43c1568464f0ea17c08422888b729ec0da448259,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/setuptools@83.0.0,pypi,setuptools,83.0.0,Verified,Verified,swh:1:dir:591ac487624a08e9b80726a5aa418ca381c46e11,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/cryptography@49.0.0,pypi,cryptography,49.0.0,Verified,Verified,swh:1:rev:e300bbe2f1bec75e5ee7e0ab7b196958831b3db6,A,,,e300bbe2f1bec75e5ee7e0ab7b196958831b3db6,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/aiobotocore@3.7.0,pypi,aiobotocore,3.7.0,Verified,Verified,swh:1:rev:4013f139e197d1613b649a7d9eae0b62f98cef9b,A,,,4013f139e197d1613b649a7d9eae0b62f98cef9b,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pygments@2.20.0,pypi,pygments,2.20.0,Verified,Verified,swh:1:dir:c24396e4bb3ea974091ca8ff6159da1fab4d469a,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pluggy@1.6.0,pypi,pluggy,1.6.0,Verified,Verified,swh:1:rev:fd08ab5f811a9b2fa9124ae8cbbd393221151e2c,A,,,fd08ab5f811a9b2fa9124ae8cbbd393221151e2c,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/python-dateutil@2.9.0.post0,pypi,python-dateutil,2.9.0.post0,Verified,Verified,swh:1:dir:19f309b83402019b13f082ab6127c2d284258d0a,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/six@1.17.0,pypi,six,1.17.0,Verified,Verified,swh:1:dir:e843f002004836aa974760068a0592b6d77dca9d,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pyyaml@6.0.3,pypi,pyyaml,6.0.3,Verified,Verified,swh:1:dir:586a31253655b335b033fa67e2af219cdb8bc0c3,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/numpy@2.5.1,pypi,numpy,2.5.1,Verified,Verified,swh:1:rev:115e239fad506b454702f615b542105f97299754,A,,,115e239fad506b454702f615b542105f97299754,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/cffi@2.1.0,pypi,cffi,2.1.0,Verified,Verified,swh:1:dir:b41abc3bc5a064811b8a573f9358d9988c283461,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pydantic@2.13.4,pypi,pydantic,2.13.4,Verified,Verified,swh:1:rev:cf67d4b3193c3fe43ede18612ed62785eee11382,A,,,cf67d4b3193c3fe43ede18612ed62785eee11382,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pytest@9.1.1,pypi,pytest,9.1.1,Verified,Verified,swh:1:rev:cf470ec0bf7eb89cd97dd56df4859eae5db46447,A,,,cf470ec0bf7eb89cd97dd56df4859eae5db46447,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/click@8.4.2,pypi,click,8.4.2,Verified,Verified,swh:1:rev:b2e30a175449cfda909ee4fbf4a29a6a071cad53,A,,,b2e30a175449cfda909ee4fbf4a29a6a071cad53,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pycparser@3.0,pypi,pycparser,3.0,Verified,Verified,swh:1:dir:8162e2217220173ccafd5bd4b9eeb49d5312e367,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/iniconfig@2.3.0,pypi,iniconfig,2.3.0,Verified,Verified,swh:1:rev:7faed13ae50bad7c5da3f5782f254a8a7736bb84,A,,,7faed13ae50bad7c5da3f5782f254a8a7736bb84,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/grpcio-status@1.82.1,pypi,grpcio-status,1.82.1,Verified,Verified,swh:1:dir:796b309053629d595d99b73a69bf5a27ecfc48a0,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pydantic-core@2.47.0,pypi,pydantic-core,2.47.0,Verified,Verified,swh:1:dir:9db552c2f06c373859e41e27ee373fd89b8cfc16,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/anyio@4.14.2,pypi,anyio,4.14.2,Verified,Verified,swh:1:rev:c384f99687c64c59ed8a11c3a0f11a2d57daff71,A,,,c384f99687c64c59ed8a11c3a0f11a2d57daff71,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/s3transfer@0.19.1,pypi,s3transfer,0.19.1,Verified,Verified,swh:1:dir:de301816d271ee75992272c5e44093ab05164ec2,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/attrs@26.1.0,pypi,attrs,26.1.0,Verified,Verified,swh:1:rev:7bfc49e9b22d5ba25b6e429524c3d49fee27cb36,A,,,7bfc49e9b22d5ba25b6e429524c3d49fee27cb36,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/protobuf@7.35.1,pypi,protobuf,7.35.1,Verified,Verified,swh:1:dir:da2bdd98ce6d573c03d5590689316da23a71de5f,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/h11@0.16.0,pypi,h11,0.16.0,Verified,Verified,swh:1:dir:6290b4fea1e2b39548361bce35e9fe6ef1f5d160,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/fsspec@2026.6.0,pypi,fsspec,2026.6.0,Verified,Verified,swh:1:dir:8f29b618b486ad4cfe1f85eabd1d5e4d60934125,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/annotated-types@0.7.0,pypi,annotated-types,0.7.0,Verified,Verified,swh:1:dir:1fc3d737075ba081c7264555ce6abcb5ad8f6fd6,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pandas@3.0.3,pypi,pandas,3.0.3,Verified,Verified,swh:1:rev:72f2fea91530b5abb3cf2100cb22d84e504695c0,A,,,72f2fea91530b5abb3cf2100cb22d84e504695c0,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/s3fs@2026.6.0,pypi,s3fs,2026.6.0,Verified,Verified,swh:1:dir:ecd7a2ae142a6ecf0498557dd7f686d9ae248f13,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/markupsafe@3.0.3,pypi,markupsafe,3.0.3,Verified,Verified,swh:1:rev:297fc8e356e6836a62087949245d09a28e9f1b13,A,,,297fc8e356e6836a62087949245d09a28e9f1b13,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/httpx@0.28.1,pypi,httpx,0.28.1,Verified,Verified,swh:1:dir:c60bb5d45e5b5785b7dcd7f1f6f80cdd963e425a,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/httpcore@1.0.9,pypi,httpcore,1.0.9,Verified,Verified,swh:1:dir:2e37d2f4c0b2b80aad48be3dd55299eb083d8764,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/platformdirs@4.10.0,pypi,platformdirs,4.10.0,Verified,Verified,swh:1:rev:078bc61171e1a0cfbb3f210ff0fd30795a359664,A,,,078bc61171e1a0cfbb3f210ff0fd30795a359664,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/typing-inspection@0.4.2,pypi,typing-inspection,0.4.2,Verified,Verified,swh:1:rev:8db011350942f33ac4b5d7db60d4d9ea83ab480f,A,,,8db011350942f33ac4b5d7db60d4d9ea83ab480f,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/jinja2@3.1.6,pypi,jinja2,3.1.6,Verified,Verified,swh:1:rev:15206881c006c79667fe5154fe80c01c65410679,A,,,15206881c006c79667fe5154fe80c01c65410679,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/python-dotenv@1.2.2,pypi,python-dotenv,1.2.2,Verified,Verified,swh:1:rev:36004e0e34be7665ff2b11a8a4005144f76f176d,A,,,36004e0e34be7665ff2b11a8a4005144f76f176d,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pip@26.1.2,pypi,pip,26.1.2,Verified,Verified,swh:1:rev:31d7d168953668aad85154d6121879d07fbeac27,A,,,31d7d168953668aad85154d6121879d07fbeac27,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/filelock@3.30.0,pypi,filelock,3.30.0,Verified,Verified,swh:1:rev:1b094069044a3f2a39173ae841eb22b274833ff9,A,,,1b094069044a3f2a39173ae841eb22b274833ff9,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pathspec@1.1.1,pypi,pathspec,1.1.1,Verified,Verified,swh:1:rev:ecf71a99ca739479d450b9830f43416ea0c519c7,A,,,ecf71a99ca739479d450b9830f43416ea0c519c7,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/pyjwt@2.13.0,pypi,pyjwt,2.13.0,Verified,Verified,swh:1:rev:7144e4534c34810f4525dc4578a32addd8212cff,A,,,7144e4534c34810f4525dc4578a32addd8212cff,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/litellm@1.92.0,pypi,litellm,1.92.0,Verified,Verified,swh:1:dir:17bc4d5183e70b2b9f2cc5c48e1355c9b29b8a02,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/aiohttp@3.14.1,pypi,aiohttp,3.14.1,Verified,Verified,swh:1:rev:9c35d03aa5fecd294510196e07f176f1a2e7fa33,A,,,9c35d03aa5fecd294510196e07f176f1a2e7fa33,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/rich@15.0.0,pypi,rich,15.0.0,Verified,Verified,swh:1:dir:74a1fbb26c744f54d4aa3b18dbb354c0d48cd62e,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:pypi/jmespath@1.1.0,pypi,jmespath,1.1.0,Verified,Verified,swh:1:dir:4707b99549c937a40304461dc47113cf813c5e3a,C,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/lodash@4.18.1,npm,lodash,4.18.1,Verified,Verified,swh:1:dir:bc9f374aca1463aba17f41c0e43a889020e39a53,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/chalk@5.6.2,npm,chalk,5.6.2,Verified,Verified,swh:1:dir:f4a4d48b46b69f5ef9488e2dfbdcabba7c151bcf,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/react@19.2.7,npm,react,19.2.7,Verified,Verified,swh:1:dir:76e3ff0a32582da0b3a387d6399f7b49e4da3766,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/express@5.2.1,npm,express,5.2.1,Verified,Verified,swh:1:dir:e34b0a188c9788483fdd0e8bd4bf0754a6c789b7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/commander@15.0.0,npm,commander,15.0.0,Verified,Verified,swh:1:dir:b56f28ac5940bedad711a84a06ce08bd2df9b155,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/moment@2.30.1,npm,moment,2.30.1,Verified,Verified,swh:1:dir:1fa8660b7b021912c12255f662d421470871adb0,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/debug@4.4.3,npm,debug,4.4.3,Verified,Verified,swh:1:dir:36f14d19ac67cab45b1de78cbdee960fb78b38fe,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/async@3.2.6,npm,async,3.2.6,Verified,Verified,swh:1:dir:f01b03a4ab83e661a3d5a5fb0646e8575e490d5a,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/bluebird@3.7.2,npm,bluebird,3.7.2,Verified,Verified,swh:1:dir:894b0e4dda05072f77ee777601cc8d9779327196,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/request@2.88.2,npm,request,2.88.2,Verified,Verified,swh:1:dir:5cfa99939d46cbfeba44490c453e5b12bec8578e,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/underscore@1.13.8,npm,underscore,1.13.8,Verified,Verified,swh:1:dir:711c037f8260be344ca2eea2227abfa66fa182bc,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/uuid@14.0.1,npm,uuid,14.0.1,Verified,Verified,swh:1:dir:5c3978645f57efdd4759927706fb7a647cc08026,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/axios@1.18.1,npm,axios,1.18.1,Verified,Verified,swh:1:dir:1df870b4126d3b8821cb37e444348d30a4fc184d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/glob@13.0.6,npm,glob,13.0.6,Verified,Verified,swh:1:dir:1754c307f01a7f7793cd3327f9882a28d87c55a2,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/mkdirp@3.0.1,npm,mkdirp,3.0.1,Verified,Verified,swh:1:dir:3a60d3ee462e0483fc81e4c24ecc63b6afa40950,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/minimist@1.2.8,npm,minimist,1.2.8,Verified,Verified,swh:1:dir:c61a58ccc3002d1fa2d8854d6783aecf86dc0565,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/semver@7.8.5,npm,semver,7.8.5,Verified,Verified,swh:1:dir:b3dad436463f171df2f6de973c3c9f7e245ff5c8,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/colors@1.4.0,npm,colors,1.4.0,Verified,Verified,swh:1:dir:35e3048093e1ea9cb11d50a9370eb5cae226950e,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/body-parser@2.3.0,npm,body-parser,2.3.0,Verified,Verified,swh:1:dir:4dc124b334a5af113bc88a8d45b348aafcdfc019,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/through2@5.0.5,npm,through2,5.0.5,Verified,Verified,swh:1:dir:f24ce2229220f73a2f313664c2579b45dcc647fb,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/yargs@18.0.0,npm,yargs,18.0.0,Verified,Verified,swh:1:dir:b58eb14ac1a0fce9885441e5c639ee34b675a799,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/fs-extra@11.3.6,npm,fs-extra,11.3.6,Verified,Verified,swh:1:dir:af0c6540a6cd01b56d713da654084fdac619dba4,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/inquirer@14.0.2,npm,inquirer,14.0.2,Verified,Verified,swh:1:dir:90415b7a7c02d54ace96efff22f89847f7cd4d4d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/webpack@5.108.4,npm,webpack,5.108.4,Verified,Verified,swh:1:dir:5a892268cde802870e2a17b6660d70090ea30c83,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/prop-types@15.8.1,npm,prop-types,15.8.1,Verified,Verified,swh:1:dir:c62bd8ec5657b52dde18577a218167cf7a6e2169,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/rxjs@7.8.2,npm,rxjs,7.8.2,Verified,Verified,swh:1:dir:dc10bd8d2a24e2283b29cf66424cf9359fefda6d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/tslib@2.8.1,npm,tslib,2.8.1,Verified,Verified,swh:1:dir:bf34c0ce4a3a0b594830750ea5e3189ee512741d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/core-js@3.49.0,npm,core-js,3.49.0,Verified,Verified,swh:1:dir:77f3c1a646805327c62b65c8c43e393b87965e55,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/classnames@2.5.1,npm,classnames,2.5.1,Verified,Verified,swh:1:dir:d9b37f4f26e0b363f59a515a4f6eb56033e60b78,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/jquery@4.0.0,npm,jquery,4.0.0,Verified,Verified,swh:1:dir:39da88c5104b8b8c570abe104edfeeefb6a0e1a9,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/ws@8.21.1,npm,ws,8.21.1,Verified,Verified,swh:1:dir:c1879cdd73c374e026a79fcf0fbbe91e7e54939e,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/cheerio@1.2.0,npm,cheerio,1.2.0,Verified,Verified,swh:1:dir:78f1652dcf42e3b6ee0db2dcec1c187a7c8610bc,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/rimraf@6.1.3,npm,rimraf,6.1.3,Verified,Verified,swh:1:dir:aa9d30738689835d90cd99d1c0954d0a889d3638,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/dotenv@17.4.2,npm,dotenv,17.4.2,Verified,Verified,swh:1:dir:e31e54609e4a08943282582376d8da62195a557f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/eslint@10.7.0,npm,eslint,10.7.0,Verified,Verified,swh:1:dir:a7b36380164af48dc35073e2ca074e3ec789557c,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/prettier@3.9.5,npm,prettier,3.9.5,Verified,Verified,swh:1:dir:7e42b78ed56e7b4fa4d62c3fd334365b902f095d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/typescript@7.0.2,npm,typescript,7.0.2,Verified,Verified,swh:1:dir:3428cd50c725565a935932020c175af17fce43d7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/mocha@11.7.6,npm,mocha,11.7.6,Verified,Verified,swh:1:dir:23a9884599da3dbc9d2aa1cfd1b777feb31d7990,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/jest@30.4.2,npm,jest,30.4.2,Verified,Verified,swh:1:dir:5917417e9c4721f027d2a4ec060751617469ba14,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/babel-core@6.26.3,npm,babel-core,6.26.3,Verified,Verified,swh:1:dir:82244068437b4dc7ad6f0c41a37059b93ed4c5e4,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/ora@9.4.1,npm,ora,9.4.1,Verified,Verified,swh:1:dir:14ab880c1081b1d490c7e893581de7cba260a531,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/execa@9.6.1,npm,execa,9.6.1,Verified,Verified,swh:1:dir:031af022b0adaadbbf15744273d68735a12d108f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/nano@11.0.6,npm,nano,11.0.6,Verified,Verified,swh:1:dir:5c0713e388a74eb918af4d86a7f9809bc4d0f6af,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/passport@0.7.0,npm,passport,0.7.0,Verified,Verified,swh:1:dir:e4ed8f3a5d46f6c3d89e0d9d5cdb86fee71bc9f8,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/mongoose@9.7.4,npm,mongoose,9.7.4,Verified,Verified,swh:1:dir:0262231aeadbe24b9778c2d15c0c0aac2429099e,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/redis@6.1.0,npm,redis,6.1.0,Verified,Verified,swh:1:dir:61531b6e5b6963a60602391b777db3b9517b1e75,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/pg@8.22.0,npm,pg,8.22.0,Verified,Verified,swh:1:dir:10bb8bf7a1cb9008bf694b44b49d9b2456641d67,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/mysql2@3.23.0,npm,mysql2,3.23.0,Verified,Verified,swh:1:dir:848903e3d1d896e8b8cfc68e488e865afee054af,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/socket.io@4.8.3,npm,socket.io,4.8.3,Verified,Verified,swh:1:dir:32dcbc8d7bfa2212a8e66a8f7e70b2d5964fff04,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:npm/cors@2.8.6,npm,cors,2.8.6,Verified,Verified,swh:1:dir:f9b7fa70774128bd1566efebed7d67b7c78394ad,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/hashbrown@0.17.1,cargo,hashbrown,0.17.1,Partial,Partial,swh:1:dir:bb3f5f426d2b360125e904c958d08aa09765e8f2,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/syn@2.0.119,cargo,syn,2.0.119,Partial,Partial,swh:1:dir:ac366055c81e30080b72c48316e0e0d89ee3cea3,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/getrandom@0.4.3,cargo,getrandom,0.4.3,Partial,Partial,swh:1:dir:6a2d7865df1a5d82d37b5c8bde1bf83709dc26e1,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/bitflags@2.13.1,cargo,bitflags,2.13.1,Partial,Partial,swh:1:dir:f35f9e353deb18bcac6978228b78c0c51aab9109,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/rand_core@0.10.1,cargo,rand_core,0.10.1,Partial,Partial,swh:1:dir:2a7f8e8a48a81668365e4693321edab274d7a73d,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/rand@0.9.5,cargo,rand,0.9.5,Partial,Partial,swh:1:dir:560a84e8d8474126be5a7b9cac075667df95d89f,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/libc@0.2.186,cargo,libc,0.2.186,Partial,Partial,swh:1:dir:f92d0c8792b2fdb09fac3229e51a143619c99adb,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/proc-macro2@1.0.106,cargo,proc-macro2,1.0.106,Partial,Partial,swh:1:dir:1d9ee54c95c446321a7ce0641d3fb9685946b63c,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/quote@1.0.46,cargo,quote,1.0.46,Partial,Partial,swh:1:dir:5d1276275b884e0067a72622aa36ffd52a6e3a14,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/base64@0.22.1,cargo,base64,0.22.1,Partial,Partial,swh:1:dir:a06441f2031b4ff5da0f9e17d57730265d3a5ecc,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/indexmap@2.14.0,cargo,indexmap,2.14.0,Partial,Partial,swh:1:dir:35e0331d2868becef04ae629ae913a6d372a27cd,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows-sys@0.61.2,cargo,windows-sys,0.61.2,Partial,Partial,swh:1:dir:4f1b8a715f67ee7208040c3b7996b3536e9f02c1,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/itertools@0.15.0,cargo,itertools,0.15.0,Partial,Partial,swh:1:dir:1a10655c277c753e703c5053779df52db711e7a1,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/regex-syntax@0.8.11,cargo,regex-syntax,0.8.11,Partial,Partial,swh:1:dir:1a7e040a455bd76ce1dc634e2dab8b2b2df99848,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/cfg-if@1.0.4,cargo,cfg-if,1.0.4,Partial,Partial,swh:1:dir:91cd439ab8ecd897e01bcf74ee828f5d4794813b,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/thiserror-impl@2.0.18,cargo,thiserror-impl,2.0.18,Partial,Partial,swh:1:dir:dfcaa57ae49e57e7aa1a903fae29cdc3da1500e3,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/thiserror@2.0.18,cargo,thiserror,2.0.18,Partial,Partial,swh:1:dir:2589fbe64d20296f21fe8d63688af7a5ffab6b7f,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/serde@1.0.228,cargo,serde,1.0.228,Partial,Partial,swh:1:dir:ee9f75f74719b9b6dd2b93755a9e1720dc366f7d,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/rand_chacha@0.10.0,cargo,rand_chacha,0.10.0,Partial,Partial,swh:1:dir:5039a9e665da9a8e320266cb829de0a35ed68af3,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/memchr@2.8.3,cargo,memchr,2.8.3,Partial,Partial,swh:1:dir:9ac27dad80c9dd9330a47bbd7822f3f200823fdf,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/unicode-ident@1.0.24,cargo,unicode-ident,1.0.24,Partial,Partial,swh:1:dir:d7fa2487a35b8fb7419aa0f658ed4da797756fed,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/itoa@1.0.18,cargo,itoa,1.0.18,Partial,Partial,swh:1:dir:768d7be998ce8f52341da331f20bb535f8d48d89,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/serde_derive@1.0.228,cargo,serde_derive,1.0.228,Partial,Partial,swh:1:dir:627500a9d549706f6197860fd010bc42a0eff9ca,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/autocfg@1.5.1,cargo,autocfg,1.5.1,Partial,Partial,swh:1:dir:894cd06a90bccff52b234bf6cceaa2cae3f0f42c,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/heck@0.5.0,cargo,heck,0.5.0,Partial,Partial,swh:1:dir:437cb236ef315798483671f2c5598fb609551cc3,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/serde_json@1.0.150,cargo,serde_json,1.0.150,Partial,Partial,swh:1:dir:d6fb05b63da8c909dbc03b9f23c85d2781d3c76e,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/regex-automata@0.4.16,cargo,regex-automata,0.4.16,Partial,Partial,swh:1:dir:42b740c3d5c04284e1718270e57d7364e23d7380,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/once_cell@1.21.4,cargo,once_cell,1.21.4,Partial,Partial,swh:1:dir:25926e1d22a9120b1ce16c39c047ad1e7de3381c,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/log@0.4.33,cargo,log,0.4.33,Partial,Partial,swh:1:dir:ccd3167fa277a91a809c52947dd52ccd99bfe64c,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/cc@1.2.67,cargo,cc,1.2.67,Partial,Partial,swh:1:dir:5d93de188a6f5d6c9de059a095e58509f0eca167,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/socket2@0.6.5,cargo,socket2,0.6.5,Partial,Partial,swh:1:dir:1a754ace98ad4662e4f34642fbc73eedf583c265,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/smallvec@1.15.2,cargo,smallvec,1.15.2,Partial,Partial,swh:1:dir:e4d8b29223734b6c79c6796310c54aadbc39bce8,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/regex@1.13.1,cargo,regex,1.13.1,Partial,Partial,swh:1:dir:5ac3e9321a16343c480fd11e56f6749d5f2d37b9,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/clap@4.6.2,cargo,clap,4.6.2,Partial,Partial,swh:1:dir:ba4a73bd64ad65e765127a1ae55d8f7ec245cc15,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/ryu@1.0.23,cargo,ryu,1.0.23,Partial,Partial,swh:1:dir:618de0de45d497e0c4ea32c3829f61dd47e58b26,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/aho-corasick@1.1.4,cargo,aho-corasick,1.1.4,Partial,Partial,swh:1:dir:cb8f0609bff0ddd5b825b7d1cf97e319f9113199,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/rustix@1.1.4,cargo,rustix,1.1.4,Partial,Partial,swh:1:dir:2e04b55a99b7c32efdcb410b2a3993e7916f27e5,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/parking_lot_core@0.9.12,cargo,parking_lot_core,0.9.12,Partial,Partial,swh:1:dir:24fb03af4ee8e30ab567a6d6d421b44f11dd74e8,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows_x86_64_msvc@0.53.1,cargo,windows_x86_64_msvc,0.53.1,Partial,Partial,swh:1:dir:34042bf2c65fa66c844d96d652e6723c3d80ba1d,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/parking_lot@0.12.5,cargo,parking_lot,0.12.5,Partial,Partial,swh:1:dir:a003ca8dd96f93175bd492236cd6dcafb47e1ae3,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/strsim@0.11.1,cargo,strsim,0.11.1,Partial,Partial,swh:1:dir:2309a76588f729fc7d27715fe875cbc58e3978d1,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/linux-raw-sys@0.12.1,cargo,linux-raw-sys,0.12.1,Partial,Partial,swh:1:dir:36d654f13fd230bc3e3804007ee93ff7cb6fba7c,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows_x86_64_gnu@0.53.1,cargo,windows_x86_64_gnu,0.53.1,Partial,Partial,swh:1:dir:d0cbbacb5f54dd97fa9b6bdf312675158950c751,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows_aarch64_msvc@0.53.1,cargo,windows_aarch64_msvc,0.53.1,Partial,Partial,swh:1:dir:9c91376071584bcce0e1bbf94608553ad09ee9a5,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows_i686_msvc@0.53.1,cargo,windows_i686_msvc,0.53.1,Partial,Partial,swh:1:dir:8f9fd3ef21e5b2ec19638c810eb48dfea6f8e6b5,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows_i686_gnu@0.53.1,cargo,windows_i686_gnu,0.53.1,Partial,Partial,swh:1:dir:829c6c6a7781f1159ad0857a3e0b35566eb907bf,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/windows-targets@0.53.5,cargo,windows-targets,0.53.5,Partial,Partial,swh:1:dir:d8b4ca7a8b7bf43ba16fa0c280576e975e6b51d2,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/digest@0.11.3,cargo,digest,0.11.3,Partial,Partial,swh:1:dir:44efa9b3699c8bad3809e44922ef8de751b7ea2d,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/bytes@1.12.1,cargo,bytes,1.12.1,Partial,Partial,swh:1:dir:9e4eb38ab69eff1f79f394213fba598ef39afeb1,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:cargo/mio@1.2.2,cargo,mio,1.2.2,Partial,Partial,swh:1:dir:c800c0758db1bcfe9a4063c4364e1fad5a2a592e,,,,,Could not resolve directory for commit/path_in_vcs,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/gin-gonic/gin@v1.9.0,golang,github.com/gin-gonic/gin,v1.9.0,Verified,Verified,swh:1:dir:5836ecd2f6866038f6d2481acdbe80b401861e25,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/sirupsen/logrus@v1.9.3,golang,github.com/sirupsen/logrus,v1.9.3,Verified,Verified,swh:1:dir:c12a219d47e40b7ec9ec0d2fe415b6b5dee02ee6,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/golang.org/x/text@v0.14.0,golang,golang.org/x/text,v0.14.0,Verified,Verified,swh:1:dir:d072db728aedc21566b6765e7c7076d694c32ef4,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/spf13/cobra@v1.8.0,golang,github.com/spf13/cobra,v1.8.0,Verified,Verified,swh:1:dir:db27fbf14d40d1f841102990f3550b4c28b9768b,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/stretchr/testify@v1.9.0,golang,github.com/stretchr/testify,v1.9.0,Verified,Verified,swh:1:dir:6e4269731b71bb42a2ac8f6621c0ae54799a7abb,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/gorilla/mux@v1.8.1,golang,github.com/gorilla/mux,v1.8.1,Verified,Verified,swh:1:dir:f8d5a04a419e836156cccec093412c42f489405b,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/go-chi/chi@v5.0.12,golang,github.com/go-chi/chi,v5.0.12,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/spf13/viper@v1.18.2,golang,github.com/spf13/viper,v1.18.2,Verified,Verified,swh:1:dir:4d43133d15109446bcd666a1aab94fe17a4da03a,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/google.golang.org/grpc@v1.62.1,golang,google.golang.org/grpc,v1.62.1,Verified,Verified,swh:1:dir:fa99f0c874e21d192fd33c5bd6866e453706f945,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/prometheus/client_golang@v1.19.0,golang,github.com/prometheus/client_golang,v1.19.0,Verified,Verified,swh:1:dir:e79e400022468a14ae80ec08635e32ab1dc4827b,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/go-redis/redis@v8.11.5,golang,github.com/go-redis/redis,v8.11.5,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/stretchr/objx@v0.5.2,golang,github.com/stretchr/objx,v0.5.2,Verified,Verified,swh:1:dir:9f76c065f3e4292bbc25b7e750b53eab3c1a14b5,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/go.uber.org/zap@v1.27.0,golang,go.uber.org/zap,v1.27.0,Verified,Verified,swh:1:dir:e0f2deffdb5d3c090dd020c3dcf7f939febe6610,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/golang/protobuf@v1.5.4,golang,github.com/golang/protobuf,v1.5.4,Verified,Verified,swh:1:dir:64084f2998fc3246f47d720109049f91add93c26,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/google/uuid@v1.6.0,golang,github.com/google/uuid,v1.6.0,Verified,Verified,swh:1:dir:cc4703efbb8a436cb8cfe07d9f7740dae03090dc,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/pkg/errors@v0.9.1,golang,github.com/pkg/errors,v0.9.1,Verified,Verified,swh:1:dir:dd0db94cf1cb171e0b1524b376294d8b1d4c7abb,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/fatih/color@v1.16.0,golang,github.com/fatih/color,v1.16.0,Verified,Verified,swh:1:dir:55cd5f0568678ba7cd4c670f371b095241590878,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/mitchellh/mapstructure@v1.5.0,golang,github.com/mitchellh/mapstructure,v1.5.0,Verified,Verified,swh:1:dir:fbdff7fea2e719bc1ab8aa88414d5788075e0ac6,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/aws/aws-sdk-go@v1.51.6,golang,github.com/aws/aws-sdk-go,v1.51.6,Verified,Verified,swh:1:dir:51411f59eb5656d9ac2131c9a1ba144264fb3ec8,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/hashicorp/consul@v1.18.1,golang,github.com/hashicorp/consul,v1.18.1,Verified,Verified,swh:1:dir:a44f82074a41ec098f8421278b0c8dbafa649814,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/docker/docker@v25.0.5,golang,github.com/docker/docker,v25.0.5,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/lib/pq@v1.10.9,golang,github.com/lib/pq,v1.10.9,Verified,Verified,swh:1:dir:b57c900d0a8daf9f6fd4cf5e104fb3c64b92c6c0,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/jackc/pgx@v5.5.5,golang,github.com/jackc/pgx,v5.5.5,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/go-sql-driver/mysql@v1.8.1,golang,github.com/go-sql-driver/mysql,v1.8.1,Verified,Verified,swh:1:dir:95921b72dbbeda0013fece7c82a1b87b0d5df514,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/gorilla/websocket@v1.5.1,golang,github.com/gorilla/websocket,v1.5.1,Verified,Verified,swh:1:dir:7fd1e4cc484b3b18292dd0e1371a472946627cd2,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/labstack/echo@v4.11.4,golang,github.com/labstack/echo,v4.11.4,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/golang.org/x/crypto@v0.21.0,golang,golang.org/x/crypto,v0.21.0,Verified,Verified,swh:1:dir:c78fba02e71033faf8d6ef46dad83a1d33e3a82d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/golang.org/x/net@v0.22.0,golang,golang.org/x/net,v0.22.0,Verified,Verified,swh:1:dir:2d2d3d4c88f7565fbdc8c7e6409a9792ff22d5ce,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/golang.org/x/sys@v0.18.0,golang,golang.org/x/sys,v0.18.0,Verified,Verified,swh:1:dir:da276610e791f12cff7647b0714a03062bc7a706,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/golang.org/x/tools@v0.19.0,golang,golang.org/x/tools,v0.19.0,Verified,Verified,swh:1:dir:b4cc10afd43eaa258b7cb24700ca8927db947ad9,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/go-playground/validator@v10.19.0,golang,github.com/go-playground/validator,v10.19.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/rs/zerolog@v1.32.0,golang,github.com/rs/zerolog,v1.32.0,Verified,Verified,swh:1:dir:e7a2a2b344ecd522f37d7c7d5cbf11e7cdf7cc59,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/nats-io/nats.go@v1.34.0,golang,github.com/nats-io/nats.go,v1.34.0,Verified,Verified,swh:1:dir:ceb0c4fa9df33ec59226b72977bb41cecce2412f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/tidwall/gjson@v1.17.1,golang,github.com/tidwall/gjson,v1.17.1,Verified,Verified,swh:1:dir:935d71b1e3fc4ce2409bff13e0b39937ee7461a6,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/patrickmn/go-cache@v2.1.0,golang,github.com/patrickmn/go-cache,v2.1.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/dgrijalva/jwt-go@v3.2.0,golang,github.com/dgrijalva/jwt-go,v3.2.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/gofiber/fiber@v2.52.2,golang,github.com/gofiber/fiber,v2.52.2,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/gin-contrib/cors@v1.6.0,golang,github.com/gin-contrib/cors,v1.6.0,Verified,Verified,swh:1:dir:9d1a0d0a1d08e264cc07b8fd785bb23ce75a881f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/go-kit/kit@v0.13.0,golang,github.com/go-kit/kit,v0.13.0,Verified,Verified,swh:1:dir:7a600926279d870c7e1667f771351faa9a40558e,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/gogo/protobuf@v1.3.2,golang,github.com/gogo/protobuf,v1.3.2,Verified,Verified,swh:1:dir:cf2bc48b35233d539280e14243976674590faec5,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/pelletier/go-toml@v2.1.1,golang,github.com/pelletier/go-toml,v2.1.1,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/hashicorp/go-hclog@v1.6.2,golang,github.com/hashicorp/go-hclog,v1.6.2,Verified,Verified,swh:1:dir:4b94e9e3dcb34a4fa413ed06a3cb11adfc61e71f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/joho/godotenv@v1.5.1,golang,github.com/joho/godotenv,v1.5.1,Verified,Verified,swh:1:dir:df09f0777e3d2c56543897e1f3d0dfc775e95666,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/DATA-DOG/go-sqlmock@v1.5.2,golang,github.com/DATA-DOG/go-sqlmock,v1.5.2,Verified,Verified,swh:1:dir:af0bc28f9c28f37a8bd0921d57971c6a730d16a1,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/cespare/xxhash@v2.2.0,golang,github.com/cespare/xxhash,v2.2.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/golang-migrate/migrate@v4.17.0,golang,github.com/golang-migrate/migrate,v4.17.0,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/grpc-ecosystem/grpc-gateway@v2.19.1,golang,github.com/grpc-ecosystem/grpc-gateway,v2.19.1,Failed,None,,,,,,Could not download zip from Go Proxy: 404,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/uber-go/fx@v1.21.0,golang,github.com/uber-go/fx,v1.21.0,Verified,Verified,swh:1:dir:79705861e9c4ccd06ac3ab5ac2d61c53b4da845a,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/shopspring/decimal@v1.3.1,golang,github.com/shopspring/decimal,v1.3.1,Verified,Verified,swh:1:dir:2e813fb75787cdf0e881261857833a7d142b1d6c,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:golang/github.com/jmoiron/sqlx@v1.3.5,golang,github.com/jmoiron/sqlx,v1.3.5,Verified,Verified,swh:1:dir:f774a6e36b612fb93f591972699de76b46e1f6b7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/junit/junit@4.13.2,maven,junit/junit,4.13.2,Partial,Partial,swh:1:cnt:913020af6b77933ae949c3c83c4b085cdb2ec194,,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.slf4j/slf4j-api@2.0.13,maven,org.slf4j/slf4j-api,2.0.13,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.commons/commons-lang3@3.14.0,maven,org.apache.commons/commons-lang3,3.14.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.17.0,maven,com.fasterxml.jackson.core/jackson-databind,2.17.0,Verified,Verified,swh:1:cnt:8f92a35d1b18d9e28afb948ba0e143e8553b50a1,,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.mockito/mockito-core@5.11.0,maven,org.mockito/mockito-core,5.11.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.google.guava/guava@33.1.0-jre,maven,com.google.guava/guava,33.1.0-jre,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.logging.log4j/log4j-core@2.23.1,maven,org.apache.logging.log4j/log4j-core,2.23.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.httpcomponents/httpclient@4.5.14,maven,org.apache.httpcomponents/httpclient,4.5.14,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.google.code.gson/gson@2.10.1,maven,com.google.code.gson/gson,2.10.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.projectlombok/lombok@1.18.32,maven,org.projectlombok/lombok,1.18.32,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.commons/commons-collections4@4.4,maven,org.apache.commons/commons-collections4,4.4,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/commons-io/commons-io@2.16.0,maven,commons-io/commons-io,2.16.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.springframework/spring-core@6.1.5,maven,org.springframework/spring-core,6.1.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.springframework/spring-context@6.1.5,maven,org.springframework/spring-context,6.1.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.springframework.boot/spring-boot@3.2.4,maven,org.springframework.boot/spring-boot,3.2.4,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/ch.qos.logback/logback-classic@1.5.3,maven,ch.qos.logback/logback-classic,1.5.3,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.commons/commons-text@1.12.0,maven,org.apache.commons/commons-text,1.12.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.fasterxml.jackson.core/jackson-core@2.17.0,maven,com.fasterxml.jackson.core/jackson-core,2.17.0,Verified,Verified,swh:1:cnt:888fb8b9581020cfbd653b010c4f9fd0295a2350,,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.yaml/snakeyaml@2.2,maven,org.yaml/snakeyaml,2.2,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/commons-codec/commons-codec@1.17.0,maven,commons-codec/commons-codec,1.17.0,Inferred,Partial,,,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.assertj/assertj-core@3.25.3,maven,org.assertj/assertj-core,3.25.3,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.jetbrains.kotlin/kotlin-stdlib@1.9.23,maven,org.jetbrains.kotlin/kotlin-stdlib,1.9.23,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.maven/maven-core@3.9.6,maven,org.apache.maven/maven-core,3.9.6,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.squareup.okhttp3/okhttp@4.12.0,maven,com.squareup.okhttp3/okhttp,4.12.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/io.netty/netty-all@4.1.108.Final,maven,io.netty/netty-all,4.1.108.Final,Skipped,Partial,,,,,,No sources.jar found,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.testng/testng@7.10.1,maven,org.testng/testng,7.10.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.h2database/h2@2.2.224,maven,com.h2database/h2,2.2.224,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.postgresql/postgresql@42.7.3,maven,org.postgresql/postgresql,42.7.3,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.mysql/mysql-connector-j@8.3.0,maven,com.mysql/mysql-connector-j,8.3.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.kafka/kafka-clients@3.7.0,maven,org.apache.kafka/kafka-clients,3.7.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/io.micrometer/micrometer-core@1.12.4,maven,io.micrometer/micrometer-core,1.12.4,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.hibernate/hibernate-core@6.4.4.Final,maven,org.hibernate/hibernate-core,6.4.4.Final,Skipped,Partial,,,,,,No sources.jar found,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.zaxxer/HikariCP@5.1.0,maven,com.zaxxer/HikariCP,5.1.0,Verified,Verified,swh:1:cnt:dd7142a690e28a2e6f78ca4d87263fec961b8b01,,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.amazonaws/aws-java-sdk-core@1.12.688,maven,com.amazonaws/aws-java-sdk-core,1.12.688,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/io.grpc/grpc-core@1.63.0,maven,io.grpc/grpc-core,1.63.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.commons/commons-math3@3.6.1,maven,org.apache.commons/commons-math3,3.6.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.bouncycastle/bcprov-jdk18on@1.77,maven,org.bouncycastle/bcprov-jdk18on,1.77,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/javax.servlet/javax.servlet-api@4.0.1,maven,javax.servlet/javax.servlet-api,4.0.1,Verified,Verified,swh:1:cnt:2140916e713e0ec66c93dcef71ea767c436091f0,,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.json/json@20240303,maven,org.json/json,20240303,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.google.protobuf/protobuf-java@4.26.0,maven,com.google.protobuf/protobuf-java,4.26.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/io.swagger.core.v3/swagger-core@2.2.21,maven,io.swagger.core.v3/swagger-core,2.2.21,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.poi/poi@5.2.5,maven,org.apache.poi/poi,5.2.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.flywaydb/flyway-core@10.10.0,maven,org.flywaydb/flyway-core,10.10.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.google.errorprone/error_prone_core@2.26.1,maven,com.google.errorprone/error_prone_core,2.26.1,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/io.jsonwebtoken/jjwt-api@0.12.5,maven,io.jsonwebtoken/jjwt-api,0.12.5,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.mapstruct/mapstruct@1.5.5.Final,maven,org.mapstruct/mapstruct,1.5.5.Final,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/com.google.inject/guice@7.0.0,maven,com.google.inject/guice,7.0.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.eclipse.jetty/jetty-server@12.0.7,maven,org.eclipse.jetty/jetty-server,12.0.7,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/io.vertx/vertx-core@4.5.7,maven,io.vertx/vertx-core,4.5.7,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:maven/org.apache.camel/camel-core@4.5.0,maven,org.apache.camel/camel-core,4.5.0,Inferred,Partial,,,,,,Could not extract GitHub owner/repo or tag from SCM info,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Newtonsoft.Json@13.0.4,nuget,Newtonsoft.Json,13.0.4,Verified,Verified,swh:1:dir:96556403304e16c9624e425c6f116d1196bcfc20,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/System.Text.Json@10.0.10,nuget,System.Text.Json,10.0.10,Verified,Verified,swh:1:dir:49f77368f8c5d56fc4218b06f04e6472fd31ea1f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Serilog@4.4.0,nuget,Serilog,4.4.0,Verified,Verified,swh:1:dir:d46679d55cd0f44244b4801a5423632c28898721,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/AutoMapper@16.2.0,nuget,AutoMapper,16.2.0,Verified,Verified,swh:1:dir:2e905f59dc882afc29fc807005ee2e6b351c29e5,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/FluentValidation@12.1.1,nuget,FluentValidation,12.1.1,Verified,Verified,swh:1:dir:52d8db109b352b71f73b297f029c3b2cf1f1404f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Dapper@2.1.79,nuget,Dapper,2.1.79,Verified,Verified,swh:1:dir:7a83e66478c042c6a7fb40a9ffbbf0ca17711bf5,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/MediatR@14.2.0,nuget,MediatR,14.2.0,Verified,Verified,swh:1:dir:3e25e5c96b8da579378ee0f2f6d652b4cbc2224a,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Polly@8.7.0,nuget,Polly,8.7.0,Verified,Verified,swh:1:dir:4c808de4c94dabd2cb8853e3ba6f42b1eddee9ae,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Swashbuckle.AspNetCore@10.2.3,nuget,Swashbuckle.AspNetCore,10.2.3,Verified,Verified,swh:1:dir:23cbf7516c495c473b808e8372cbc906ebcd3510,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/xunit@2.9.3,nuget,xunit,2.9.3,Verified,Verified,swh:1:dir:62854c12b96f50f3f27ee3dd9b7b1d6316652635,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/NUnit@4.6.1,nuget,NUnit,4.6.1,Verified,Verified,swh:1:dir:7d09403210ad93aeab1027363cb634095ee8b318,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Moq@4.20.72,nuget,Moq,4.20.72,Verified,Verified,swh:1:dir:ab5c2eea1699fbbfa261d4b22abe5765116c80a7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/FluentAssertions@8.10.0,nuget,FluentAssertions,8.10.0,Verified,Verified,swh:1:dir:9c0f59fc05246b4945d56ffa9a731b480bb06758,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Bogus@35.6.5,nuget,Bogus,35.6.5,Verified,Verified,swh:1:dir:731355629d83f5c0e1d0183679540002c8890d1a,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Humanizer.Core@3.0.10,nuget,Humanizer.Core,3.0.10,Verified,Verified,swh:1:dir:431692e181aec79ba6ae5dbff78ccc28c55b3b76,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/CsvHelper@33.1.0,nuget,CsvHelper,33.1.0,Verified,Verified,swh:1:dir:712e5853af99b70ba1170d27394689889f6e24ea,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/RestSharp@114.0.0,nuget,RestSharp,114.0.0,Verified,Verified,swh:1:dir:0eb44c13d2d08e756d86108e3783a468568ce339,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/MailKit@4.17.0,nuget,MailKit,4.17.0,Verified,Verified,swh:1:dir:f4185ef4029da26a89f9fd12d3bbb019fcc78473,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/HtmlAgilityPack@1.12.4,nuget,HtmlAgilityPack,1.12.4,Verified,Verified,swh:1:dir:4149efbc26e35caa6ab0e9841529350107ded6c7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Npgsql@10.0.3,nuget,Npgsql,10.0.3,Verified,Verified,swh:1:dir:b8fc919e72164a9474a2c738e6628f2950429ee1,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/StackExchange.Redis@3.0.17,nuget,StackExchange.Redis,3.0.17,Verified,Verified,swh:1:dir:955e2cf94876b6da20ae62bfdef987288488c097,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/MongoDB.Driver@3.10.0,nuget,MongoDB.Driver,3.10.0,Verified,Verified,swh:1:dir:7a3f2b15d5e8fd2523412dbbac7e3f7dee958281,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/EntityFramework@6.5.2,nuget,EntityFramework,6.5.2,Verified,Verified,swh:1:dir:b1a65aeaaf8a233109da2052d9cc2896aa999959,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Microsoft.EntityFrameworkCore@10.0.10,nuget,Microsoft.EntityFrameworkCore,10.0.10,Verified,Verified,swh:1:dir:cb19449f09be69034b3da7e0156e04668d8bc4a5,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Hangfire.Core@1.8.23,nuget,Hangfire.Core,1.8.23,Verified,Verified,swh:1:dir:99cdec2095c97e82d50ccd51b4b492836ef474bc,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/MassTransit@9.1.2,nuget,MassTransit,9.1.2,Verified,Verified,swh:1:dir:1380658af4bc6da55a97c98732f1f5a07ad48776,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/NLog@6.1.4,nuget,NLog,6.1.4,Verified,Verified,swh:1:dir:9d73c7f373d807833a53b4367eafe3c85e29c18a,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/log4net@3.3.2,nuget,log4net,3.3.2,Verified,Verified,swh:1:dir:acc8b4c238cced9e75c77084597c2387692a2f9b,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Autofac@9.3.1,nuget,Autofac,9.3.1,Verified,Verified,swh:1:dir:6baf547bb51f9918df85accd25a6a24fe990f272,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Grpc.Net.Client@2.80.0,nuget,Grpc.Net.Client,2.80.0,Verified,Verified,swh:1:dir:54d449e00768f6939f41582fbd6f2d757b3509a2,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/protobuf-net@3.2.56,nuget,protobuf-net,3.2.56,Verified,Verified,swh:1:dir:417defa4d063f22baac5aa65c1e4558e8fdc24af,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/MessagePack@3.1.8,nuget,MessagePack,3.1.8,Verified,Verified,swh:1:dir:eebc6deca359e398295c6728710351d42ac7e9b4,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/BenchmarkDotNet@0.15.8,nuget,BenchmarkDotNet,0.15.8,Verified,Verified,swh:1:dir:5445d6501bfd30d5f993639b216194c5e40c431d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Shouldly@4.3.0,nuget,Shouldly,4.3.0,Verified,Verified,swh:1:dir:a99cfa35e80b3c9cb6eb5cf0fe8dbae50d2d457d,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/AngleSharp@1.5.2,nuget,AngleSharp,1.5.2,Verified,Verified,swh:1:dir:2d3cbded8f2767e034385443478fd3f331f40d34,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/SixLabors.ImageSharp@4.0.0,nuget,SixLabors.ImageSharp,4.0.0,Verified,Verified,swh:1:dir:ea1a6cb7d0461ab87b60c1cd0a5fd1b1eca641da,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/SkiaSharp@4.150.1,nuget,SkiaSharp,4.150.1,Verified,Verified,swh:1:dir:1f053a9630e742d8e7a4cc0dcf480dacfbe9ae96,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Markdig@1.3.2,nuget,Markdig,1.3.2,Verified,Verified,swh:1:dir:ef7335e43b1802e2c1ac24d5bb425e49a869d26f,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/YamlDotNet@18.1.0,nuget,YamlDotNet,18.1.0,Verified,Verified,swh:1:dir:b9ffdad5c09288d55172432f9aba9ec4c0abf35e,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Jint@4.13.0,nuget,Jint,4.13.0,Verified,Verified,swh:1:dir:b90e7595e638a586fca00c58db365c78231f37a7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/MiniProfiler.AspNetCore.Mvc@4.5.4,nuget,MiniProfiler.AspNetCore.Mvc,4.5.4,Verified,Verified,swh:1:dir:30bcc34dea2764972e9f4918624779ce08dec560,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/AWSSDK.Core@4.0.100.5,nuget,AWSSDK.Core,4.0.100.5,Verified,Verified,swh:1:dir:8b0926a57f7f4d8df25465cc9a2482e0c31bc5cb,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Azure.Storage.Blobs@12.29.1,nuget,Azure.Storage.Blobs,12.29.1,Verified,Verified,swh:1:dir:60844fc15452cd23e57ed5e1ed890908b88894bd,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Google.Cloud.Storage.V1@4.15.0,nuget,Google.Cloud.Storage.V1,4.15.0,Verified,Verified,swh:1:dir:b3fad3bfd82ce6bd72d945b049aa9440bc70ede2,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/NSwag.AspNetCore@14.7.1,nuget,NSwag.AspNetCore,14.7.1,Verified,Verified,swh:1:dir:76a76b76856fe92c3d86eea128fcaf5002510637,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Scrutor@7.0.0,nuget,Scrutor,7.0.0,Verified,Verified,swh:1:dir:25e0ee1d9867016e6c1b2b196e21bbc897da0b15,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Mapster@10.0.11,nuget,Mapster,10.0.11,Verified,Verified,swh:1:dir:e18a72c034e6fd9f1568dced405e7b27467e48e9,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/Refit@13.1.0,nuget,Refit,13.1.0,Verified,Verified,swh:1:dir:59bd0a79b15461e07e39422d66980d147b4403b7,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/LazyCache@2.4.0,nuget,LazyCache,2.4.0,Verified,Verified,swh:1:dir:89ddd9afbebe35a722bd37e9e1c86556b3dec997,B,,,,,2026-07-16T09:39:42.183599+00:00
+pkg:nuget/EFCore.BulkExtensions@10.0.1,nuget,EFCore.BulkExtensions,10.0.1,Verified,Verified,swh:1:dir:60a6e9ce826a43ebd298df8131d6f74a50984603,B,,,,,2026-07-16T09:39:42.183599+00:00
